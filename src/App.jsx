@@ -3,22 +3,23 @@ import { img } from "./images";
 import {
   GUIDE_PDF, GUIDE_MD,
   MASTER_LOGO_PACKAGE, LOGO_USAGE_GUIDE, ALL_PROGRAM_LOGOS, ALL_FACILITY_LOGOS,
-  LOGOS, ICONS,
-  logoDownloadUrl, iconDownloadUrl,
+  LOGOS, ICONS, LETTERHEAD,
+  logoDownloadUrl, iconDownloadUrl, letterheadUrl,
   BD_DECK_PPTX, BD_DECK_SLIDES,
   HUB, PRINT_ORDER, PRINT_ALT_VENDOR,
   SOCIAL_TEMPLATES, EMAIL_TEMPLATES, VIDEO_FILES,
 } from "./links";
 
 var C = {
-  mid: "#083045",
-  pru: "#004860",
+  mid: "#004860",
+  pru: "#083045",
   gam: "#FFAD00",
   cer: "#00728B",
   pac: "#5B9CB8",
   sag: "#4B8C84",
   cad: "#A0B5BD",
   fro: "#FCFDFF",
+  she: "#FAFAF9",
   smo: "#F2F1F0",
   san: "#E2E0DD",
   gla: "#D3E7EE",
@@ -112,14 +113,6 @@ var FACS = [
     "Guardian Recovery - New Pathway Bayonne",
   ],
   [
-    "New Pathway Paramus",
-    "Paramus, NJ",
-    "New Jersey",
-    "SUD IOP, MH IOP, Adol IOP, Virtual",
-    true,
-    "Guardian Recovery - New Pathway Paramus",
-  ],
-  [
     "New Pathway Pine Brook",
     "Pine Brook, NJ",
     "New Jersey",
@@ -208,12 +201,44 @@ var FACS = [
     "Guardian Recovery - Dallas Addiction Center",
   ],
   [
-    "Virtual Counseling",
-    "Multi-state",
+    "Virtual Counseling Maine",
+    "Maine",
     "Virtual",
     "IOP, MH IOP, OP, MH OP",
     true,
-    "Guardian Recovery - Virtual Counseling",
+    "Guardian Recovery - Virtual Counseling Maine",
+  ],
+  [
+    "Virtual Counseling Colorado",
+    "Colorado",
+    "Virtual",
+    "IOP, MH IOP, OP, MH OP",
+    true,
+    "Guardian Recovery - Virtual Counseling Colorado",
+  ],
+  [
+    "Virtual Counseling Florida",
+    "Florida",
+    "Virtual",
+    "IOP, MH IOP, OP, MH OP",
+    true,
+    "Guardian Recovery - Virtual Counseling Florida",
+  ],
+  [
+    "Virtual Counseling New Jersey",
+    "New Jersey",
+    "Virtual",
+    "IOP, MH IOP, OP, MH OP",
+    true,
+    "Guardian Recovery - Virtual Counseling New Jersey",
+  ],
+  [
+    "Virtual Counseling Texas",
+    "Texas",
+    "Virtual",
+    "IOP, MH IOP, OP, MH OP",
+    true,
+    "Guardian Recovery - Virtual Counseling Texas",
   ],
 ];
 
@@ -404,19 +429,20 @@ function Bx(props) {
       <div
         style={{
           width: props.w || "100%",
-          height: props.h || 60,
           borderRadius: 8,
           overflow: "hidden",
-          background: props.dark ? C.mid : C.smo,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          background: props.dark ? C.mid : "#fff",
+          display: "block",
         }}
       >
         <img
           src={props.img}
           alt={props.t || ""}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          style={{
+            display: "block",
+            width: "100%",
+            height: "auto",
+          }}
         />
       </div>
     );
@@ -426,7 +452,7 @@ function Bx(props) {
       style={{
         width: props.w || "100%",
         height: props.h || 60,
-        background: props.dark ? C.mid : C.smo,
+        background: props.dark ? C.mid : "#fff",
         borderRadius: 8,
         display: "flex",
         alignItems: "center",
@@ -497,7 +523,7 @@ function Bt(props) {
       : v === "order"
         ? C.cer
         : v === "preview"
-          ? C.mid
+          ? C.pru
           : "transparent";
   var fg =
     v === "primary" ? C.mid : v === "order" || v === "preview" ? "#fff" : C.cer;
@@ -691,29 +717,47 @@ function Pc(props) {
 }
 
 function LogoDownload(props) {
-  var [fmt, setFmt] = useState("Vector");
-  var fmts = ["Vector", "Web", "Web No BG", "Print"];
+  var [fmt, setFmt] = useState("Vector Web");
+  var fmts = props.dark
+    ? ["Vector Web", "Web No BG", "Vector Print", "Print"]
+    : ["Vector Web", "Web", "Web No BG", "Vector Print", "Print"];
+  var activeFmt = fmts.indexOf(fmt) === -1 ? "Vector Web" : fmt;
   var slug = props.slug || "";
-  var dlHref = slug ? logoDownload(slug, fmt) : null;
+  var dlHref = slug ? logoDownload(slug, activeFmt) : null;
   var previewImg = slug ? logoPreview(slug) : props.img;
+  var flexBasis = "1 1 150px";
+  var minW = 150;
+  if (props.cols === 2) {
+    flexBasis = "1 1 calc(50% - 5px)";
+    minW = 240;
+  }
   return (
     <div
       style={{
         border: "1px solid " + C.gla,
         borderRadius: 10,
         overflow: "hidden",
-        flex: "1 1 150px",
-        minWidth: 150,
+        flex: flexBasis,
+        minWidth: minW,
       }}
     >
       {props.ac && <div style={{ height: 3, background: props.ac }} />}
       <div style={{ padding: 14, textAlign: "center" }}>
-        <Bx
-          t={props.n + (props.dark ? " (white)" : "")}
-          h={props.vertical ? 60 : 44}
-          dark={props.dark}
-          img={previewImg}
-        />
+        <div
+          style={{
+            margin: "14px 0 18px",
+            border: "1px solid " + (props.dark ? "rgba(255,255,255,0.12)" : C.gla),
+            borderRadius: 9,
+            overflow: "hidden",
+          }}
+        >
+          <Bx
+            t={props.n + (props.dark ? " (white)" : "")}
+            h={props.vertical ? 60 : 44}
+            dark={props.dark}
+            img={previewImg}
+          />
+        </div>
         <div
           style={{
             fontSize: 13,
@@ -734,7 +778,7 @@ function LogoDownload(props) {
           }}
         >
           <select
-            value={fmt}
+            value={activeFmt}
             onChange={function (e) {
               setFmt(e.target.value);
             }}
@@ -765,8 +809,8 @@ function LogoDownload(props) {
 }
 
 function IconDownload(props) {
-  var [fmt, setFmt] = useState("SVG");
-  var fmts = ["SVG", "PNG"];
+  var [fmt, setFmt] = useState("Vector Web");
+  var fmts = ["Vector Web", "Web", "Web No BG", "Vector Print", "Print"];
   var slug = props.slug || "";
   var dlHref = slug ? iconDownload(slug, fmt) : null;
   return (
@@ -808,12 +852,47 @@ function IconDownload(props) {
   );
 }
 
+function LetterheadCard(props) {
+  var dlHref = letterheadUrl(props.slug);
+  return (
+    <div
+      style={{
+        border: "1px solid " + C.gla,
+        borderRadius: 10,
+        padding: 14,
+        flex: props.wide ? "1 1 100%" : "1 1 200px",
+        minWidth: 200,
+      }}
+    >
+      <div
+        style={{
+          fontSize: 14,
+          fontWeight: 600,
+          color: C.mid,
+          marginBottom: 2,
+        }}
+      >
+        {props.title}
+      </div>
+      {props.subtitle && (
+        <div style={{ fontSize: 11, color: C.bat, marginBottom: 8 }}>
+          {props.subtitle}
+        </div>
+      )}
+      <Bt href={dlHref}>Download .docx</Bt>
+    </div>
+  );
+}
+
 function LogoGrid(props) {
   var [orient, setO] = useState("horizontal");
   var [cmode, setC] = useState("color");
-  var [fmt, setFmt] = useState("Vector");
+  var [fmt, setFmt] = useState("Vector Web");
   var dk = cmode === "inverted";
-  var fmts = ["Vector", "Web", "Web No BG", "Print"];
+  var fmts = dk
+    ? ["Vector Web", "Web No BG", "Vector Print", "Print"]
+    : ["Vector Web", "Web", "Web No BG", "Vector Print", "Print"];
+  var activeFmt = fmts.indexOf(fmt) === -1 ? "Vector Web" : fmt;
 
   function chip(label, val, cur, set) {
     var on = cur === val;
@@ -861,7 +940,7 @@ function LogoGrid(props) {
         </div>
         <div style={{ width: 1, height: 20, background: C.gla }} />
         <select
-          value={fmt}
+          value={activeFmt}
           onChange={function (e) {
             setFmt(e.target.value);
           }}
@@ -895,8 +974,17 @@ function LogoGrid(props) {
             (dk ? "-inv" : "") + (orient === "vertical" ? "-vert" : "");
           var fullSlug = slug ? slug + suffix : null;
           var previewImg = fullSlug ? logoPreview(fullSlug) : null;
-          var dlHref = fullSlug ? logoDownload(fullSlug, fmt) : null;
+          var dlHref = fullSlug ? logoDownload(fullSlug, activeFmt) : null;
           var txt = label + " / " + orient + " / " + (dk ? "white" : "color");
+          var cardFlex = "1 1 170px";
+          var cardMin = 170;
+          if (props.cols === 2) {
+            cardFlex = "1 1 calc(50% - 5px)";
+            cardMin = 200;
+          } else if (props.cols === 3) {
+            cardFlex = "1 1 calc(33.333% - 7px)";
+            cardMin = 170;
+          }
           return (
             <div
               key={label}
@@ -904,18 +992,20 @@ function LogoGrid(props) {
                 border: "1px solid " + C.gla,
                 borderRadius: 10,
                 overflow: "hidden",
-                flex: "1 1 170px",
-                minWidth: 170,
+                flex: cardFlex,
+                minWidth: cardMin,
               }}
             >
               {ac && <div style={{ height: 4, background: ac }} />}
               <div style={{ padding: 14, textAlign: "center" }}>
-                <Bx
-                  t={txt}
-                  h={orient === "vertical" ? 70 : 50}
-                  dark={dk}
-                  img={previewImg}
-                />
+                <div style={{ margin: "14px 0 18px" }}>
+                  <Bx
+                    t={txt}
+                    h={orient === "vertical" ? 70 : 50}
+                    dark={dk}
+                    img={previewImg}
+                  />
+                </div>
                 <div
                   style={{
                     fontSize: 13,
@@ -940,7 +1030,7 @@ function LogoGrid(props) {
                   </div>
                 )}
                 <div style={{ fontSize: 10, color: C.bat, marginBottom: 6 }}>
-                  {fmt}
+                  {activeFmt}
                 </div>
                 <Bt href={dlHref}>Download</Bt>
               </div>
@@ -1527,10 +1617,10 @@ export default function App() {
     var bgPattern = img("graphics/form-bg-pattern.svg");
     var bgLayers = bgPattern
       ? {
-          backgroundColor: C.mid,
+          backgroundColor: C.pru,
           backgroundImage:
             "linear-gradient(to top, rgba(8,48,69,0.96) 0%, " +
-            C.mid +
+            C.pru +
             " 100%), url(" +
             bgPattern +
             ")",
@@ -1539,7 +1629,7 @@ export default function App() {
           backgroundSize: "100% 100%, 64px 64px",
           backgroundAttachment: "scroll, scroll",
         }
-      : { background: C.mid };
+      : { background: C.pru };
     var st = mobile
       ? Object.assign({}, bgLayers, {
           width: "100%",
@@ -2026,7 +2116,7 @@ export default function App() {
 
         {/* 1 BRAND STORY */}
         <Sec id="story" pn="I" t="Brand Story and Positioning">
-          <H3>Our origin story</H3>
+          <H3>Our Origin Story</H3>
           <P>
             Guardian Recovery was founded in 2007 by Josh Scott, who experienced
             the recovery journey firsthand and emerged with a clear conviction:
@@ -2061,7 +2151,7 @@ export default function App() {
             respects their journey, and empowers lasting transformation.
           </P>
 
-          <H3>Brand promise</H3>
+          <H3>Brand Promise</H3>
           <Q>We provide care we would seek for ourselves or a loved one.</Q>
           <P>
             This is the single most important sentence in our brand. It filters
@@ -2070,7 +2160,7 @@ export default function App() {
             their family.
           </P>
 
-          <H3>Core values</H3>
+          <H3>Core Values</H3>
           <Cd t="Compassion First">
             We lead with empathy in every interaction, from the first phone call
             to long-term aftercare. Every Client, every family member, every
@@ -2101,7 +2191,7 @@ export default function App() {
             connected in purpose.
           </Cd>
 
-          <H3>Brand personality</H3>
+          <H3>Brand Personality</H3>
           <Tb
             h={["Attribute", "What it means", "Not this"]}
             r={[
@@ -2137,10 +2227,10 @@ export default function App() {
             space that is both clinical and deeply human.
           </P>
 
-          <H3>Taglines and signatures</H3>
+          <H3>Taglines and Signatures</H3>
           <div
             style={{
-              background: C.mid,
+              background: C.pru,
               borderRadius: 12,
               padding: "24px 20px",
               marginBottom: 16,
@@ -2201,7 +2291,7 @@ export default function App() {
           </div>
 
           <ReviewBlock label="Service line taglines">
-            <H4>The "Freedom to" system</H4>
+            <H4>The "Freedom to" System</H4>
             <P>
               Each service line signature completes "Freedom to" with the
               single most resonant word for its audience. "Freedom" captures
@@ -2230,7 +2320,7 @@ export default function App() {
               young person's life.
             </Cd>
 
-            <H4>Pairing (with brand tagline only)</H4>
+            <H4>Pairing (With Brand Tagline Only)</H4>
             <P it={true}>"Hope Starts Here. Freedom to live."</P>
             <P it={true}>"Hope Starts Here. Freedom to feel."</P>
             <P it={true}>"Hope Starts Here. Freedom to grow."</P>
@@ -2240,7 +2330,7 @@ export default function App() {
             </P>
           </ReviewBlock>
 
-          <H4>Other signature lines</H4>
+          <H4>Other Signature Lines</H4>
           <Tb
             h={["Line", "Usage"]}
             r={[
@@ -2258,7 +2348,7 @@ export default function App() {
 
         {/* 2 VOICE */}
         <Sec id="voice" pn="I" t="Brand Voice and Messaging">
-          <H3>Voice principles</H3>
+          <H3>Voice Principles</H3>
           <Cd t="Human, not clinical">
             We speak like a trusted person, not a textbook. We use clinical
             terms when precision matters, but never hide behind jargon. We say
@@ -2301,7 +2391,7 @@ export default function App() {
           </Q>
           <P mu={true}>Benchmark example. Experiential, not declarative.</P>
 
-          <H3>Tone spectrum</H3>
+          <H3>Tone Spectrum</H3>
           <Tb
             h={["Context", "Tone", "Example"]}
             r={[
@@ -2343,7 +2433,7 @@ export default function App() {
             ]}
           />
 
-          <H3>The "Client" standard</H3>
+          <H3>The "Client" Standard</H3>
           <P>
             Guardian Recovery refers to the individuals receiving care as
             "Clients" across all communications. This person-first term
@@ -2377,7 +2467,7 @@ export default function App() {
             "junkie," or any pejorative.
           </P>
 
-          <H3>Approved terminology</H3>
+          <H3>Approved Terminology</H3>
           <Tb
             h={["Use this", "Not this", "Why"]}
             r={[
@@ -2423,7 +2513,7 @@ export default function App() {
             in ad copy matching search intent.
           </P>
 
-          <H3>Compliance language</H3>
+          <H3>Compliance Language</H3>
           <P>
             <span style={{ fontWeight: 600 }}>No guaranteed outcomes.</span>{" "}
             Never state or imply that treatment will cure addiction.
@@ -2444,7 +2534,7 @@ export default function App() {
 
         {/* 3 ARCHITECTURE */}
         <Sec id="arch" pn="I" t="Brand Architecture">
-          <H3>Naming convention</H3>
+          <H3>Naming Convention</H3>
           <P b={true}>
             Every facility: Guardian Recovery - [Facility Name]. Non-negotiable
             on first reference in all materials.
@@ -2490,11 +2580,6 @@ export default function App() {
                 "SUD IOP, MH IOP, Adol IOP, Virtual",
               ],
               [
-                "GR - New Pathway Paramus",
-                "Paramus",
-                "SUD IOP, MH IOP, Adol IOP, Virtual",
-              ],
-              [
                 "GR - New Pathway Pine Brook",
                 "Pine Brook",
                 "SUD IOP, MH IOP, Adol IOP, Virtual",
@@ -2536,7 +2621,7 @@ export default function App() {
                 "MH PHP, MH IOP, Virtual",
               ],
               [
-                "GR - Portland Addiction Center*",
+                "GR - Portland Addiction Center",
                 "Westbrook, ME",
                 "Residential Supportive Housing",
               ],
@@ -2547,10 +2632,6 @@ export default function App() {
               ],
             ]}
           />
-          <P mu={true}>
-            *GR - Portland Addiction Center is not a clinical facility.
-            Residential Supportive Housing only.
-          </P>
           <H4>Colorado, Texas, Virtual</H4>
           <Tb
             h={["Facility", "Location", "Services"]}
@@ -2573,7 +2654,7 @@ export default function App() {
             ]}
           />
 
-          <H3>Boilerplate copy</H3>
+          <H3>Boilerplate Copy</H3>
           <Cd t="Long (100+ words)">
             Guardian Recovery is a national network of behavioral healthcare
             centers dedicated to providing compassionate, evidence-based
@@ -2628,7 +2709,7 @@ export default function App() {
             </Cd>
           </Row>
 
-          <H3>Service line identity system</H3>
+          <H3>Service Line Identity System</H3>
           <Tb
             h={
               review
@@ -2659,23 +2740,18 @@ export default function App() {
             ]}
           />
 
-          <H3>Specialty programs</H3>
+          <H3>Specialty Programs</H3>
           <Cd t="Guardian Recovery - Virtual Counseling">
             Telehealth across seven states (FL, TX, NJ, ME, NH, CO, PA). IOP, MH
             IOP, OP, MH OP. Does not include Detox, Residential, or PHP. An
             extension of the continuum, not a separate brand.
-          </Cd>
-          <Cd t="The Path Home">
-            In-home behavioral health services addressing barriers to
-            traditional care: transportation, stigma, childcare, mobility.
-            Complement to facility-based care.
           </Cd>
           <Cd t="Portland Psychiatry & Counseling">
             South Portland, ME. MH PHP, MH IOP, Virtual Outpatient. Owned by
             Guardian Recovery, not yet operating under the GR brand prefix.
           </Cd>
 
-          <H3>Levels of care</H3>
+          <H3>Levels of Care</H3>
           <div
             style={{
               display: "grid",
@@ -2801,7 +2877,7 @@ export default function App() {
             ]}
           />
 
-          <H3>Phase model (Adult SUD residential)</H3>
+          <H3>Phase Model (Adult SUD Residential)</H3>
           <P>
             <span style={{ fontWeight: 600 }}>Phase 1 (Residential): </span>
             Stabilization, education on the disease model, assessment, family
@@ -2826,7 +2902,7 @@ export default function App() {
             stabilization.
           </P>
 
-          <H3>Clinical vs. external voice</H3>
+          <H3>Clinical vs. External Voice</H3>
           <P>
             Internal clinical communication follows 12-Step practitioner
             conventions. Everything the public sees follows the brand voice in
@@ -2854,7 +2930,7 @@ export default function App() {
 
         {/* 5 LOGOS */}
         <Sec id="logo" pn="II" t="Logos and Facility Lockups">
-          <H3>Primary logos (full color)</H3>
+          <H3>Primary Logos (Full Color)</H3>
           <Row gap={10}>
             {[
               { n: "Horizontal", slug: "gr-horizontal" },
@@ -2868,11 +2944,12 @@ export default function App() {
                   n={l.n}
                   slug={l.slug}
                   vertical={l.n === "Vertical"}
+                  cols={2}
                 />
               );
             })}
           </Row>
-          <H3>Inverted / knockout versions</H3>
+          <H3>Inverted / Knockout Versions</H3>
           <Row gap={10}>
             {[
               { n: "Horizontal", slug: "gr-horizontal-inv" },
@@ -2887,6 +2964,7 @@ export default function App() {
                   slug={l.slug}
                   dark={true}
                   vertical={l.n === "Vertical"}
+                  cols={2}
                 />
               );
             })}
@@ -2896,7 +2974,7 @@ export default function App() {
             <Bt>Logo Usage Guide</Bt>
           </Row>
 
-          <H3>Clearing space and scale</H3>
+          <H3>Clearing Space and Scale</H3>
           <P>
             The logo requires a minimum clear zone on all sides equal to the
             cap-height of the "G" in the wordmark. No text, imagery, or other
@@ -2914,15 +2992,11 @@ export default function App() {
             {[
               {
                 label: "Horizontal",
-                w: "100%",
-                h: 56,
                 note: 'Min. 1.5" / 144px wide',
                 slug: "gr-horizontal",
               },
               {
                 label: "Vertical",
-                w: 120,
-                h: 80,
                 note: 'Min. 1.5" / 144px wide',
                 slug: "gr-vertical",
               },
@@ -2951,13 +3025,12 @@ export default function App() {
                   <div
                     style={{
                       position: "relative",
-                      display: "inline-flex",
-                      padding: 14,
+                      padding: "6%",
                       border: "1px dashed " + C.gam + "88",
                       borderRadius: 6,
                       width: "100%",
                       boxSizing: "border-box",
-                      justifyContent: "center",
+                      background: "#fff",
                     }}
                   >
                     <div
@@ -2973,11 +3046,14 @@ export default function App() {
                     >
                       clear zone
                     </div>
-                    <Bx
-                      t={v.label + " logo"}
-                      h={v.label === "Vertical" ? 60 : 40}
-                      w={v.label === "Vertical" ? 80 : "80%"}
-                      img={logoPreview(v.slug)}
+                    <img
+                      src={logoPreview(v.slug)}
+                      alt={v.label + " logo"}
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        height: "auto",
+                      }}
                     />
                   </div>
                   <div style={{ fontSize: 10, color: C.bat, marginTop: 8 }}>
@@ -3013,27 +3089,31 @@ export default function App() {
             effects, or recolor outside the approved palette.
           </P>
 
-          <H3>Service line logos</H3>
+          <H3>Service Line Logos</H3>
           <LogoGrid
+            cols={2}
             items={[
               ["Adult SUD", null, C.cer, "logo-sud"],
               ["Adult Mental Health", null, C.pac, "logo-mh"],
               ["Adolescent", null, C.sag, "logo-adol"],
+              ["Guardian Virtual", null, null, "logo-virtual"],
             ]}
           />
-          <H3>Specialty program logos</H3>
+          <H3>Specialty Program Logos</H3>
           <LogoGrid
+            cols={2}
             items={[
-              ["Guardian Virtual", null, null, "logo-virtual"],
-              ["The Path Home", null, null, "logo-path-home"],
-              ["Portland Addiction Center", null, null, "logo-pac"],
+              ["Immersion", null, null, "logo-immersion"],
+              ["New Pathway", null, null, "logo-new-pathway"],
+              ["Virtual Counseling", null, null, "logo-virtual-counseling"],
+              ["Case Management", null, null, "logo-case-management"],
             ]}
           />
           <div style={{ marginTop: 16, marginBottom: 16 }}>
             <Bt>All Program Logos (ZIP)</Bt>
           </div>
 
-          <H3>Facility logo lockups</H3>
+          <H3>Facility Logo Lockups</H3>
           <P>
             Each facility has a unique lockup. Filter by region and toggle
             orientation/color.
@@ -3072,6 +3152,7 @@ export default function App() {
             })}
           </div>
           <LogoGrid
+            cols={2}
             items={ff.map(function (f) {
               return [f[0], f[1], null, slugify(f[0])];
             })}
@@ -3088,7 +3169,7 @@ export default function App() {
             <Sw hex={C.mid} name="Midnight" sub="Primary dark" light={true} />
             <Sw hex={C.gam} name="Gambodge" sub="Brand accent" />
           </Row>
-          <H3>Service line accents</H3>
+          <H3>Service Line Accents</H3>
           <P>
             Each service line color was chosen to carry a specific emotional
             register — distinct enough to signal a different audience and
@@ -3246,7 +3327,7 @@ export default function App() {
               );
             })}
           </Row>
-          <H3>Interface colors</H3>
+          <H3>Interface Colors</H3>
           <Row>
             <Sw
               hex={C.pru}
@@ -3255,11 +3336,12 @@ export default function App() {
               light={true}
             />
             <Sw hex={C.fro} name="Frost" sub="Primary light bg" />
+            <Sw hex={C.she} name="Shell" sub="Soft neutral bg" />
             <Sw hex={C.smo} name="Smoke" sub="Secondary bg" />
             <Sw hex={C.san} name="Sand" sub="Warm neutral bg" />
             <Sw hex={C.gla} name="Glacier" sub="Accent bg" />
           </Row>
-          <H3>Text colors</H3>
+          <H3>Text Colors</H3>
           <Row>
             <Sw hex={C.eer} name="Eerie" sub="Primary text" light={true} />
             <Sw hex={C.cav} name="Cave" sub="Secondary text" light={true} />
@@ -3467,7 +3549,7 @@ export default function App() {
           </div>
 
           {/* Type scale */}
-          <H3>Type scale</H3>
+          <H3>Type Scale</H3>
           <div
             style={{
               border: "1px solid " + C.gla,
@@ -3577,7 +3659,7 @@ export default function App() {
             })}
           </div>
 
-          <H3>Email fallback fonts</H3>
+          <H3>Email Fallback Fonts</H3>
           <P>For email HTML only. Brand fonts for all other applications.</P>
           <Tb
             h={["Brand Font", "Email Fallback", "Clients"]}
@@ -3614,7 +3696,7 @@ export default function App() {
             third-party icon sets without brand review.
           </Cd>
 
-          <H3>Master brand icons</H3>
+          <H3>Master Brand Icons</H3>
           <P>
             The core brand marks used independently when Guardian Recovery
             context is established in surrounding content.
@@ -3690,7 +3772,7 @@ export default function App() {
             })}
           </Row>
 
-          <H3>Service line icons</H3>
+          <H3>Service Line Icons</H3>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             {[
               {
@@ -3800,7 +3882,7 @@ export default function App() {
             </em>
           </P>
 
-          <H3>Core principles</H3>
+          <H3>Core Principles</H3>
           <Cd t="Lighting">
             Well-balanced natural light. Underexposure feels depressing.
             Overexposure feels sterile. The sweet spot is warm light that makes
@@ -3819,7 +3901,7 @@ export default function App() {
             scenery that distracts from the human element.
           </Cd>
 
-          <H3>Rounded-corner framing</H3>
+          <H3>Rounded-Corner Framing</H3>
           <P>
             A defining visual signature. Softens the clinical feel and creates
             warmth. Corner radius under 10% of the shortest side — smaller
@@ -3902,7 +3984,7 @@ export default function App() {
             })}
           </div>
 
-          <H3>Photography by medium</H3>
+          <H3>Photography by Medium</H3>
           <Cd t="Website and landing pages">
             Hero images should feel like a moment of hope or connection — people
             looking forward with calm confidence, families embracing, supportive
@@ -3958,7 +4040,7 @@ export default function App() {
             lighting, candor, and diversity standards.
           </Cd>
 
-          <H3>Service-line specific</H3>
+          <H3>Service-Line Specific</H3>
           <Cd ac={C.cer} t="Adult SUD">
             Warm, calming. Candid adult photography. Sunrise motif connections
             where appropriate. People in reflective or supported moments. Avoid
@@ -4008,7 +4090,7 @@ export default function App() {
 
         {/* 9 GRAPHICS */}
         <Sec id="gfx" pn="II" t="Graphic Elements and Patterns">
-          <H3>Brand pattern</H3>
+          <H3>Brand Pattern</H3>
           <P>
             A repeating geometric texture based on the sunrise motif. The
             pattern is a texture — never a focal element. It creates depth and
@@ -4082,7 +4164,7 @@ export default function App() {
               );
             })}
           </div>
-          <H4>Where the pattern appears</H4>
+          <H4>Where the Pattern Appears</H4>
           <Tb
             h={["Context", "Usage"]}
             r={[
@@ -4111,7 +4193,7 @@ export default function App() {
             skew, or alter proportions.
           </P>
 
-          <H3>Arch / Chevron motif</H3>
+          <H3>Arch / Chevron Motif</H3>
           <P>
             The upward-pointing arch appears as a section divider and accent
             mark in headers and presentations. Always Gambodge (#FFAD00).
@@ -4140,7 +4222,7 @@ export default function App() {
             </div>
           </div>
 
-          <H3>Gradient treatments</H3>
+          <H3>Gradient Treatments</H3>
           <div
             style={{
               display: "flex",
@@ -4222,7 +4304,7 @@ export default function App() {
 
         {/* 12 BD */}
         <Sec id="bd" pn="III" t="BD Team Resources">
-          <H3>Presentation deck</H3>
+          <H3>Presentation Deck</H3>
           <P>
             The master BD deck follows the "Your Partner in Behavioral Health"
             positioning. Includes history, outcomes, program regions, facility
@@ -4298,7 +4380,7 @@ export default function App() {
             })}
           </Row>
 
-          <H3>Service line collateral</H3>
+          <H3>Service Line Collateral</H3>
           <P>Select a service line to browse its collateral set.</P>
           <CollateralNav
             categories={[
@@ -4309,7 +4391,7 @@ export default function App() {
             ]}
           />
 
-          <H3>Facility collateral</H3>
+          <H3>Facility Collateral</H3>
           <P>Select a region then a facility to browse available collateral.</P>
           <CollateralNav
             categories={REGIONS.filter(function (r) {
@@ -4329,7 +4411,7 @@ export default function App() {
             })}
           />
 
-          <H3>Regional collateral</H3>
+          <H3>Regional Collateral</H3>
           <P>Select a region to browse its collateral set.</P>
           <CollateralNav
             types={REGIONAL_COLLATERAL_TYPES}
@@ -4340,7 +4422,7 @@ export default function App() {
             })}
           />
 
-          <H3>Physical materials</H3>
+          <H3>Physical Materials</H3>
           <Row gap={10}>
             {[
               ["Pull-Up Banners", "Master + facility"],
@@ -4397,7 +4479,7 @@ export default function App() {
             ]}
           />
 
-          <H3>Social media</H3>
+          <H3>Social Media</H3>
           <Cd t="National accounts">
             Secondary (circular) logo on Midnight as profile image. Quarterly
             cover rotation. Content: recovery-positive messaging, educational
@@ -4415,7 +4497,7 @@ export default function App() {
             Section 2.
           </P>
 
-          <H3>Email marketing</H3>
+          <H3>Email Marketing</H3>
           <P>
             Via Salesforce Marketing Cloud. Header: primary logo centered on
             white. Body: IBM Plex Sans 15–17px, Eerie on white. Headlines: DM
@@ -4425,7 +4507,7 @@ export default function App() {
             unsubscribe, privacy disclaimer.
           </P>
 
-          <H3>Digital advertising</H3>
+          <H3>Digital Advertising</H3>
           <Cd t="Google Ads (LegitScript certified)">
             Never guarantee outcomes. "Rehab" and "detox" acceptable in
             headlines matching search intent. Landing page must deliver exactly
@@ -4442,7 +4524,47 @@ export default function App() {
             video must be captioned.
           </Cd>
 
-          <H3>Video and motion graphics</H3>
+          <H3>Digital Meeting Backgrounds</H3>
+          <P>
+            Branded virtual backgrounds for Zoom, Google Meet, and Microsoft
+            Teams. Used across business development calls, internal team
+            meetings, telehealth sessions, and external presentations. A
+            unified background reinforces brand consistency on every video
+            call and signals a professional, cohesive Guardian presence.
+          </P>
+          <Cd t="Standard library">
+            Midnight wrap with the brand pattern at 10–15% opacity, primary
+            horizontal logo positioned bottom-right with clear space
+            preserved. Frost variant for lighter, neutral framing. Service
+            line variants (Cerulean, Pacific, Sage) available for
+            line-specific outreach.
+          </Cd>
+          <Cd t="Telehealth / Guardian Virtual">
+            Calming, neutral framing — Frost or low-saturation Pacific.
+            Avoid heavy pattern, busy gradients, or clinical imagery.
+            Background must not compete with the clinician on camera.
+          </Cd>
+          <Tb
+            h={["Use case", "Recommended background"]}
+            r={[
+              ["BD / external calls", "Midnight + pattern, logo bottom-right"],
+              ["Internal team meetings", "Frost or Midnight, logo optional"],
+              ["Telehealth sessions", "Frost or low-saturation Pacific, no pattern"],
+              ["Webinars / presentations", "Midnight + Gambodge accent bar"],
+            ]}
+          />
+          <P mu={true}>
+            Specs: 1920×1080 px (16:9), JPG or PNG, RGB color space. Keep
+            logo, text, and key visual elements out of the lower-center
+            third so they aren't covered by the video tile or speaker name.
+          </P>
+          <Row>
+            <Bt>Zoom Backgrounds</Bt>
+            <Bt>Google Meet Backgrounds</Bt>
+            <Bt>Teams Backgrounds</Bt>
+          </Row>
+
+          <H3>Video and Motion Graphics</H3>
           <Cd t="Brand presence">
             Logo on opening and closing frames. Lower thirds: IBM Plex Sans on
             semi-transparent Midnight bar with Gambodge accent. Closing frame:
@@ -4478,7 +4600,7 @@ export default function App() {
             Three levels: brand, service-line, facility. Two-part About:
             emotional then credentials.
           </P>
-          <H3>Family resources</H3>
+          <H3>Family Resources</H3>
           <P>
             Warmest in the system. DM Serif Text headers, 15pt minimum, warm
             photography.
@@ -4497,7 +4619,8 @@ export default function App() {
             ordering. Download files directly or order physical materials
             through the primary vendor link.
           </P>
-          <H3>Digital assets</H3>
+
+          <H3>Digital Assets</H3>
           <div
             style={{
               display: "grid",
@@ -4546,7 +4669,7 @@ export default function App() {
               );
             })}
           </div>
-          <H3>Print ordering</H3>
+          <H3>Print Ordering</H3>
           <div
             style={{
               display: "grid",
@@ -4612,11 +4735,83 @@ export default function App() {
               );
             })}
           </div>
+
+          <H3>Need Custom Creative Work?</H3>
+          <a
+            href="https://creative.guardianrecovery.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "block",
+              border: "1px solid " + C.gla,
+              borderLeft: "4px solid " + C.gam,
+              borderRadius: 10,
+              padding: "16px 18px",
+              textDecoration: "none",
+              background: C.she,
+              transition: "box-shadow 0.15s ease",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 12,
+                flexWrap: "wrap",
+              }}
+            >
+              <div style={{ flex: "1 1 280px" }}>
+                <div
+                  style={{
+                    fontFamily: "'DM Serif Text',serif",
+                    fontSize: 18,
+                    color: C.mid,
+                    marginBottom: 4,
+                  }}
+                >
+                  Creative Request Portal
+                </div>
+                <div
+                  style={{ fontSize: 13, color: C.cav, lineHeight: 1.55 }}
+                >
+                  Submit a request for custom design, copywriting,
+                  campaign creative, or any asset not already in this
+                  hub. The internal Creative team reviews each request
+                  and partners with you on scope, timeline, and brand
+                  alignment.
+                </div>
+                <div
+                  style={{
+                    fontSize: 11,
+                    color: C.bat,
+                    marginTop: 6,
+                    letterSpacing: "0.02em",
+                  }}
+                >
+                  creative.guardianrecovery.com
+                </div>
+              </div>
+              <div
+                style={{
+                  background: C.gam,
+                  color: C.mid,
+                  padding: "10px 18px",
+                  borderRadius: 999,
+                  fontSize: 12,
+                  fontWeight: 600,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Submit a Request →
+              </div>
+            </div>
+          </a>
         </Sec>
 
         {/* APPENDICES */}
         <Sec id="app" t="Appendices">
-          <H3>Accreditations and recognition</H3>
+          <H3>Accreditations and Recognition</H3>
           <Tb
             h={["Credential", "Issuing Body", "Scope"]}
             r={[
@@ -4648,7 +4843,7 @@ export default function App() {
             ]}
           />
 
-          <H3>Proof points</H3>
+          <H3>Proof Points</H3>
           <P mu={true}>
             Source: Guardian Recovery Clinical Outcomes Report, August 2024.
             Measured with TEA, PHQ-9, and GAD-7.
@@ -4667,7 +4862,7 @@ export default function App() {
             changes in people's lives."
           </P>
 
-          <H3>Organizational scale</H3>
+          <H3>Organizational Scale</H3>
           <Tb
             h={["Metric", "Approved language"]}
             r={[
@@ -4683,7 +4878,7 @@ export default function App() {
             ]}
           />
 
-          <H3>Employer and BD proof points</H3>
+          <H3>Employer and BD Proof Points</H3>
           <Tb
             h={["Claim", "Source"]}
             r={[
@@ -4705,7 +4900,7 @@ export default function App() {
           />
         </Sec>
 
-        <div style={{ textAlign: "center", padding: "40px 0 20px" }}>
+        <div style={{ textAlign: "center", padding: "40px 0 90px" }}>
           <img
             src={img("logos/logo-secondary.svg")}
             alt="Guardian Recovery"
@@ -4716,6 +4911,32 @@ export default function App() {
           </div>
         </div>
       </main>
+      <a
+        href="https://creative.guardianrecovery.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: "fixed",
+          bottom: 20,
+          right: 20,
+          zIndex: 120,
+          background: C.gam,
+          color: C.mid,
+          padding: "12px 20px",
+          borderRadius: 999,
+          fontSize: 13,
+          fontWeight: 600,
+          textDecoration: "none",
+          letterSpacing: "0.01em",
+          boxShadow: "0 6px 20px rgba(8,48,69,0.25)",
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 8,
+        }}
+      >
+        <span style={{ fontSize: 15, lineHeight: 1 }}>✦</span>
+        Need Custom Creative Work?
+      </a>
     </div>
     </ReviewContext.Provider>
   );
