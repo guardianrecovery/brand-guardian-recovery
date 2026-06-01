@@ -121,21 +121,21 @@ export var LOGOS = {
     'vector-print': 'https://drive.google.com/file/d/1HHZkjr-dLLN0m7V1IDYDAth4Rqf8VHV-/view?usp=drive_link',
     print: 'https://drive.google.com/file/d/17OuQBheZP8OcHoYZ0NTGA6cF1u1PNR-Q/view?usp=drive_link',
   },
-  'logo-sud-vert/': {
+  'logo-sud-vert': {
     'vector-web': 'https://drive.google.com/file/d/1BZN01mjzz8zXh6LIDXD7xVHLVKhMqEC6/view?usp=drive_link',
     web: 'https://drive.google.com/file/d/1sB2nhpAAHDX0VaS8Q4fJe90BENrtfpLQ/view?usp=drive_link',
     'web-no-bg': 'https://drive.google.com/file/d/1sB2nhpAAHDX0VaS8Q4fJe90BENrtfpLQ/view?usp=drive_link',
     'vector-print': 'https://drive.google.com/file/d/1WlUJ0LuVcVAsVsRiVb5IS4SM2YrGtmi2/view?usp=drive_link',
     print: 'https://drive.google.com/file/d/13QNrgavlc7FLccDPbAB0GfJO83jbVewT/view?usp=drive_link',
   },
-  'logo-sud-inv/': {
+  'logo-sud-inv': {
     'vector-web': 'https://drive.google.com/file/d/1BZN01mjzz8zXh6LIDXD7xVHLVKhMqEC6/view?usp=drive_link',
     //web: 'https://drive.google.com/file/d/1sB2nhpAAHDX0VaS8Q4fJe90BENrtfpLQ/view?usp=drive_link',
     'web-no-bg': 'https://drive.google.com/file/d/1sB2nhpAAHDX0VaS8Q4fJe90BENrtfpLQ/view?usp=drive_link',
     'vector-print': 'https://drive.google.com/file/d/1WlUJ0LuVcVAsVsRiVb5IS4SM2YrGtmi2/view?usp=drive_link',
     print: 'https://drive.google.com/file/d/13QNrgavlc7FLccDPbAB0GfJO83jbVewT/view?usp=drive_link',
   },
-  'logo-sud-inv-vert/': {
+  'logo-sud-inv-vert': {
     'vector-web': 'https://drive.google.com/file/d/1BZN01mjzz8zXh6LIDXD7xVHLVKhMqEC6/view?usp=drive_link',
     //web: 'https://drive.google.com/file/d/1sB2nhpAAHDX0VaS8Q4fJe90BENrtfpLQ/view?usp=drive_link',
     'web-no-bg': 'https://drive.google.com/file/d/1sB2nhpAAHDX0VaS8Q4fJe90BENrtfpLQ/view?usp=drive_link',
