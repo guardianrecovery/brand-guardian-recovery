@@ -4725,9 +4725,7 @@ export default function App() {
             })}
           </div>
 
-          <H3>Stationery</H3>
-
-          <H4>Letterhead</H4>
+          <H3>Letterhead</H3>
           <Row gap={10}>
             <LetterheadCard
               title="General Letterhead"
@@ -4749,15 +4747,17 @@ export default function App() {
             })}
           </Row>
 
-          <H4>Other Stationery</H4>
-          <Row gap={10}>
-            {[
-              ["Envelopes", "Primary logo"],
-              ["Notecards", "Secondary logo"],
-            ].map(function (i) {
-              return <Pc key={i[0]} t={i[0]} d={i[1]} />;
-            })}
-          </Row>
+          <ReviewBlock label="Other Stationery">
+            <H4>Other Stationery</H4>
+            <Row gap={10}>
+              {[
+                ["Envelopes", "Primary logo"],
+                ["Notecards", "Secondary logo"],
+              ].map(function (i) {
+                return <Pc key={i[0]} t={i[0]} d={i[1]} />;
+              })}
+            </Row>
+          </ReviewBlock>
 
           <H3>Need Custom Creative Work?</H3>
           <a
