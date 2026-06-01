@@ -2184,8 +2184,9 @@ export default function App() {
             Guardian Virtual was regionalized into state-licensed practices.
           </P>
           <P>
-            Today: 18 locations including virtual across six states with virtual
-            counseling reaching a seventh. The founding conviction hasn't
+            Today: 16 in-person facilities across six states (Florida, New
+            Jersey, New Hampshire, Maine, Colorado, and Texas) plus five
+            state-licensed virtual practices. The founding conviction hasn't
             changed.
           </P>
 
