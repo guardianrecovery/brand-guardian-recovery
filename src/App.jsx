@@ -4673,7 +4673,6 @@ export default function App() {
               ["Rep Stickers", "Name + QR"],
               ["Folders", "Midnight + pattern"],
               ["Banners", "Master + facility"],
-              ["Stationery", "Letterhead + envelopes"],
               ["Apparel", "Polos, quarter-zips"],
               ["Merchandise", "Pens, bottles"],
               ["Trifolds", "By service line"],
