@@ -1198,15 +1198,44 @@ var ReviewContext = createContext(false);
 function ReviewBlock(props) {
   var review = useContext(ReviewContext);
   var [approved, setApproved] = useState(false);
+  var storageKey =
+    "gr-review-live:" + (props.id || props.label || "unlabeled");
+  var [isLive, setLive] = useState(function () {
+    if (typeof window === "undefined") return false;
+    return window.localStorage.getItem(storageKey) === "1";
+  });
+
+  function toggleLive() {
+    var next = !isLive;
+    setLive(next);
+    if (typeof window !== "undefined") {
+      if (next) window.localStorage.setItem(storageKey, "1");
+      else window.localStorage.removeItem(storageKey);
+    }
+  }
+
+  // Promoted to Live + not in review mode → render publicly, no chrome.
+  if (isLive && !review) return <>{props.children}</>;
+
+  // Not promoted + not in review mode → hide entirely.
   if (!review) return null;
-  var accent = approved ? C.sag : C.gam;
+
+  // In review mode → dashed container with both controls.
+  var accent = isLive ? C.cer : approved ? C.sag : C.gam;
+  var bg = isLive
+    ? "rgba(0,114,139,0.06)"
+    : approved
+      ? "rgba(75,140,132,0.06)"
+      : "rgba(255,173,0,0.06)";
+  var stateLabel = isLive ? "Live" : approved ? "Approved" : "Pending review";
+  var badgeFg = isLive || approved ? "#fff" : C.mid;
   return (
     <div
       style={{
         border: "1px dashed " + accent,
-        background: approved ? "rgba(75,140,132,0.06)" : "rgba(255,173,0,0.06)",
+        background: bg,
         borderRadius: 10,
-        padding: "20px 18px 16px",
+        padding: "28px 18px 16px",
         margin: "16px 0",
         position: "relative",
       }}
@@ -1217,7 +1246,7 @@ function ReviewBlock(props) {
           top: -10,
           left: 14,
           background: accent,
-          color: approved ? "#fff" : C.mid,
+          color: badgeFg,
           fontSize: 10,
           fontWeight: 700,
           textTransform: "uppercase",
@@ -1226,29 +1255,51 @@ function ReviewBlock(props) {
           borderRadius: 4,
         }}
       >
-        {approved ? "Approved" : "Pending review"}
+        {stateLabel}
         {props.label ? " · " + props.label : ""}
       </div>
-      <button
-        onClick={function () {
-          setApproved(!approved);
-        }}
+      <div
         style={{
           position: "absolute",
           top: -10,
           right: 14,
-          fontSize: 10,
-          fontWeight: 600,
-          background: C.fro,
-          border: "1px solid " + accent,
-          borderRadius: 4,
-          padding: "3px 8px",
-          cursor: "pointer",
-          color: accent,
+          display: "flex",
+          gap: 6,
         }}
       >
-        Mark {approved ? "in review" : "approved"}
-      </button>
+        <button
+          onClick={toggleLive}
+          style={{
+            fontSize: 10,
+            fontWeight: 600,
+            background: isLive ? C.cer : C.fro,
+            border: "1px solid " + C.cer,
+            borderRadius: 4,
+            padding: "3px 8px",
+            cursor: "pointer",
+            color: isLive ? "#fff" : C.cer,
+          }}
+        >
+          {isLive ? "Demote to review" : "Promote to live"}
+        </button>
+        <button
+          onClick={function () {
+            setApproved(!approved);
+          }}
+          style={{
+            fontSize: 10,
+            fontWeight: 600,
+            background: C.fro,
+            border: "1px solid " + (approved ? C.sag : C.gam),
+            borderRadius: 4,
+            padding: "3px 8px",
+            cursor: "pointer",
+            color: approved ? C.sag : C.gam,
+          }}
+        >
+          Mark {approved ? "in review" : "approved"}
+        </button>
+      </div>
       {props.children}
     </div>
   );
