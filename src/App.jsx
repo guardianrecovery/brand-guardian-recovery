@@ -2179,8 +2179,9 @@ export default function App() {
             What began as an adult substance use treatment program in Florida
             grew as the team recognized how few quality options existed. By
             2019, expanded SUD offerings across multiple states. In 2021, a
-            shift to accessibility. By 2023, Adolescent and Mental Health
-            service lines added. In 2024, Guardian Virtual launched.
+            shift to accessibility. In 2022, Guardian Virtual launched. By
+            2023, Adolescent and Mental Health service lines added. In 2025,
+            Guardian Virtual was regionalized into state-licensed practices.
           </P>
           <P>
             Today: 18 locations including virtual across six states with virtual
