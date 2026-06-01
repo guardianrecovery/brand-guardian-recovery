@@ -45,16 +45,18 @@ Create all four combinations per base slug.
 | `logo-sud` | Adult SUD | `logo-sud/`, `logo-sud-vert/`, `logo-sud-inv/`, `logo-sud-inv-vert/` |
 | `logo-mh` | Adult Mental Health | Same pattern |
 | `logo-adol` | Adolescent | Same pattern |
+| `logo-virtual` | Guardian Virtual | Same pattern |
 
 ### Specialty program logos
 
-| Base slug | Logo |
-|-----------|------|
-| `logo-virtual` | Guardian Virtual |
-| `logo-path-home` | The Path Home |
-| `logo-smr` | Southern Maine Recovery |
+LogoGrid appends `-inv` and `-vert` suffixes. Same four-variant rule as service-line logos.
 
-Same four orientation/color combinations per slug.
+| Base slug | Logo | Folders needed |
+|-----------|------|----------------|
+| `logo-immersion` | Immersion | `logo-immersion/`, `logo-immersion-vert/`, `logo-immersion-inv/`, `logo-immersion-inv-vert/` |
+| `logo-new-pathway` | New Pathway | Same pattern |
+| `logo-case-management` | Case Management | Same pattern |
+| `logo-virtual-counseling` | Virtual Counseling | Same pattern |
 
 ### Facility lockups
 
@@ -76,10 +78,15 @@ Auto-generated slugs with `fac-` prefix. Same suffix rules.
 | `fac-pine-tree` | Pine Tree |
 | `fac-portland-psychiatry-counseling` | Portland Psychiatry & Counseling |
 | `fac-plymouth-house` | Plymouth House |
+| `fac-portland-addiction-center` | Portland Addiction Center |
 | `fac-southern-maine-recovery` | Southern Maine Recovery |
 | `fac-curawest` | CuraWest |
 | `fac-dallas-addiction-center` | Dallas Addiction Center |
-| `fac-virtual-counseling` | Virtual Counseling |
+| `fac-virtual-counseling-colorado` | Virtual Counseling — Colorado |
+| `fac-virtual-counseling-florida` | Virtual Counseling — Florida |
+| `fac-virtual-counseling-maine` | Virtual Counseling — Maine |
+| `fac-virtual-counseling-new-jersey` | Virtual Counseling — New Jersey |
+| `fac-virtual-counseling-texas` | Virtual Counseling — Texas |
 
 ### Standalone logo files (not in dropdown system)
 
