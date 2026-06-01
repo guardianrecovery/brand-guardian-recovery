@@ -69,7 +69,6 @@ Auto-generated slugs with `fac-` prefix. Same suffix rules.
 | `fac-princeton-detox-recovery-center` | Princeton Detox & Recovery Center |
 | `fac-princeton-psychiatry-counseling` | Princeton Psychiatry & Counseling |
 | `fac-new-pathway-bayonne` | New Pathway Bayonne |
-| `fac-new-pathway-paramus` | New Pathway Paramus |
 | `fac-new-pathway-pine-brook` | New Pathway Pine Brook |
 | `fac-hoboken-counseling-center` | Hoboken Counseling Center |
 | `fac-new-brunswick-counseling-center` | New Brunswick Counseling Center |
@@ -79,7 +78,6 @@ Auto-generated slugs with `fac-` prefix. Same suffix rules.
 | `fac-portland-psychiatry-counseling` | Portland Psychiatry & Counseling |
 | `fac-plymouth-house` | Plymouth House |
 | `fac-portland-addiction-center` | Portland Addiction Center |
-| `fac-southern-maine-recovery` | Southern Maine Recovery |
 | `fac-curawest` | CuraWest |
 | `fac-dallas-addiction-center` | Dallas Addiction Center |
 | `fac-virtual-counseling-colorado` | Virtual Counseling — Colorado |
