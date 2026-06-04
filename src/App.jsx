@@ -533,13 +533,10 @@ function Bt(props) {
       : "1px solid " + C.cer;
   var href = props.href || "#";
   var dl = props.href && !props.oc;
-  var external = dl && /^https?:\/\//i.test(props.href);
   return (
     <a
       href={href}
       download={dl ? true : undefined}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
       onClick={
         !props.href
           ? function (e) {
