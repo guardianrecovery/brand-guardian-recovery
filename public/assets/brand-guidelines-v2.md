@@ -35,7 +35,7 @@
 
 ## 1. Brand Story and Positioning
 
-### Our origin story
+### Our Origin Story
 
 Guardian Recovery was founded in 2007 by Josh Scott, who experienced the recovery journey firsthand and emerged with a clear conviction: that treatment should be something you'd seek for yourself or someone you love. Not a last resort. Not a clinical transaction. A turning point.
 
@@ -51,13 +51,13 @@ To provide compassionate, evidence-based behavioral healthcare that meets each i
 
 A world where every person struggling with addiction or mental health challenges has access to care that honors their dignity, respects their journey, and empowers lasting transformation.
 
-### Brand promise
+### Brand Promise
 
 > **We provide care we would seek for ourselves or a loved one.**
 
 This is the single most important sentence in our brand. It filters every clinical decision, every hiring choice, every facility design, every piece of content, and every interaction with a Client or their family.
 
-### Core values
+### Core Values
 
 - **Compassion First** — We lead with empathy in every interaction, from the first phone call to long-term aftercare. Every Client, every family member, every colleague deserves to feel seen and supported.
 - **Clinical Excellence** — We hold ourselves to the highest standards of evidence-based care. Joint Commission accreditation isn't a credential we display. It's a commitment we live daily.
@@ -66,7 +66,7 @@ This is the single most important sentence in our brand. It filters every clinic
 - **Integrity and Accountability** — We do what we say. We measure what matters. We hold ourselves accountable to the Clients, families, and communities we serve.
 - **Community and Connection** — Healing happens in relationship. We foster environments where Clients, families, clinical teams, and local communities are connected in purpose.
 
-### Brand personality
+### Brand Personality
 
 | Attribute | What it means | Not this |
 |---|---|---|
@@ -78,13 +78,13 @@ This is the single most important sentence in our brand. It filters every clinic
 
 We are not a wellness brand. We are not a hospital. We occupy a space that is both clinical and deeply human.
 
-### Taglines and signatures
+### Taglines and Signatures
 
 **Brand Tagline:** *Hope Starts Here.*
 
 Three words that do everything a tagline should. "Hope" names the emotional state every Client, family member, and referral partner is seeking — it is the reason anyone picks up the phone. "Starts" positions Guardian Recovery as the threshold moment, not a last resort but a beginning. "Here" makes it immediate and specific — not someday, not somewhere, but right now, at this facility, with this team. The period is intentional. It is a declaration, not an invitation. Together, the three words compress the entire brand promise into a single breath.
 
-#### Other signature lines
+#### Other Signature Lines
 
 | Line | Usage |
 |---|---|
@@ -95,7 +95,7 @@ Three words that do everything a tagline should. "Hope" names the emotional stat
 
 ## 2. Brand Voice and Messaging
 
-### Voice principles
+### Voice Principles
 
 - **Human, not clinical** — We speak like a trusted person, not a textbook. We use clinical terms when precision matters, but never hide behind jargon. We say "withdrawal management" for clinicians and "getting through the hardest part safely" for families.
 - **Show, don't declare** — The most common mistake is stating values instead of demonstrating them. "We provide compassionate care" tells the reader what to think. "Your care team builds your treatment plan around your life, your goals, and what matters most to you" shows them what care feels like.
@@ -108,7 +108,7 @@ Three words that do everything a tagline should. "Hope" names the emotional stat
 
 *Benchmark example. Experiential, not declarative.*
 
-### Tone spectrum
+### Tone Spectrum
 
 | Context | Tone | Example |
 |---|---|---|
@@ -120,7 +120,7 @@ Three words that do everything a tagline should. "Hope" names the emotional stat
 | Social media | Hopeful, community-driven | Recovery looks different for everyone. What matters is the first step. |
 | Internal / Culture | Purpose-driven, honest | Every Client we welcome. That's why we're here. |
 
-### The "Client" standard
+### The "Client" Standard
 
 Guardian Recovery refers to the individuals receiving care as "Clients" across all communications. This person-first term preserves dignity while staying clear and consistent across clinical, marketing, and referral contexts.
 
@@ -137,7 +137,7 @@ Plymouth House exception: Plymouth House uses "Guest" exclusively in all communi
 
 Never: "Addict," "alcoholic" as a noun, "substance abuser," "junkie," or any pejorative.
 
-### Approved terminology
+### Approved Terminology
 
 | Use this | Not this | Why |
 |---|---|---|
@@ -151,7 +151,7 @@ Never: "Addict," "alcoholic" as a noun, "substance abuser," "junkie," or any pej
 
 SEO exception: terms like "drug rehab" or "detox center" acceptable in ad copy matching search intent.
 
-### Compliance language
+### Compliance Language
 
 - **No guaranteed outcomes.** Never state or imply that treatment will cure addiction.
 - **HIPAA.** No Client names, images, or testimonials without documented written consent.
@@ -162,7 +162,7 @@ SEO exception: terms like "drug rehab" or "detox center" acceptable in ad copy m
 
 ## 3. Brand Architecture
 
-### Naming convention
+### Naming Convention
 
 **Every facility: Guardian Recovery - [Facility Name].** Non-negotiable on first reference in all materials.
 
@@ -208,7 +208,7 @@ Subsequent references may use the facility name alone once Guardian Recovery con
 | GR - Dallas Addiction Center | Plano, TX | Medical Detox, Residential, Virtual |
 | GR - Virtual Counseling | FL, TX, NJ, ME, NH, CO, PA | IOP, MH IOP, OP, MH OP |
 
-### Boilerplate copy
+### Boilerplate Copy
 
 **Long (100+ words).** Guardian Recovery is a national network of behavioral healthcare centers dedicated to providing compassionate, evidence-based treatment for substance use and mental health disorders. With 18 locations including virtual across six states and virtual counseling services, Guardian Recovery offers a full continuum of care from medical detox and residential treatment through partial hospitalization, intensive outpatient, and outpatient services. Our three distinct service lines ensure that every Client receives care tailored to their unique needs, goals, and circumstances. Accredited by The Joint Commission. guardianrecovery.com
 
@@ -226,7 +226,7 @@ Guardian Recovery operates three clinical service lines and several specialty pr
 - **Adult Mental Health** — Growing service line added 2023. IOP and PHP as accessible alternatives to weekly therapy. Condition-specific expertise across anxiety, depression, PTSD, trauma, bipolar, OCD, grief, burnout. Guardian Virtual for telehealth access.
 - **Adolescent** — Ages 13–17. Clinically distinct from adult programming. Adolescents never mixed with adults. Family-centered with family therapy as core. Educational continuity with academic support. Montville Adolescent Center (Towaco, NJ).
 
-### Service line identity system
+### Service Line Identity System
 
 | Service line | Accent color | Primary audience |
 |---|---|---|
@@ -234,13 +234,12 @@ Guardian Recovery operates three clinical service lines and several specialty pr
 | Adult Mental Health | Pacific (#5B9CB8) | Individuals seeking help |
 | Adolescent | Sage (#4B8C84) | Parents and guardians |
 
-### Specialty programs
+### Specialty Programs
 
 - **Guardian Recovery - Virtual Counseling** — Telehealth across seven states (FL, TX, NJ, ME, NH, CO, PA). IOP, MH IOP, OP, MH OP. Does not include Detox, Residential, or PHP. An extension of the continuum, not a separate brand.
-- **The Path Home** — In-home behavioral health services addressing barriers to traditional care: transportation, stigma, childcare, mobility. Complement to facility-based care.
 - **Portland Psychiatry & Counseling** — South Portland, ME. MH PHP, MH IOP, Virtual Outpatient. Owned by Guardian Recovery, not yet operating under the GR brand prefix.
 
-### Levels of care
+### Levels of Care
 
 - **Medical Detox (Detox)** — Medically supervised withdrawal management with 24/7 nursing and physician oversight. The first step for Clients with significant physiological dependence, designed to stabilize the body safely before therapeutic work begins.
 - **Residential Treatment (Residential)** — Live-in clinical programming that combines individual therapy, group work, and structured daily routines in a supportive environment. For Clients who need to step away from daily triggers to build a stable foundation in recovery.
@@ -250,7 +249,7 @@ Guardian Recovery operates three clinical service lines and several specialty pr
 - **Mental Health Program variants (MH PHP / MH IOP / MH OP)** — Same structures as their SUD counterparts but clinically tailored to anxiety, depression, trauma, and other mental health conditions.
 - **Virtual Outpatient (Virtual OP)** — Telehealth delivery of IOP and OP programming for Clients who cannot attend in person, available across seven states. Same evidence-based curriculum as on-site outpatient care.
 
-#### ASAM alignment
+#### ASAM Alignment
 
 | ASAM | Level | Duration | Description |
 |---|---|---|---|
@@ -260,7 +259,7 @@ Guardian Recovery operates three clinical service lines and several specialty pr
 | 2.1 | IOP | 4–12 weeks | Structured therapy, 3 hours/day, 3–5 days/week |
 | 1.0 | Outpatient | Ongoing | Individual therapy, medication management, alumni support |
 
-### Phase model (Adult SUD residential)
+### Phase Model (Adult SUD Residential)
 
 - **Phase 1 (Residential):** Stabilization, education on the disease model, assessment, family engagement begins. Structured environment with limited external contact.
 - **Phase 2 (PHP):** Gradual reintegration. Intensive examination of barriers to recovery. Clients rebuild relationships, develop sober support networks, and complete foundational 12-Step work.
@@ -268,7 +267,7 @@ Guardian Recovery operates three clinical service lines and several specialty pr
 
 *This structured progression is a major differentiator. Emphasize it as evidence of commitment to lifelong healing, not just short-term stabilization.*
 
-### Clinical vs. external voice
+### Clinical vs. External Voice
 
 Internal clinical communication follows 12-Step practitioner conventions. Everything the public sees follows the brand voice in Section 2.
 
@@ -285,18 +284,18 @@ Internal clinical communication follows 12-Step practitioner conventions. Everyt
 
 ## 5. Logos and Facility Lockups
 
-### Primary logos (full color)
+### Primary Logos (Full Color)
 
 - Horizontal
 - Horizontal Stacked
 - Vertical
 - Circular Badge
 
-### Inverted / knockout versions
+### Inverted / Knockout Versions
 
 Each primary logo has a knockout variant for use on Midnight or imagery backgrounds.
 
-### Clearing space and scale
+### Clearing Space and Scale
 
 The logo requires a minimum clear zone on all sides equal to the cap-height of the "G" in the wordmark. No text, imagery, or other graphic elements should intrude on this space. Clear space scales proportionally when the logo is resized.
 
@@ -309,19 +308,14 @@ The logo requires a minimum clear zone on all sides equal to the cap-height of t
 
 *Never reproduce the logo in any typeface. Never skew, rotate, add effects, or recolor outside the approved palette.*
 
-### Service line logos
+### Service Line Logos
 
 - Adult SUD (Cerulean accent)
 - Adult Mental Health (Pacific accent)
 - Adolescent (Sage accent)
-
-### Specialty program logos
-
 - Guardian Virtual
-- The Path Home
-- Portland Addiction Center
 
-### Facility logo lockups
+### Facility Logo Lockups
 
 Each facility has a unique horizontal and vertical lockup, available in primary and inverted color modes. Filter by region (Florida, New Jersey, New England, Colorado/Texas/Virtual) on the Asset Hub for the full set.
 
@@ -336,7 +330,7 @@ Each facility has a unique horizontal and vertical lockup, available in primary 
 | Midnight | #083045 | Primary dark |
 | Gambodge | #FFAD00 | Brand accent |
 
-### Service line accents
+### Service Line Accents
 
 Each service line color was chosen to carry a specific emotional register — distinct enough to signal a different audience and context, unified enough to feel like one brand family.
 
@@ -377,7 +371,7 @@ Each service line color was chosen to carry a specific emotional register — di
 | 700 | #366861 |
 | 900 | #2D5C54 |
 
-### Interface colors
+### Interface Colors
 
 | Name | Hex | Role |
 |---|---|---|
@@ -387,7 +381,7 @@ Each service line color was chosen to carry a specific emotional register — di
 | Sand | #E2E0DD | Warm neutral bg |
 | Glacier | #D3E7EE | Accent bg |
 
-### Text colors
+### Text Colors
 
 | Name | Hex | Role |
 |---|---|---|
@@ -402,19 +396,19 @@ Each service line color was chosen to carry a specific emotional register — di
 
 Three typefaces form the complete brand voice. Each has a distinct role — they are never interchangeable.
 
-### STEM — Brand mark font
+### STEM — Brand Mark Font
 
 Used exclusively in the Guardian Recovery logo and wordmark. **Never** use STEM for headlines, body copy, or general typesetting. It is a proprietary brand element, not a general-purpose typeface.
 
-### DM Serif Text — Headline font
+### DM Serif Text — Headline Font
 
 Used for H1–H3, pull quotes, and display. Weights: Regular, Italic. Tighten tracking (–10 to –20) at display sizes. Always sentence case — never all-caps in DM Serif Text.
 
-### IBM Plex Sans — Body font
+### IBM Plex Sans — Body Font
 
 Used for UI, body, captions, and all-purpose typesetting. Weights: Extra Light (200), Light (300), Regular (400), Medium (500), Semi-Bold (600), Bold (700). Use weight variation for hierarchy — never introduce additional typefaces. All-caps settings use expanded tracking (+50 to +100).
 
-### Type scale
+### Type Scale
 
 | Level | Size | Font | Weight | Usage |
 |---|---|---|---|---|
@@ -425,7 +419,7 @@ Used for UI, body, captions, and all-purpose typesetting. Weights: Extra Light (
 | Body | 14pt | IBM Plex Sans | 400 | Standard paragraph text |
 | Caption | 11pt | IBM Plex Sans | 300 | Captions, footnotes, disclaimers |
 
-### Email fallback fonts
+### Email Fallback Fonts
 
 For email HTML only. Brand fonts for all other applications.
 
@@ -444,13 +438,13 @@ Guardian Recovery's icon system uses a consistent line-icon style across all tou
 - **Color.** Midnight or Frost depending on background. Gambodge for accent and active states. Service line accent colors for service-specific sets.
 - **Consistency.** Same stroke weight, corner radius, and sizing within any layout. Do not combine icons from different style families or introduce third-party icon sets without brand review.
 
-### Master brand icons
+### Master Brand Icons
 
 - **Sunrise Icon** — Primary standalone mark
 - **Sunrise (Gambodge)** — On Midnight / dark backgrounds
 - **Sunrise (Frost)** — Knockout / inverted
 
-### Service line icons
+### Service Line Icons
 
 - Adult SUD — Cerulean
 - Adult Mental Health — Pacific
@@ -465,18 +459,18 @@ Guardian Recovery's icon system uses a consistent line-icon style across all tou
 
 Photography is the most emotionally immediate element of the brand. Before anyone reads a headline, they see a face, a place, a moment. Every image must instantly communicate: *this is a place of warmth, safety, and genuine human connection.*
 
-### Core principles
+### Core Principles
 
 - **Lighting.** Well-balanced natural light. Underexposure feels depressing. Overexposure feels sterile. The sweet spot is warm light that makes people and spaces feel inviting.
 - **Expressions.** Candid shots, genuine smiles, active listening, eye contact. Tighter crops draw focus to emotion. Avoid anything staged or posed.
 - **Diversity.** Always — across age, ethnicity, gender, and body type — within the context of the audience and geographic relevance.
 - **Settings.** Everyday surroundings or Guardian Recovery facilities. No dramatic scenery that distracts from the human element.
 
-### Rounded-corner framing
+### Rounded-Corner Framing
 
 A defining visual signature. Softens the clinical feel and creates warmth. Corner radius under 10% of the shortest side — smaller blocks use proportionally smaller radii. Focal points may bleed from up to two edges. Use brand accent colors (Glacier, Pacific, Midnight gradient) for background fills behind frames.
 
-### Photography by medium
+### Photography by Medium
 
 - **Website and landing pages.** Hero images should feel like a moment of hope or connection — people looking forward with calm confidence, families embracing, supportive gestures. Every landing page hero must include a person. The human element drives conversion.
 - **Social media.** Authentic, in-the-moment. Facility photos, team spotlights, recovery-positive imagery (with consent), branded quote cards. Vertical/square crops optimized for mobile. Avoid overly polished or commercial-feeling imagery.
@@ -489,7 +483,7 @@ A defining visual signature. Softens the clinical feel and creates warmth. Corne
 - **Rack cards.** Small format demands simple imagery. Single subject or tight crop. Text overlay area essential. High contrast for readability at small scale.
 - **Event and conference.** Capture photography at every major event. Add to the brand photo library with consent documentation. Event photos must match lighting, candor, and diversity standards.
 
-### Service-line specific
+### Service-Line Specific
 
 - **Adult SUD.** Warm, calming. Candid adult photography. Sunrise motif connections where appropriate. People in reflective or supported moments. Avoid imagery suggesting active crisis.
 - **Adult Mental Health.** Lighter, more aspirational. Diverse professionals and everyday people in non-clinical settings. Natural light, calm environments, moments of reflection or connection. The audience is seeking improvement, not rescue.
@@ -510,7 +504,7 @@ A defining visual signature. Softens the clinical feel and creates warmth. Corne
 
 ## 10. Graphic Elements and Patterns
 
-### Brand pattern
+### Brand Pattern
 
 A repeating geometric texture based on the sunrise motif. The pattern is a texture — never a focal element. It creates depth and brand recognition without competing with content.
 
@@ -518,7 +512,7 @@ A repeating geometric texture based on the sunrise motif. The pattern is a textu
 - On Frost — 5–10% opacity
 - On Glacier — 5–15% opacity
 
-#### Where the pattern appears
+#### Where the Pattern Appears
 
 | Context | Usage |
 |---|---|
@@ -531,11 +525,11 @@ A repeating geometric texture based on the sunrise motif. The pattern is a textu
 
 *Never at full opacity competing with foreground. Do not stretch, skew, or alter proportions.*
 
-### Arch / Chevron motif
+### Arch / Chevron Motif
 
 The upward-pointing arch appears as a section divider and accent mark in headers and presentations. Always Gambodge (#FFAD00). Proportions match the logo's arch. Use sparingly — one per section. Never in a color other than Gambodge.
 
-### Gradient treatments
+### Gradient Treatments
 
 - **Midnight → Prussian** — Dark title slides
 - **Glacier → Frost** — Light sections
@@ -556,11 +550,11 @@ Official name on signage. Horizontal logo preferred. "Hope Starts Here." in lobb
 
 ## 12. BD Team Resources
 
-### Presentation deck
+### Presentation Deck
 
 The master BD deck follows the "Your Partner in Behavioral Health" positioning. Includes history, outcomes, program regions, facility pages, and the "Understanding Your World" discovery questions. Rep contact slide is customizable.
 
-### General materials
+### General Materials
 
 Available to all BD reps regardless of service line or facility assignment.
 
@@ -570,19 +564,19 @@ Available to all BD reps regardless of service line or facility assignment.
 - Apparel — Polos, quarter-zips
 - Merchandise — Pens, bottles
 
-### Service line collateral
+### Service Line Collateral
 
 Per service line (Adult SUD, Adult Mental Health, Adolescent, Virtual): Folder Booklet, One-Pager, Trifold, Rack Card, Postcard, Digital PDF.
 
-### Facility collateral
+### Facility Collateral
 
 Per facility (all 18): One-Pager, Trifold, Rack Card, Postcard, Digital PDF.
 
-### Regional collateral
+### Regional Collateral
 
 Per region (Florida, New Jersey, New England, Colorado, Texas): One-Pager, Trifold, Rack Card, Postcard, Digital PDF.
 
-### Physical materials
+### Physical Materials
 
 - Pull-Up Banners — Master + facility
 - Backdrops — Logo on Midnight
@@ -616,24 +610,24 @@ Guardian Recovery's digital presence spans a 75+ page website, paid search acros
 | Service-line pages | Accent color for active tab, section borders, icon fills |
 | Images | Rounded-corner framing, brand pattern in dividers |
 
-### Social media
+### Social Media
 
 - **National accounts.** Secondary (circular) logo on Midnight as profile image. Quarterly cover rotation. Content: recovery-positive messaging, educational content, facility highlights, team spotlights, outcomes data.
 - **Facility accounts.** Same profile image for unified national presence. Local content: community events, facility updates, local spotlights. All brand standards apply.
 
 *Rules: No Client-identifiable content without consent. No stock photography. No outcome claims without approved proof points. All paid creative reviewed by marketing. Person-first language per Section 2.*
 
-### Email marketing
+### Email Marketing
 
 Via Salesforce Marketing Cloud. Header: primary logo centered on white. Body: IBM Plex Sans 15–17px, Eerie on white. Headlines: DM Serif Text or IBM Plex Sans Semi-Bold in Midnight. CTAs: Gambodge background, Midnight text, rounded corners. Service line accents for section dividers on service-specific sends. Footer: website, phone, unsubscribe, privacy disclaimer.
 
-### Digital advertising
+### Digital Advertising
 
 - **Google Ads (LegitScript certified).** Never guarantee outcomes. "Rehab" and "detox" acceptable in headlines matching search intent. Landing page must deliver exactly what the ad promises. Guardian holds LegitScript certification — losing it shuts down the entire paid search program.
 - **Display.** Brand colors, typography, photography standards throughout. Gambodge CTAs. Rounded-corner photos. Logo on all creative.
 - **Meta / Paid social.** Photography guidelines apply. No clinical or triggering imagery. Carousels may highlight multiple facilities or levels of care. All video must be captioned.
 
-### Video and motion graphics
+### Video and Motion Graphics
 
 - **Brand presence.** Logo on opening and closing frames. Lower thirds: IBM Plex Sans on semi-transparent Midnight bar with Gambodge accent. Closing frame: logo + tagline + CTA.
 - **Tone and music.** Warm, confident, human. Conversational, never scripted. Music should be warm, hopeful, and understated — no dramatic manipulation. No Clients on camera without documented consent.
@@ -652,7 +646,7 @@ Via Salesforce Marketing Cloud. Header: primary logo centered on white. Body: IB
 
 Three levels: brand, service-line, facility. Two-part About: emotional then credentials.
 
-### Family resources
+### Family Resources
 
 Warmest in the system. DM Serif Text headers, 15pt minimum, warm photography.
 
@@ -664,7 +658,7 @@ Warmest in the system. DM Serif Text headers, 15pt minimum, warm photography.
 
 The single source for all brand assets, templates, and print ordering. Download files directly or order physical materials through the primary vendor link.
 
-### Digital assets
+### Digital Assets
 
 - Master Logos — SVG, PNG, EPS
 - Facility Logos — All 18, horizontal + vertical
@@ -678,7 +672,7 @@ The single source for all brand assets, templates, and print ordering. Download 
 - Social Templates — All formats
 - Presentation Templates — PPTX + Slides
 
-### Print ordering
+### Print Ordering
 
 - Business Cards (per rep)
 - Rep Stickers (name + QR)
@@ -690,11 +684,15 @@ The single source for all brand assets, templates, and print ordering. Download 
 - Trifolds (by service line)
 - Rack Cards (by facility)
 
+### Need Custom Creative Work?
+
+**Creative Request Portal** — [creative.guardianrecovery.com](https://creative.guardianrecovery.com/). Submit a request for custom design, copywriting, campaign creative, or any asset not already in this hub. The internal Creative team reviews each request and partners with you on scope, timeline, and brand alignment.
+
 ---
 
 ## Appendices
 
-### Accreditations and recognition
+### Accreditations and Recognition
 
 | Credential | Issuing Body | Scope |
 |---|---|---|
@@ -704,7 +702,7 @@ The single source for all brand assets, templates, and print ordering. Download 
 | ASAM Membership | American Society of Addiction Medicine | Clinical framework and standards alignment |
 | SAMHSA Recognition | Substance Abuse and Mental Health Services Administration | Federal treatment directory listing |
 
-### Proof points
+### Proof Points
 
 *Source: Guardian Recovery Clinical Outcomes Report, August 2024. Measured with TEA, PHQ-9, and GAD-7.*
 
@@ -717,7 +715,7 @@ The single source for all brand assets, templates, and print ordering. Download 
 
 *"These aren't just discharge statistics. These are real, lasting changes in people's lives."*
 
-### Organizational scale
+### Organizational Scale
 
 | Metric | Approved language |
 |---|---|
@@ -728,7 +726,7 @@ The single source for all brand assets, templates, and print ordering. Download 
 | Founded | 2007 |
 | Virtual | Available in seven states |
 
-### Employer and BD proof points
+### Employer and BD Proof Points
 
 | Claim | Source |
 |---|---|
