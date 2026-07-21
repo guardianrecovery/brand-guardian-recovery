@@ -919,37 +919,107 @@ export var PRINT_ALT_VENDOR = ''      // Alternative vendor link
 
 
 // ----- Letterhead downloads (per facility slug) -----
-// Structure: LETTERHEAD[slug] = url (Google Drive sharing or uc?export=download URL)
+// Structure: LETTERHEAD[slug] = { word, gdoc }
+//   word → Google Drive .docx file (downloaded via toDirectDownload)
+//   gdoc → editable Google Doc URL (opened as a forced copy via letterheadCopyUrl)
 // Keys:
 //   'general'                        → General Guardian Recovery letterhead
 //   'fac-<slug>'                     → One key per FACS entry in App.jsx
 //
-// URLs are auto-normalized via toDirectDownload() so either Drive URL shape
-// will trigger a direct download. Empty string → button shows "Link coming soon."
+// word URLs are auto-normalized via toDirectDownload() so either Drive URL shape
+// will trigger a direct download. gdoc URLs are rewritten to the /copy endpoint by
+// letterheadCopyUrl() so the master document is never edited. Empty string → the
+// corresponding button is hidden.
 
 export var LETTERHEAD = {
-  general: 'https://drive.google.com/file/d/1W9aMPP7axK6m6VtXBJw_jeOXahf9nzGP/view?usp=drivesdk',
-  'fac-immersion-residential': 'https://drive.google.com/file/d/1uWJuBoJt7OSWvnbT1WVChHDih2HmYtgO/view?usp=drivesdk',
-  'fac-immersion-outpatient': 'https://drive.google.com/file/d/1Rv_Lgnb4xksKvaJAoqUA22lSpM6c9stB/view?usp=drivesdk',
-  'fac-princeton-detox-recovery-center': 'https://drive.google.com/file/d/1MzMcyd1WzqJHfl7SYSESNLa7aMZo-C7z/view?usp=drivesdk',
-  'fac-princeton-psychiatry-counseling': 'https://drive.google.com/file/d/1Znsmlff0wpQXpIepjIXSqZX063ch2hyu/view?usp=drivesdk',
-  'fac-new-pathway-bayonne': 'https://drive.google.com/file/d/1vVN8-kbOuUbFvjuqFUq1apxDhmyyJON0/view?usp=drivesdk',
-  'fac-new-pathway-pine-brook': 'https://drive.google.com/file/d/1HtjLYe9yZbtWR6EyX9JOLoRA-UmMAn52/view?usp=drivesdk',
-  'fac-hoboken-counseling-center': 'https://drive.google.com/file/d/1gBWQRlmPtr5-eGNYEKsiItCtk1UNDWnI/view?usp=drivesdk',
-  'fac-new-brunswick-counseling-center': 'https://drive.google.com/file/d/1MEKHn9IdXYPSuQaKIIeCxWsgnB-YCLu4/view?usp=drivesdk',
-  'fac-saddle-brook-counseling-center': 'https://drive.google.com/file/d/1ZsyaAzDiX1eQVBeyIEy2AyQ6uAU6QSBu/view?usp=drivesdk',
-  'fac-montville-adolescent-center': 'https://drive.google.com/file/d/1xBbhKRfjtK85W3cT8A8WTFmfUGhZTwni/view?usp=drivesdk',
-  'fac-pine-tree': 'https://drive.google.com/file/d/1M3WDFa3wrjV0JjONKBbPaVWd6FYLVVC0/view?usp=drivesdk',
-  'fac-portland-psychiatry-counseling': 'https://drive.google.com/file/d/1lLA62Ql5RgapLgQqXEVhzhcfdbmZgHeU/view?usp=drivesdk',
-  'fac-plymouth-house': 'https://drive.google.com/file/d/1rw0u20h_X-F6RPawbif5EAl-UF3nAtoU/view?usp=drivesdk',
-  'fac-portland-addiction-center': 'https://drive.google.com/file/d/1BhD5BSneoeQZ-MLAs98SM3ghFQPrxBlR/view?usp=drivesdk',
-  'fac-curawest': 'https://drive.google.com/file/d/1Sk7cBj--JoMjyBXcjLSDot4m8rGz_VNF/view?usp=drivesdk',
-  'fac-dallas-addiction-center': 'https://drive.google.com/file/d/1O4ipOVYhIIeMwinzcvqcFXPd7sQLoOtN/view?usp=drivesdk',
-  'fac-virtual-counseling-maine': 'https://drive.google.com/file/d/1lnPueVBTKbY21Qfqih1fw4LHI-9zccRL/view?usp=drivesdk',
-  'fac-virtual-counseling-colorado': 'https://drive.google.com/file/d/1snNf_Khfazk8UNgtJjwxJuipXtkKRlkM/view?usp=drivesdk',
-  'fac-virtual-counseling-florida': 'https://drive.google.com/file/d/1EeyeT_wFHXelwRjdqe-JJ-GalfMubLLJ/view?usp=drivesdk',
-  'fac-virtual-counseling-new-jersey': 'https://drive.google.com/file/d/1A6GEVhaOlfGCC6Lp_vl8-Z0UFNW3U7sg/view?usp=drivesdk',
-  'fac-virtual-counseling-texas': 'https://drive.google.com/file/d/132tT30A-5wnM6ZSsC8YVO9AXFSGTy2Ww/view?usp=drivesdk',
+  general: {
+    word: 'https://drive.google.com/file/d/1W9aMPP7axK6m6VtXBJw_jeOXahf9nzGP/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1ujIUiE5rv-2H0pqV72P5RPNmG1t24NbIMxhJClYT6Ss/edit?usp=drivesdk',
+  },
+  'fac-immersion-residential': {
+    word: 'https://drive.google.com/file/d/1uWJuBoJt7OSWvnbT1WVChHDih2HmYtgO/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1_WP2e-lBPcOyC27O82fOOylNSscVIyrfH01i4zSg2hc/edit?usp=drivesdk',
+  },
+  'fac-immersion-outpatient': {
+    word: 'https://drive.google.com/file/d/1Rv_Lgnb4xksKvaJAoqUA22lSpM6c9stB/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1GLaWOOybmJbQsbzR8ObKWqsB8vOcs1O8sU2r-r1DGCI/edit?usp=drivesdk',
+  },
+  'fac-princeton-detox-recovery-center': {
+    word: 'https://drive.google.com/file/d/1MzMcyd1WzqJHfl7SYSESNLa7aMZo-C7z/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/16QbrVERxT1_FEDfzkdiWYX9ULogpyHMW8uw5R9oo_xM/edit?usp=drivesdk',
+  },
+  'fac-princeton-psychiatry-counseling': {
+    word: 'https://drive.google.com/file/d/1Znsmlff0wpQXpIepjIXSqZX063ch2hyu/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1PIld7F1CuDjMoJqeMCvEag9AAxdULRYs9GgO2TxADJE/edit?usp=drivesdk',
+  },
+  'fac-new-pathway-bayonne': {
+    word: 'https://drive.google.com/file/d/1vVN8-kbOuUbFvjuqFUq1apxDhmyyJON0/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1WjuVyK0cjjfIe76jD1t1Ytm76oO7hv7WKFYloL_LI-4/edit?usp=drivesdk',
+  },
+  'fac-new-pathway-pine-brook': {
+    word: 'https://drive.google.com/file/d/1HtjLYe9yZbtWR6EyX9JOLoRA-UmMAn52/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1BeECxZu1Gu41cviNm1hg433RDMJDiXNvfS0a8B1Df5A/edit?usp=drivesdk',
+  },
+  'fac-hoboken-counseling-center': {
+    word: 'https://drive.google.com/file/d/1gBWQRlmPtr5-eGNYEKsiItCtk1UNDWnI/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/16Uu2qHk06RklLxAjqZ2Po4_BlvRv7n4swYMQ-cZzbfA/edit?usp=drivesdk',
+  },
+  'fac-new-brunswick-counseling-center': {
+    word: 'https://drive.google.com/file/d/1MEKHn9IdXYPSuQaKIIeCxWsgnB-YCLu4/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1VUery0O04Oyj8ol2v8XAezWq0Av4uO0zkx36zeUxwIY/edit?usp=drivesdk',
+  },
+  'fac-saddle-brook-counseling-center': {
+    word: 'https://drive.google.com/file/d/1ZsyaAzDiX1eQVBeyIEy2AyQ6uAU6QSBu/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/15VR2fJfTyffGWFG5kpZNP_ILpAqc-6QjBEAcxCEAU2A/edit?usp=drivesdk',
+  },
+  'fac-montville-adolescent-center': {
+    word: 'https://drive.google.com/file/d/1xBbhKRfjtK85W3cT8A8WTFmfUGhZTwni/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1I2OEIafJ08c5tvyTrcFS4VwQVszpoZqslMBB0OClpgs/edit?usp=drivesdk',
+  },
+  'fac-pine-tree': {
+    word: 'https://drive.google.com/file/d/1M3WDFa3wrjV0JjONKBbPaVWd6FYLVVC0/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1pCuhZHOjU63AQYdzxcVN3iPjzqgYIUM3BNuEKPrdZqo/edit?usp=drivesdk',
+  },
+  'fac-portland-psychiatry-counseling': {
+    word: 'https://drive.google.com/file/d/1lLA62Ql5RgapLgQqXEVhzhcfdbmZgHeU/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1AUGfpNS6pWqGRldZfM8stM0n2rVm6e_N-TkRgrqtMzE/edit?usp=drivesdk',
+  },
+  'fac-plymouth-house': {
+    word: 'https://drive.google.com/file/d/1rw0u20h_X-F6RPawbif5EAl-UF3nAtoU/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1z9yFDGzz5RJu0zj26gOnB4hFKP8tq1pTue29vPolmno/edit?usp=drivesdk',
+  },
+  'fac-portland-addiction-center': {
+    word: 'https://drive.google.com/file/d/1BhD5BSneoeQZ-MLAs98SM3ghFQPrxBlR/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1CQRfeyYAj3_yJsLFFq-soXvbe0ct7OoGA2RJi27-5M4/edit?usp=drivesdk',
+  },
+  'fac-curawest': {
+    word: 'https://drive.google.com/file/d/1Sk7cBj--JoMjyBXcjLSDot4m8rGz_VNF/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1HiI0qRt3-k9f4rUGti3cJjSUxCmPpNGHKFM7tjK76bs/edit?usp=drivesdk',
+  },
+  'fac-dallas-addiction-center': {
+    word: 'https://drive.google.com/file/d/1O4ipOVYhIIeMwinzcvqcFXPd7sQLoOtN/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1Pijs-OSX0XAR96j_AshVjpHebDkcMS9AItKXcRYK3Fs/edit?usp=drivesdk',
+  },
+  'fac-virtual-counseling-maine': {
+    word: 'https://drive.google.com/file/d/1lnPueVBTKbY21Qfqih1fw4LHI-9zccRL/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1a0axDZivEZ3sVGWOmHW_PpgA1AAK_Y0snCjxoqj0rQ0/edit?usp=drivesdk',
+  },
+  'fac-virtual-counseling-colorado': {
+    word: 'https://drive.google.com/file/d/1snNf_Khfazk8UNgtJjwxJuipXtkKRlkM/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/134wQRGjNTkNzGa6RBINkM0jEOLaRNkX5pQjdXmWqNds/edit?usp=drivesdk',
+  },
+  'fac-virtual-counseling-florida': {
+    word: 'https://drive.google.com/file/d/1EeyeT_wFHXelwRjdqe-JJ-GalfMubLLJ/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1a7VWrFwgtUVco9LFe9uEt__EId8BVLFQmQIm-9Q0QjI/edit?usp=drivesdk',
+  },
+  'fac-virtual-counseling-new-jersey': {
+    word: 'https://drive.google.com/file/d/1A6GEVhaOlfGCC6Lp_vl8-Z0UFNW3U7sg/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1AiZ4lah7bSaDKQQw5n5IorXSFE2spOGYYtfVLSXNUy8/edit?usp=drivesdk',
+  },
+  'fac-virtual-counseling-texas': {
+    word: 'https://drive.google.com/file/d/132tT30A-5wnM6ZSsC8YVO9AXFSGTy2Ww/view?usp=drivesdk',
+    gdoc: 'https://docs.google.com/document/d/1IFbpXArCENIltZTLiLKUCUrZNeV3yWSOOiN_fR2Ni1U/edit?usp=drivesdk',
+  },
 }
 
 // ----- Template links -----
@@ -1010,6 +1080,19 @@ export function iconDownloadUrl(slug, format) {
 
 // ----- Helper: resolve a letterhead download URL -----
 
+// Direct-download URL for the Word (.docx) version of a letterhead.
 export function letterheadUrl(slug) {
-  return toDirectDownload(LETTERHEAD[slug] || '')
+  var entry = LETTERHEAD[slug]
+  return toDirectDownload((entry && entry.word) || '')
+}
+
+// "Make a copy" URL for the Google Doc version of a letterhead. Rewriting the
+// editable /edit URL to /copy forces Google's copy dialog, so the master doc is
+// never modified — the user always works from their own copy.
+export function letterheadCopyUrl(slug) {
+  var entry = LETTERHEAD[slug]
+  var url = (entry && entry.gdoc) || ''
+  var m = /docs\.google\.com\/document\/d\/([^/]+)/.exec(url)
+  if (m) return 'https://docs.google.com/document/d/' + m[1] + '/copy'
+  return url
 }

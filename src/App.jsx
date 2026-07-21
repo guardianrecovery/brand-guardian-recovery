@@ -4,7 +4,7 @@ import {
   GUIDE_PDF, GUIDE_MD,
   MASTER_LOGO_PACKAGE, LOGO_USAGE_GUIDE, ALL_PROGRAM_LOGOS, ALL_FACILITY_LOGOS,
   LOGOS, ICONS, LETTERHEAD,
-  logoDownloadUrl, iconDownloadUrl, letterheadUrl,
+  logoDownloadUrl, iconDownloadUrl, letterheadUrl, letterheadCopyUrl,
   BD_DECK_PPTX, BD_DECK_SLIDES,
   HUB, PRINT_ORDER, PRINT_ALT_VENDOR,
   SOCIAL_TEMPLATES, EMAIL_TEMPLATES, VIDEO_FILES,
@@ -532,11 +532,13 @@ function Bt(props) {
       ? "none"
       : "1px solid " + C.cer;
   var href = props.href || "#";
-  var dl = props.href && !props.oc;
+  var dl = props.href && !props.oc && !props.nt;
   return (
     <a
       href={href}
       download={dl ? true : undefined}
+      target={props.nt ? "_blank" : undefined}
+      rel={props.nt ? "noopener noreferrer" : undefined}
       onClick={
         !props.href
           ? function (e) {
@@ -853,7 +855,8 @@ function IconDownload(props) {
 }
 
 function LetterheadCard(props) {
-  var dlHref = letterheadUrl(props.slug);
+  var wordHref = letterheadUrl(props.slug);
+  var copyHref = letterheadCopyUrl(props.slug);
   return (
     <div
       style={{
@@ -879,7 +882,14 @@ function LetterheadCard(props) {
           {props.subtitle}
         </div>
       )}
-      <Bt href={dlHref}>Download .docx</Bt>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        {wordHref && <Bt href={wordHref}>Download Word (.docx)</Bt>}
+        {copyHref && (
+          <Bt href={copyHref} nt={true}>
+            Copy Google Doc ↗
+          </Bt>
+        )}
+      </div>
     </div>
   );
 }
@@ -1037,6 +1047,157 @@ function LogoGrid(props) {
             </div>
           );
         })}
+      </div>
+    </div>
+  );
+}
+
+// Self-contained facility lockup card: each card carries its own orientation,
+// color mode, and format controls so users never scroll back to a shared toolbar
+// after picking a region.
+function FacilityLockupCard(props) {
+  var [orient, setO] = useState("horizontal");
+  var [cmode, setC] = useState("color");
+  var [fmt, setFmt] = useState("Vector Web");
+  var dk = cmode === "inverted";
+  var fmts = dk
+    ? ["Vector Web", "Web No BG", "Vector Print", "Print"]
+    : ["Vector Web", "Web", "Web No BG", "Vector Print", "Print"];
+  var activeFmt = fmts.indexOf(fmt) === -1 ? "Vector Web" : fmt;
+
+  var suffix = (dk ? "-inv" : "") + (orient === "vertical" ? "-vert" : "");
+  var fullSlug = props.slug ? props.slug + suffix : null;
+  var previewImg = fullSlug ? logoPreview(fullSlug) : null;
+  var dlHref = fullSlug ? logoDownload(fullSlug, activeFmt) : null;
+  var txt = props.label + " / " + orient + " / " + (dk ? "white" : "color");
+
+  function chip(label, val, cur, set) {
+    var on = cur === val;
+    return (
+      <button
+        key={val}
+        onClick={function () {
+          set(val);
+        }}
+        style={{
+          padding: "3px 10px",
+          borderRadius: 14,
+          fontSize: 10,
+          fontWeight: 500,
+          cursor: "pointer",
+          border: "1px solid " + (on ? C.cer : C.gla),
+          background: on ? C.c50 : "transparent",
+          color: on ? C.cer : C.cav,
+        }}
+      >
+        {label}
+      </button>
+    );
+  }
+
+  var cardFlex = "1 1 calc(50% - 5px)";
+  var cardMin = 220;
+  if (props.cols === 3) {
+    cardFlex = "1 1 calc(33.333% - 7px)";
+    cardMin = 190;
+  }
+
+  return (
+    <div
+      style={{
+        border: "1px solid " + C.gla,
+        borderRadius: 10,
+        overflow: "hidden",
+        flex: cardFlex,
+        minWidth: cardMin,
+      }}
+    >
+      {props.ac && <div style={{ height: 4, background: props.ac }} />}
+      <div style={{ padding: 14, textAlign: "center" }}>
+        <div style={{ margin: "14px 0 18px" }}>
+          <Bx
+            t={txt}
+            h={orient === "vertical" ? 70 : 50}
+            dark={dk}
+            img={previewImg}
+          />
+        </div>
+        <div
+          style={{
+            fontSize: 13,
+            fontWeight: 600,
+            color: props.ac || C.mid,
+            margin: "8px 0 2px",
+            lineHeight: 1.3,
+          }}
+        >
+          {props.label}
+        </div>
+        {props.sub && (
+          <div
+            style={{
+              fontSize: 10,
+              color: C.bat,
+              marginBottom: 8,
+              lineHeight: 1.4,
+            }}
+          >
+            {props.sub}
+          </div>
+        )}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 4,
+            flexWrap: "wrap",
+            marginBottom: 6,
+          }}
+        >
+          {chip("Horizontal", "horizontal", orient, setO)}
+          {chip("Vertical", "vertical", orient, setO)}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 4,
+            flexWrap: "wrap",
+            marginBottom: 8,
+          }}
+        >
+          {chip("Full color", "color", cmode, setC)}
+          {chip("Inverted", "inverted", cmode, setC)}
+        </div>
+        <div style={{ marginBottom: 8 }}>
+          <select
+            value={activeFmt}
+            onChange={function (e) {
+              setFmt(e.target.value);
+            }}
+            style={{
+              fontSize: 11,
+              padding: "4px 6px",
+              borderRadius: 5,
+              border: "1px solid " + C.gla,
+              color: C.mid,
+              background: C.fro,
+              cursor: "pointer",
+              outline: "none",
+              width: "100%",
+              maxWidth: 180,
+            }}
+          >
+            {fmts.map(function (f) {
+              return (
+                <option key={f} value={f}>
+                  {f}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <Bt href={dlHref}>Download {activeFmt}</Bt>
       </div>
     </div>
   );
@@ -1772,7 +1933,7 @@ export default function App() {
               textAlign: "left",
             }}
           >
-            Brand Guidelines V2
+            Brand Guidelines v2.0.5
           </div>
         </div>
         <input
@@ -2111,7 +2272,7 @@ export default function App() {
               marginBottom: 10,
             }}
           >
-            V2 · April 2026
+            v2.0.5 · July 2026
           </div>
           <h1
             style={{
@@ -3204,12 +3365,19 @@ export default function App() {
               );
             })}
           </div>
-          <LogoGrid
-            cols={2}
-            items={ff.map(function (f) {
-              return [f[0], f[1], null, slugify(f[0])];
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            {ff.map(function (f) {
+              return (
+                <FacilityLockupCard
+                  key={f[0]}
+                  cols={2}
+                  label={f[0]}
+                  sub={f[1]}
+                  slug={slugify(f[0])}
+                />
+              );
             })}
-          />
+          </div>
           <div style={{ marginTop: 16, marginBottom: 16 }}>
             <Bt>All Facility Logos (ZIP)</Bt>
           </div>
@@ -3625,7 +3793,7 @@ export default function App() {
                 38,
                 "'DM Serif Text',serif",
                 400,
-                "Brand Guidelines V2",
+                "Brand Guidelines v2.0.5",
                 "Section headers, slide titles",
               ],
               [
@@ -4983,7 +5151,7 @@ export default function App() {
             style={{ height: 53, marginBottom: 12, objectFit: "contain" }}
           />
           <div style={{ fontSize: 11, color: C.bat }}>
-            Guardian Recovery Brand Guidelines V2 · April 2026 · Confidential
+            Guardian Recovery Brand Guidelines v2.0.5 · July 2026 · Confidential
           </div>
         </div>
       </main>
