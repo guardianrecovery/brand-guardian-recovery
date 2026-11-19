@@ -185,6 +185,14 @@ var FACS = [
     "Guardian Recovery - Portland Addiction Center",
   ],
   [
+    "Bishop Health - Bangor",
+    "Bangor, ME",
+    "New England",
+    "MH IOP, Virtual",
+    false,
+    "Bishop Health - Bangor",
+  ],
+  [
     "CuraWest",
     "Denver, CO",
     "Colorado",
@@ -2844,6 +2852,11 @@ export default function App() {
                 "Plymouth, NH",
                 "Detox, Res, PHP, Virtual",
               ],
+              [
+                "Bishop Health - Bangor",
+                "Bangor, ME",
+                "MH IOP, Virtual",
+              ],
             ]}
           />
           <H4>Colorado, Texas, Virtual</H4>
@@ -2872,7 +2885,7 @@ export default function App() {
           <Cd t="Long (100+ words)">
             Guardian Recovery is a national network of behavioral healthcare
             centers dedicated to providing compassionate, evidence-based
-            treatment for substance use and mental health disorders. With 18
+            treatment for substance use and mental health disorders. With 19
             locations including virtual across six states and virtual counseling
             services, Guardian Recovery offers a full continuum of care from
             medical detox and residential treatment through partial
@@ -2883,7 +2896,7 @@ export default function App() {
           </Cd>
           <Cd t="Medium (50-75 words)">
             Guardian Recovery is a national behavioral healthcare network
-            operating 18 locations including virtual across six states. We
+            operating 19 locations including virtual across six states. We
             provide the full continuum of addiction and mental health care, from
             medical detox through outpatient, for adults and adolescents.
             Accredited by The Joint Commission, our evidence-based programs are
@@ -2891,7 +2904,7 @@ export default function App() {
           </Cd>
           <Cd t="Short (25-35 words)">
             Guardian Recovery provides compassionate, evidence-based addiction
-            and mental health treatment across 18 locations including virtual
+            and mental health treatment across 19 locations including virtual
             nationwide. Accredited by The Joint Commission. guardianrecovery.com
           </Cd>
         </Sec>
@@ -5110,7 +5123,7 @@ export default function App() {
           <Tb
             h={["Metric", "Approved language"]}
             r={[
-              ["Facilities", "18 locations including virtual"],
+              ["Facilities", "19 locations including virtual"],
               ["States", "Six states (NJ, FL, ME, NH, CO, TX) + virtual in PA"],
               [
                 "Service lines",
