@@ -41,7 +41,7 @@ Guardian Recovery was founded in 2007 by Josh Scott, who experienced the recover
 
 What began as an adult substance use treatment program in Florida grew as the team recognized how few quality options existed. By 2019, expanded SUD offerings across multiple states. In 2021, a shift to accessibility. By 2023, Adolescent and Mental Health service lines added. In 2024, Guardian Virtual launched.
 
-Today: 18 locations including virtual across six states with virtual counseling reaching a seventh. The founding conviction hasn't changed.
+Today: 19 locations including virtual across six states with virtual counseling reaching a seventh. The founding conviction hasn't changed.
 
 ### Mission
 
@@ -197,6 +197,7 @@ Subsequent references may use the facility name alone once Guardian Recovery con
 | GR - Portland Psychiatry & Counseling | South Portland, ME | MH PHP, MH IOP, Virtual |
 | GR - Portland Addiction Center* | Westbrook, ME | Residential Supportive Housing |
 | GR - Plymouth House | Plymouth, NH | Detox, Res, PHP, Virtual |
+| Bishop Health - Bangor | Bangor, ME | MH IOP, Virtual |
 
 *GR - Portland Addiction Center is not a clinical facility. Residential Supportive Housing only.*
 
@@ -210,11 +211,11 @@ Subsequent references may use the facility name alone once Guardian Recovery con
 
 ### Boilerplate Copy
 
-**Long (100+ words).** Guardian Recovery is a national network of behavioral healthcare centers dedicated to providing compassionate, evidence-based treatment for substance use and mental health disorders. With 18 locations including virtual across six states and virtual counseling services, Guardian Recovery offers a full continuum of care from medical detox and residential treatment through partial hospitalization, intensive outpatient, and outpatient services. Our three distinct service lines ensure that every Client receives care tailored to their unique needs, goals, and circumstances. Accredited by The Joint Commission. guardianrecovery.com
+**Long (100+ words).** Guardian Recovery is a national network of behavioral healthcare centers dedicated to providing compassionate, evidence-based treatment for substance use and mental health disorders. With 19 locations including virtual across six states and virtual counseling services, Guardian Recovery offers a full continuum of care from medical detox and residential treatment through partial hospitalization, intensive outpatient, and outpatient services. Our three distinct service lines ensure that every Client receives care tailored to their unique needs, goals, and circumstances. Accredited by The Joint Commission. guardianrecovery.com
 
-**Medium (50–75 words).** Guardian Recovery is a national behavioral healthcare network operating 18 locations including virtual across six states. We provide the full continuum of addiction and mental health care, from medical detox through outpatient, for adults and adolescents. Accredited by The Joint Commission, our evidence-based programs are built around each Client's unique needs. guardianrecovery.com
+**Medium (50–75 words).** Guardian Recovery is a national behavioral healthcare network operating 19 locations including virtual across six states. We provide the full continuum of addiction and mental health care, from medical detox through outpatient, for adults and adolescents. Accredited by The Joint Commission, our evidence-based programs are built around each Client's unique needs. guardianrecovery.com
 
-**Short (25–35 words).** Guardian Recovery provides compassionate, evidence-based addiction and mental health treatment across 18 locations including virtual nationwide. Accredited by The Joint Commission. guardianrecovery.com
+**Short (25–35 words).** Guardian Recovery provides compassionate, evidence-based addiction and mental health treatment across 19 locations including virtual nationwide. Accredited by The Joint Commission. guardianrecovery.com
 
 ---
 
@@ -719,7 +720,7 @@ The single source for all brand assets, templates, and print ordering. Download 
 
 | Metric | Approved language |
 |---|---|
-| Facilities | 18 locations including virtual |
+| Facilities | 19 locations including virtual |
 | States | Six states (NJ, FL, ME, NH, CO, TX) + virtual in PA |
 | Service lines | Three: Adult SUD, Adult Mental Health, Adolescent |
 | Accreditation | Accredited by The Joint Commission |
