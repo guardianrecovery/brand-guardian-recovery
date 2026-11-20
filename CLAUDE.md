@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session Handoff
+
+At the **start** of every session, read `HANDOFF.md` to get up to speed on current state, in-progress work, and recent changes.
+At the **end** of every session (or when the user asks), update `HANDOFF.md`: refresh the "Current State" section and add a new entry at the top of the "Session Log" using the template in that file.
+
 ## Commands
 
 ```bash
