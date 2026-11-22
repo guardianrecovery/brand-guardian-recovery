@@ -11,8 +11,8 @@ import {
 } from "./links";
 
 var C = {
-  mid: "#004860",
-  pru: "#083045",
+  mid: "#083045",
+  pru: "#004860",
   gam: "#FFAD00",
   cer: "#00728B",
   pac: "#5B9CB8",
@@ -2340,20 +2340,22 @@ export default function App() {
           <P>
             Guardian Recovery was founded in 2007 by Josh Scott, who experienced
             the recovery journey firsthand and emerged with a clear conviction:
-            that treatment should be something you'd seek for yourself or
-            someone you love. Not a last resort. Not a clinical transaction. A
+            that the level and quality of treatment should be something you'd
+            seek for yourself or someone you love. Not a last resort. Not a clinical transaction. A
             turning point.
           </P>
           <P>
             What began as an adult substance use treatment program in Florida
             grew as the team recognized how few quality options existed. By
-            2019, expanded SUD offerings across multiple states. In 2021, a
+            2019, Guardian Recovery expanded SUD offerings across multiple
+            states. In 2021, a
             shift to accessibility. In 2022, Guardian Virtual launched. By
-            2023, Adolescent and Mental Health service lines added. In 2025,
+            2023, Adolescent and Mental Health service lines were added. In
+            2025,
             Guardian Virtual was regionalized into state-licensed practices.
           </P>
           <P>
-            Today: 16 in-person facilities across six states (Florida, New
+            Today: 18 in-person facilities across six states (Florida, New
             Jersey, New Hampshire, Maine, Colorado, and Texas) plus five
             state-licensed virtual practices. The founding conviction hasn't
             changed.
@@ -2374,7 +2376,7 @@ export default function App() {
           </P>
 
           <H3>Brand Promise</H3>
-          <Q>We provide care we would seek for ourselves or a loved one.</Q>
+          <Q>We provide the quality of care we would seek for ourselves or a loved one.</Q>
           <P>
             This is the single most important sentence in our brand. It filters
             every clinical decision, every hiring choice, every facility design,
@@ -2875,7 +2877,7 @@ export default function App() {
               ],
               [
                 "GR - Virtual Counseling",
-                "FL, TX, NJ, ME, NH, CO, PA",
+                "FL, TX, NJ, ME, CO",
                 "IOP, MH IOP, OP, MH OP",
               ],
             ]}
@@ -2885,7 +2887,7 @@ export default function App() {
           <Cd t="Long (100+ words)">
             Guardian Recovery is a national network of behavioral healthcare
             centers dedicated to providing compassionate, evidence-based
-            treatment for substance use and mental health disorders. With 19
+            treatment for substance use and mental health disorders. With 18
             locations including virtual across six states and virtual counseling
             services, Guardian Recovery offers a full continuum of care from
             medical detox and residential treatment through partial
@@ -2896,7 +2898,7 @@ export default function App() {
           </Cd>
           <Cd t="Medium (50-75 words)">
             Guardian Recovery is a national behavioral healthcare network
-            operating 19 locations including virtual across six states. We
+            operating 18 locations including virtual across six states. We
             provide the full continuum of addiction and mental health care, from
             medical detox through outpatient, for adults and adolescents.
             Accredited by The Joint Commission, our evidence-based programs are
@@ -2904,7 +2906,7 @@ export default function App() {
           </Cd>
           <Cd t="Short (25-35 words)">
             Guardian Recovery provides compassionate, evidence-based addiction
-            and mental health treatment across 19 locations including virtual
+            and mental health treatment across 18 locations including virtual
             nationwide. Accredited by The Joint Commission. guardianrecovery.com
           </Cd>
         </Sec>
@@ -2969,7 +2971,7 @@ export default function App() {
 
           <H3>Specialty Programs</H3>
           <Cd t="Guardian Recovery - Virtual Counseling">
-            Telehealth across seven states (FL, TX, NJ, ME, NH, CO, PA). IOP, MH
+            Telehealth across five states (FL, TX, NJ, ME, CO). IOP, MH
             IOP, OP, MH OP. Does not include Detox, Residential, or PHP. An
             extension of the continuum, not a separate brand.
           </Cd>
@@ -3021,7 +3023,7 @@ export default function App() {
               [
                 "Virtual Outpatient",
                 "Virtual OP",
-                "Telehealth delivery of IOP and OP programming for Clients who cannot attend in person, available across seven states. Same evidence-based curriculum as on-site outpatient care.",
+                "Telehealth delivery of IOP and OP programming for Clients who cannot attend in person, available across five states. Same evidence-based curriculum as on-site outpatient care.",
               ],
             ].map(function (lc) {
               return (
@@ -5123,15 +5125,15 @@ export default function App() {
           <Tb
             h={["Metric", "Approved language"]}
             r={[
-              ["Facilities", "19 locations including virtual"],
-              ["States", "Six states (NJ, FL, ME, NH, CO, TX) + virtual in PA"],
+              ["Facilities", "18 locations including virtual"],
+              ["States", "Six states (NJ, FL, ME, NH, CO, TX)"],
               [
                 "Service lines",
                 "Three: Adult SUD, Adult Mental Health, Adolescent",
               ],
               ["Accreditation", "Accredited by The Joint Commission"],
               ["Founded", "2007"],
-              ["Virtual", "Available in seven states"],
+              ["Virtual", "Available in five states"],
             ]}
           />
 
