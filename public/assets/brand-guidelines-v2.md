@@ -1,6 +1,13 @@
 # Guardian Recovery — Brand Guidelines V2
 
+**v2.0.5 · July 2026**
+
 *Approved content export — excludes in-review and pending material.*
+
+The single source of truth for brand identity, voice, visual system, application standards, and asset hub.
+
+> *"Our mission is simple: provide our clients with a program we would seek for ourselves or a loved one."*
+> — Josh Scott, Founder
 
 ---
 
@@ -37,11 +44,11 @@
 
 ### Our Origin Story
 
-Guardian Recovery was founded in 2007 by Josh Scott, who experienced the recovery journey firsthand and emerged with a clear conviction: that treatment should be something you'd seek for yourself or someone you love. Not a last resort. Not a clinical transaction. A turning point.
+Guardian Recovery was founded in 2007 by Josh Scott, who experienced the recovery journey firsthand and emerged with a clear conviction: that the level and quality of treatment should be something you'd seek for yourself or someone you love. Not a last resort. Not a clinical transaction. A turning point.
 
-What began as an adult substance use treatment program in Florida grew as the team recognized how few quality options existed. By 2019, expanded SUD offerings across multiple states. In 2021, a shift to accessibility. By 2023, Adolescent and Mental Health service lines added. In 2024, Guardian Virtual launched.
+What began as an adult substance use treatment program in Florida grew as the team recognized how few quality options existed. By 2019, Guardian Recovery expanded SUD offerings across multiple states. In 2021, a shift to accessibility. In 2022, Guardian Virtual launched. By 2023, Adolescent and Mental Health service lines were added. In 2025, Guardian Virtual was regionalized into state-licensed practices.
 
-Today: 19 locations including virtual across six states with virtual counseling reaching a seventh. The founding conviction hasn't changed.
+Today: 18 in-person facilities across six states (Florida, New Jersey, New Hampshire, Maine, Colorado, and Texas) plus five state-licensed virtual practices. The founding conviction hasn't changed.
 
 ### Mission
 
@@ -53,7 +60,7 @@ A world where every person struggling with addiction or mental health challenges
 
 ### Brand Promise
 
-> **We provide care we would seek for ourselves or a loved one.**
+> **We provide the quality of care we would seek for ourselves or a loved one.**
 
 This is the single most important sentence in our brand. It filters every clinical decision, every hiring choice, every facility design, every piece of content, and every interaction with a Client or their family.
 
@@ -182,7 +189,6 @@ Subsequent references may use the facility name alone once Guardian Recovery con
 | GR - Princeton Detox & Recovery Center | Monmouth Junction | Detox, Residential, Virtual OP |
 | GR - Princeton Psychiatry & Counseling | Princeton | MH IOP, MH OP |
 | GR - New Pathway Bayonne | Bayonne | SUD IOP, MH IOP, Adol IOP, Virtual |
-| GR - New Pathway Paramus | Paramus | SUD IOP, MH IOP, Adol IOP, Virtual |
 | GR - New Pathway Pine Brook | Pine Brook | SUD IOP, MH IOP, Adol IOP, Virtual |
 | GR - Hoboken Counseling Center | Hoboken | SUD IOP, MH IOP, Virtual |
 | GR - New Brunswick Counseling Center | New Brunswick | SUD IOP, MH IOP, Virtual |
@@ -195,11 +201,9 @@ Subsequent references may use the facility name alone once Guardian Recovery con
 |---|---|---|
 | GR - Pine Tree | Portland, ME | Detox, Res, PHP, SUD IOP, Virtual |
 | GR - Portland Psychiatry & Counseling | South Portland, ME | MH PHP, MH IOP, Virtual |
-| GR - Portland Addiction Center* | Westbrook, ME | Residential Supportive Housing |
+| GR - Portland Addiction Center | Westbrook, ME | Residential Supportive Housing |
 | GR - Plymouth House | Plymouth, NH | Detox, Res, PHP, Virtual |
 | Bishop Health - Bangor | Bangor, ME | MH IOP, Virtual |
-
-*GR - Portland Addiction Center is not a clinical facility. Residential Supportive Housing only.*
 
 #### Colorado, Texas, Virtual
 
@@ -207,15 +211,15 @@ Subsequent references may use the facility name alone once Guardian Recovery con
 |---|---|---|
 | GR - CuraWest | Denver, CO | Medical Detox, Residential, Virtual |
 | GR - Dallas Addiction Center | Plano, TX | Medical Detox, Residential, Virtual |
-| GR - Virtual Counseling | FL, TX, NJ, ME, NH, CO, PA | IOP, MH IOP, OP, MH OP |
+| GR - Virtual Counseling | FL, TX, NJ, ME, CO | IOP, MH IOP, OP, MH OP |
 
 ### Boilerplate Copy
 
-**Long (100+ words).** Guardian Recovery is a national network of behavioral healthcare centers dedicated to providing compassionate, evidence-based treatment for substance use and mental health disorders. With 19 locations including virtual across six states and virtual counseling services, Guardian Recovery offers a full continuum of care from medical detox and residential treatment through partial hospitalization, intensive outpatient, and outpatient services. Our three distinct service lines ensure that every Client receives care tailored to their unique needs, goals, and circumstances. Accredited by The Joint Commission. guardianrecovery.com
+**Long (100+ words).** Guardian Recovery is a national network of behavioral healthcare centers dedicated to providing compassionate, evidence-based treatment for substance use and mental health disorders. With 18 locations including virtual across six states and virtual counseling services, Guardian Recovery offers a full continuum of care from medical detox and residential treatment through partial hospitalization, intensive outpatient, and outpatient services. Our three distinct service lines ensure that every Client receives care tailored to their unique needs, goals, and circumstances. Accredited by The Joint Commission. guardianrecovery.com
 
-**Medium (50–75 words).** Guardian Recovery is a national behavioral healthcare network operating 19 locations including virtual across six states. We provide the full continuum of addiction and mental health care, from medical detox through outpatient, for adults and adolescents. Accredited by The Joint Commission, our evidence-based programs are built around each Client's unique needs. guardianrecovery.com
+**Medium (50–75 words).** Guardian Recovery is a national behavioral healthcare network operating 18 locations including virtual across six states. We provide the full continuum of addiction and mental health care, from medical detox through outpatient, for adults and adolescents. Accredited by The Joint Commission, our evidence-based programs are built around each Client's unique needs. guardianrecovery.com
 
-**Short (25–35 words).** Guardian Recovery provides compassionate, evidence-based addiction and mental health treatment across 19 locations including virtual nationwide. Accredited by The Joint Commission. guardianrecovery.com
+**Short (25–35 words).** Guardian Recovery provides compassionate, evidence-based addiction and mental health treatment across 18 locations including virtual nationwide. Accredited by The Joint Commission. guardianrecovery.com
 
 ---
 
@@ -237,7 +241,7 @@ Guardian Recovery operates three clinical service lines and several specialty pr
 
 ### Specialty Programs
 
-- **Guardian Recovery - Virtual Counseling** — Telehealth across seven states (FL, TX, NJ, ME, NH, CO, PA). IOP, MH IOP, OP, MH OP. Does not include Detox, Residential, or PHP. An extension of the continuum, not a separate brand.
+- **Guardian Recovery - Virtual Counseling** — Telehealth across five states (FL, TX, NJ, ME, CO). IOP, MH IOP, OP, MH OP. Does not include Detox, Residential, or PHP. An extension of the continuum, not a separate brand.
 - **Portland Psychiatry & Counseling** — South Portland, ME. MH PHP, MH IOP, Virtual Outpatient. Owned by Guardian Recovery, not yet operating under the GR brand prefix.
 
 ### Levels of Care
@@ -247,8 +251,8 @@ Guardian Recovery operates three clinical service lines and several specialty pr
 - **Partial Hospitalization Program (PHP)** — Intensive day programming (typically 5–6 hours per day, 5 days per week) without overnight stay. A bridge between residential and outpatient, providing high-touch clinical care while Clients return home each evening.
 - **Intensive Outpatient Program (IOP)** — Structured group and individual therapy (about 3 hours per day, 3–5 days per week) that fits around work, school, or family responsibilities. Reinforces skills built in higher levels of care.
 - **Outpatient (OP)** — Ongoing individual therapy, medication management, and alumni support delivered weekly or as needed. The long-term layer of the continuum, supporting sustained recovery after intensive treatment.
-- **Mental Health Program variants (MH PHP / MH IOP / MH OP)** — Same structures as their SUD counterparts but clinically tailored to anxiety, depression, trauma, and other mental health conditions.
-- **Virtual Outpatient (Virtual OP)** — Telehealth delivery of IOP and OP programming for Clients who cannot attend in person, available across seven states. Same evidence-based curriculum as on-site outpatient care.
+- **Mental Health Program variants (MH PHP / MH IOP / MH OP)** — Mental Health Partial Hospitalization, Intensive Outpatient, and Outpatient programs follow the same structures as their SUD counterparts but are clinically tailored to anxiety, depression, trauma, and other mental health conditions.
+- **Virtual Outpatient (Virtual OP)** — Telehealth delivery of IOP and OP programming for Clients who cannot attend in person, available across five states. Same evidence-based curriculum as on-site outpatient care.
 
 #### ASAM Alignment
 
@@ -294,7 +298,10 @@ Internal clinical communication follows 12-Step practitioner conventions. Everyt
 
 ### Inverted / Knockout Versions
 
-Each primary logo has a knockout variant for use on Midnight or imagery backgrounds.
+- Horizontal
+- Horizontal Stacked
+- Vertical
+- Circular Badge
 
 ### Clearing Space and Scale
 
@@ -316,9 +323,16 @@ The logo requires a minimum clear zone on all sides equal to the cap-height of t
 - Adolescent (Sage accent)
 - Guardian Virtual
 
+### Specialty Program Logos
+
+- Immersion
+- New Pathway
+- Virtual Counseling
+- Case Management
+
 ### Facility Logo Lockups
 
-Each facility has a unique horizontal and vertical lockup, available in primary and inverted color modes. Filter by region (Florida, New Jersey, New England, Colorado/Texas/Virtual) on the Asset Hub for the full set.
+Each facility has a unique lockup, in horizontal and vertical orientations and primary and inverted color modes.
 
 ---
 
@@ -378,6 +392,7 @@ Each service line color was chosen to carry a specific emotional register — di
 |---|---|---|
 | Prussian | #004860 | Interface accent |
 | Frost | #FCFDFF | Primary light bg |
+| Shell | #FAFAF9 | Soft neutral bg |
 | Smoke | #F2F1F0 | Secondary bg |
 | Sand | #E2E0DD | Warm neutral bg |
 | Glacier | #D3E7EE | Accent bg |
@@ -441,16 +456,18 @@ Guardian Recovery's icon system uses a consistent line-icon style across all tou
 
 ### Master Brand Icons
 
+The core brand marks used independently when Guardian Recovery context is established in surrounding content.
+
 - **Sunrise Icon** — Primary standalone mark
 - **Sunrise (Gambodge)** — On Midnight / dark backgrounds
 - **Sunrise (Frost)** — Knockout / inverted
 
 ### Service Line Icons
 
-- Adult SUD — Cerulean
-- Adult Mental Health — Pacific
-- Adolescent — Sage
-- Virtual — Prussian
+- **SUD Icon** — Adult SUD, Cerulean
+- **Mental Health Icon** — Adult Mental Health, Pacific
+- **Adolescent Icon** — Adolescent, Sage
+- **Virtual Icon** — Virtual, Prussian
 
 *Condition and program sub-icons will be introduced in V3.*
 
@@ -530,6 +547,8 @@ A repeating geometric texture based on the sunrise motif. The pattern is a textu
 
 The upward-pointing arch appears as a section divider and accent mark in headers and presentations. Always Gambodge (#FFAD00). Proportions match the logo's arch. Use sparingly — one per section. Never in a color other than Gambodge.
 
+*Section opener — appears above H2 headings in print and presentations.*
+
 ### Gradient Treatments
 
 - **Midnight → Prussian** — Dark title slides
@@ -555,9 +574,9 @@ Official name on signage. Horizontal logo preferred. "Hope Starts Here." in lobb
 
 The master BD deck follows the "Your Partner in Behavioral Health" positioning. Includes history, outcomes, program regions, facility pages, and the "Understanding Your World" discovery questions. Rep contact slide is customizable.
 
-### General Materials
+### General
 
-Available to all BD reps regardless of service line or facility assignment.
+Materials available to all BD reps regardless of service line or facility assignment.
 
 - BD Rep Sticker — Name + QR code, per rep
 - Business Cards — per rep
@@ -571,11 +590,11 @@ Per service line (Adult SUD, Adult Mental Health, Adolescent, Virtual): Folder B
 
 ### Facility Collateral
 
-Per facility (all 18): One-Pager, Trifold, Rack Card, Postcard, Digital PDF.
+Per facility, including each Virtual Counseling practice: Folder Booklet, One-Pager, Trifold, Rack Card, Postcard, Digital PDF.
 
 ### Regional Collateral
 
-Per region (Florida, New Jersey, New England, Colorado, Texas): One-Pager, Trifold, Rack Card, Postcard, Digital PDF.
+Per region (Florida, New Jersey, New England, Colorado, Texas, Virtual): One-Pager, Trifold, Rack Card, Postcard, Digital PDF.
 
 ### Physical Materials
 
@@ -589,7 +608,23 @@ Per region (Florida, New Jersey, New England, Colorado, Texas): One-Pager, Trifo
 
 ## 13. Executive Resources
 
-PIN-gated section. Contains internal executive materials, board-deck approved data, and confidential specifications. Approved talking points and conference/speaking materials are managed here.
+PIN-gated section. Internal and external executive materials. Confidential.
+
+**Internal**
+
+- Board Deck — Approved data
+- Investor Deck — Confidential
+- Meeting Templates — Reviews, planning
+- Reports — C-suite comms
+
+**External**
+
+- Executive Summary — Partners, investors
+- Thought Leadership — Articles, papers
+- Speaker Kit — Slides, bios
+- Media Kit — Press-ready
+
+*V3 will expand this section with executive bio templates, headshot specifications, approved talking points, and conference/speaking engagement brand standards.*
 
 ---
 
@@ -628,6 +663,22 @@ Via Salesforce Marketing Cloud. Header: primary logo centered on white. Body: IB
 - **Display.** Brand colors, typography, photography standards throughout. Gambodge CTAs. Rounded-corner photos. Logo on all creative.
 - **Meta / Paid social.** Photography guidelines apply. No clinical or triggering imagery. Carousels may highlight multiple facilities or levels of care. All video must be captioned.
 
+### Digital Meeting Backgrounds
+
+Branded virtual backgrounds for Zoom, Google Meet, and Microsoft Teams. Used across business development calls, internal team meetings, telehealth sessions, and external presentations. A unified background reinforces brand consistency on every video call and signals a professional, cohesive Guardian presence.
+
+- **Standard library.** Midnight wrap with the brand pattern at 10–15% opacity, primary horizontal logo positioned bottom-right with clear space preserved. Frost variant for lighter, neutral framing. Service line variants (Cerulean, Pacific, Sage) available for line-specific outreach.
+- **Telehealth / Guardian Virtual.** Calming, neutral framing — Frost or low-saturation Pacific. Avoid heavy pattern, busy gradients, or clinical imagery. Background must not compete with the clinician on camera.
+
+| Use case | Recommended background |
+|---|---|
+| BD / external calls | Midnight + pattern, logo bottom-right |
+| Internal team meetings | Frost or Midnight, logo optional |
+| Telehealth sessions | Frost or low-saturation Pacific, no pattern |
+| Webinars / presentations | Midnight + Gambodge accent bar |
+
+*Specs: 1920×1080 px (16:9), JPG or PNG, RGB color space. Keep logo, text, and key visual elements out of the lower-center third so they aren't covered by the video tile or speaker name.*
+
 ### Video and Motion Graphics
 
 - **Brand presence.** Logo on opening and closing frames. Lower thirds: IBM Plex Sans on semi-transparent Midnight bar with Gambodge accent. Closing frame: logo + tagline + CTA.
@@ -636,12 +687,6 @@ Via Salesforce Marketing Cloud. Header: primary logo centered on white. Body: IB
 ---
 
 ## 15. Print and Collateral
-
-### Stationery
-
-- Letterhead — Logo + Gambodge accent
-- Envelopes — Primary logo
-- Notecards — Secondary logo
 
 ### Brochures
 
@@ -679,11 +724,15 @@ The single source for all brand assets, templates, and print ordering. Download 
 - Rep Stickers (name + QR)
 - Folders (Midnight + pattern)
 - Banners (master + facility)
-- Stationery (letterhead + envelopes)
 - Apparel (polos, quarter-zips)
 - Merchandise (pens, bottles)
 - Trifolds (by service line)
 - Rack Cards (by facility)
+
+### Letterhead
+
+- General Letterhead — Guardian Recovery corporate
+- Facility letterhead — one per facility, including each Virtual Counseling practice
 
 ### Need Custom Creative Work?
 
@@ -720,12 +769,12 @@ The single source for all brand assets, templates, and print ordering. Download 
 
 | Metric | Approved language |
 |---|---|
-| Facilities | 19 locations including virtual |
-| States | Six states (NJ, FL, ME, NH, CO, TX) + virtual in PA |
+| Facilities | 18 locations including virtual |
+| States | Six states (NJ, FL, ME, NH, CO, TX) |
 | Service lines | Three: Adult SUD, Adult Mental Health, Adolescent |
 | Accreditation | Accredited by The Joint Commission |
 | Founded | 2007 |
-| Virtual | Available in seven states |
+| Virtual | Available in five states |
 
 ### Employer and BD Proof Points
 
@@ -739,4 +788,4 @@ The single source for all brand assets, templates, and print ordering. Download 
 
 ---
 
-*Guardian Recovery Brand Guidelines V2 — Approved Content Export*
+*Guardian Recovery Brand Guidelines v2.0.5 · July 2026 · Confidential — Approved Content Export*
