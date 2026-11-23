@@ -53,6 +53,14 @@ Template — copy this for each new session:
 **Left unfinished / next steps:** anything the next session must pick up
 -->
 
+### 2026-11-23 — README rewritten for non-technical readers
+**Goal:** Make `README.md` readable for staff, not just developers.
+**Changes:**
+- `README.md` — rewritten: what the guide is, who it's for, section-by-section overview, downloads, contact (marketing team), PIN caveat, then a short technical section for maintainers. Live URL brand.guardianrecovery.com. PIN value removed. Old file had a stray UTF-16 line appended; new file is plain UTF-8.
+**Decisions:** User chose non-technical audience, team (not a person) as contact, PINs mentioned without values.
+**Verification:** N/A (docs only).
+**Left unfinished / next steps:** Not committed.
+
 ### 2026-11-23 — Service line icons hidden ("Coming soon")
 **Goal:** Hide the stand-in service line icon tiles until real artwork exists (branch `iconography-updates-2026-11-23`).
 **Changes:**
