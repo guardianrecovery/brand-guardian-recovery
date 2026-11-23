@@ -1412,6 +1412,10 @@ function Row(props) {
 
 // Review-mode system: gates "in-review" subsections behind a PIN so executives
 // can preview suggested updates without disrupting approved content.
+// Service line icon tiles in Iconography are hidden until dedicated artwork
+// exists; a "Coming soon" notice shows instead. Set to true to show them.
+var SHOW_SERVICE_LINE_ICONS = false;
+
 var REVIEW_PIN = "5678";
 var ReviewContext = createContext(false);
 
@@ -4074,6 +4078,7 @@ export default function App() {
           </Row>
 
           <H3>Service Line Icons</H3>
+          {SHOW_SERVICE_LINE_ICONS ? (
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             {[
               {
@@ -4160,6 +4165,40 @@ export default function App() {
               );
             })}
           </div>
+          ) : (
+            <div
+              className="bx"
+              role="status"
+              style={{
+                border: "1px solid " + C.gla,
+                borderLeft: "4px solid " + C.gam,
+                borderRadius: 10,
+                padding: "14px 18px",
+                background: C.fro,
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 10,
+                  fontWeight: 600,
+                  color: C.mid,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  marginBottom: 4,
+                }}
+              >
+                Coming soon
+              </div>
+              <div
+                className="tx"
+                style={{ fontSize: 13, color: C.cav, lineHeight: 1.6 }}
+              >
+                Dedicated icons for each service line — Adult SUD, Adult
+                Mental Health, Adolescent and Virtual — are in development and
+                will be added here when they're ready.
+              </div>
+            </div>
+          )}
           <div
             style={{
               fontSize: 11,

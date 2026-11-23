@@ -29,10 +29,10 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 - **Copy lives in two places.** Brand copy in `src/App.jsx` is duplicated in the downloadable `public/assets/brand-guidelines-v2.md` (served via `GUIDE_MD` in `src/links.js`). Update both when changing copy.
 
 ### In Progress
-- **UI updates** on branch `ui-updates-2026-11-23` — pushed, PR open as of 2026-11-23. See session log.
+- **Iconography updates** on branch `iconography-updates-2026-11-23` — pushed, PR open as of 2026-11-23. See session log.
 
 ### Next Up / Backlog
-- _Add items here as they come up._
+- **Service line icon artwork.** Tiles are hidden behind `SHOW_SERVICE_LINE_ICONS = false` in `src/App.jsx`. When real icons exist: replace the files in `src/assets/icons/` (`icon-sud`, `icon-mh`, `icon-adol`, `icon-virtual`), set the flag to `true`, restore the icon list in `brand-guidelines-v2.md`, and consider darkening the Mental Health / Adolescent tile titles (low contrast).
 
 ### Open Questions / Decisions Pending
 - **18th location / state count:** 17 facilities are open (`FACS`). The 18th is in Kenosha, WI, coming online soon, so copy says 18 (user's call, 2026-11-22). Kenosha is in the Brand Architecture tables as "GR - Wisconsin" under a new Wisconsin heading (2026-11-23) but not yet in `FACS` or `REGIONS`. When it opens: add it there (logo, letterhead, region), and decide whether "six states" becomes seven — Wisconsin isn't in any state list yet.
@@ -53,6 +53,16 @@ Template — copy this for each new session:
 **Left unfinished / next steps:** anything the next session must pick up
 -->
 
+### 2026-11-23 — Service line icons hidden ("Coming soon")
+**Goal:** Hide the stand-in service line icon tiles until real artwork exists (branch `iconography-updates-2026-11-23`).
+**Changes:**
+- `src/App.jsx` — Iconography: service line tiles wrapped in `SHOW_SERVICE_LINE_ICONS` (module-level flag, `false`). A "Coming soon" notice (Gambodge left border, `.bx`/`.tx`) shows instead. Tile code and icon files kept for when artwork arrives. "Condition and program sub-icons… V3" note unchanged.
+- `public/assets/brand-guidelines-v2.md` — Service Line Icons list replaced with the same "Coming soon" text (app wins).
+- `HANDOFF.md` — this entry; In Progress and Backlog updated.
+**Decisions:** Hidden behind a flag instead of deleted, so turning the tiles back on is a one-line change.
+**Verification:** `npm run build` passes. Browser: notice renders under Service Line Icons, tiles gone, Master Brand Icons unchanged.
+**Left unfinished / next steps:** Review and merge the PR.
+
 ### 2026-11-23 — Wide layout: full-width main, capped text, fit-to-content boxes
 **Goal:** UI updates on branch `ui-updates-2026-11-23`.
 **Changes** (all `src/App.jsx`):
@@ -65,7 +75,7 @@ Template — copy this for each new session:
 - Iconography: `src/assets/icons/` was missing, so all 7 icons were broken. Added sunrise icons (rays + arc from `nav-logo.svg`; Prussian / Gambodge / Frost; Gambodge and Frost shown on Midnight) and service line icons (same sunrise in Cerulean, Pacific, Sage, Prussian — no separate artwork exists; replace files with real art if designed).
 **Decisions:** Tables, grids and headings stay full width. User chose to leave the low-contrast Mental Health / Adolescent titles on the Iconography service line cards. Pull quotes (`Q`) run ~680px because of larger serif type; left as is.
 **Verification:** `npm run build` passes. Browser at 1600px: no text wider than ~660px, boxes 623–881px with no large empty space, no horizontal scroll. At 375px nothing overflows.
-**Left unfinished / next steps:** Review and merge the PR. Real service line icon artwork, if designed, replaces the sunrise stand-ins in `src/assets/icons/`.
+**Left unfinished / next steps:** Merged as PR #4 (2026-11-23); branch deleted. Real service line icon artwork, if designed, replaces the sunrise stand-ins in `src/assets/icons/`.
 
 ### 2026-11-23 — Wisconsin added to Brand Architecture
 **Goal:** Add Wisconsin and the Kenosha facility to the facility list (user request).
