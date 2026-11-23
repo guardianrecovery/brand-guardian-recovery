@@ -29,7 +29,7 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 - **Copy lives in two places.** Brand copy in `src/App.jsx` is duplicated in the downloadable `public/assets/brand-guidelines-v2.md` (served via `GUIDE_MD` in `src/links.js`). Update both when changing copy.
 
 ### In Progress
-- **UI updates** on branch `ui-updates-2026-11-23` (committed locally, not pushed as of 2026-11-23). See session log.
+- **UI updates** on branch `ui-updates-2026-11-23` — pushed, PR open as of 2026-11-23. See session log.
 
 ### Next Up / Backlog
 - _Add items here as they come up._
@@ -60,12 +60,12 @@ Template — copy this for each new session:
 - Global style tag: `.mc p, .mc li, .mc blockquote, .mc .tx { max-width: 75ch }` keeps line length readable.
 - `tx` class on text inside bordered boxes: `Cd` body, tagline explanation, three typography cards, Creative Request Portal.
 - `bx` class (`width: fit-content; max-width: 100%`) on `Cd`, the blue tagline box, the typography cards and the Creative Request box. `row` class on `Row()` with `.row > .bx { flex: 0 0 100%; max-width: fit-content }` so row cards stack instead of going 2-up.
-- Photography and Imagery: added "Photography in Practice" — a 6-tile placeholder grid (flat palette color + image icon + shot label) after Core Principles. Full column width, 3 across (`.pg` class; 2 across under 600px). Swap in real photos by adding an image to each `{ bg, label }` entry. Not in `brand-guidelines-v2.md` (visual only).
+- Photography and Imagery: added "Photography in Practice" — a 6-tile placeholder grid (flat palette color + image icon + shot label) after Core Principles. Full column width, 3 across (`.pg` class; 2 across under 600px). Now filled with six photos from guardianrecovery.com in `src/assets/photos/practice/` (webp; placeholder still renders if a file is missing), each with a caption, plus a small note that these are the images currently in use. Labels changed: "Diverse portrait" → "Portrait", "Family moment" → "Peer conversation" (no family photo on the site). Skipped headshots, cutout program heroes, Instagram, and an AI-generated Immersion image. Not in `brand-guidelines-v2.md` (visual only).
 - Color chips (`Sw`): text color now computed per swatch (`swInk`) — Midnight or white, black fallback for mid-tones; secondary lines softened but kept ≥4.5:1. All 30 chips pass AA (min 4.52). Removed the `light` prop. Service line cards in Color use darker title inks (Pacific 900, Sage 700).
 - Iconography: `src/assets/icons/` was missing, so all 7 icons were broken. Added sunrise icons (rays + arc from `nav-logo.svg`; Prussian / Gambodge / Frost; Gambodge and Frost shown on Midnight) and service line icons (same sunrise in Cerulean, Pacific, Sage, Prussian — no separate artwork exists; replace files with real art if designed).
 **Decisions:** Tables, grids and headings stay full width. User chose to leave the low-contrast Mental Health / Adolescent titles on the Iconography service line cards. Pull quotes (`Q`) run ~680px because of larger serif type; left as is.
 **Verification:** `npm run build` passes. Browser at 1600px: no text wider than ~660px, boxes 623–881px with no large empty space, no horizontal scroll. At 375px nothing overflows.
-**Left unfinished / next steps:** Push and open a PR.
+**Left unfinished / next steps:** Review and merge the PR. Real service line icon artwork, if designed, replaces the sunrise stand-ins in `src/assets/icons/`.
 
 ### 2026-11-20 → 2026-11-22 — Copy edits (Brand Story)
 **Goal:** Copy updates on branch `copy-edits-2026-11-20`.
