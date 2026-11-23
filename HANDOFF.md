@@ -60,6 +60,7 @@ Template — copy this for each new session:
 - Global style tag: `.mc p, .mc li, .mc blockquote, .mc .tx { max-width: 75ch }` keeps line length readable.
 - `tx` class on text inside bordered boxes: `Cd` body, tagline explanation, three typography cards, Creative Request Portal.
 - `bx` class (`width: fit-content; max-width: 100%`) on `Cd`, the blue tagline box, the typography cards and the Creative Request box. `row` class on `Row()` with `.row > .bx { flex: 0 0 100%; max-width: fit-content }` so row cards stack instead of going 2-up.
+- Photography and Imagery: added "Photography in Practice" — a 6-tile placeholder grid (flat palette color + image icon + shot label) after Core Principles. 3 across on desktop (max 720px), 2 on phones. Swap in real photos by adding an image to each `{ bg, label }` entry. Not in `brand-guidelines-v2.md` (visual only).
 **Decisions:** Tables, grids and headings stay full width. Pull quotes (`Q`) run ~680px because of larger serif type; left as is.
 **Verification:** `npm run build` passes. Browser at 1600px: no text wider than ~660px, boxes 623–881px with no large empty space, no horizontal scroll. At 375px nothing overflows.
 **Left unfinished / next steps:** Push and open a PR.

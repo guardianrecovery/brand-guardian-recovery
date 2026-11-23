@@ -4139,6 +4139,65 @@ export default function App() {
             scenery that distracts from the human element.
           </Cd>
 
+          <H4>Photography in Practice</H4>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fill, minmax(min(180px, 45%), 1fr))",
+              gap: 12,
+              maxWidth: 720,
+              marginBottom: 16,
+            }}
+          >
+            {[
+              { bg: C.p2, label: "Candid connection" },
+              { bg: C.s2, label: "Natural light" },
+              { bg: C.c2, label: "Group support" },
+              { bg: C.san, label: "Facility setting" },
+              { bg: C.p4, label: "Diverse portrait" },
+              { bg: C.s4, label: "Family moment" },
+            ].map(function (s, i) {
+              // Placeholder until real photography is supplied.
+              return (
+                <div
+                  key={i}
+                  role="img"
+                  aria-label={s.label + " (placeholder)"}
+                  style={{
+                    aspectRatio: "4 / 3",
+                    background: s.bg,
+                    borderRadius: 12,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 8,
+                    color: C.mid,
+                  }}
+                >
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                    style={{ opacity: 0.55 }}
+                  >
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <circle cx="9" cy="10" r="1.75" />
+                    <path d="M21 16l-5-5-8 8" />
+                  </svg>
+                  <span style={{ fontSize: 11, opacity: 0.7 }}>{s.label}</span>
+                </div>
+              );
+            })}
+          </div>
+
           <H3>Rounded-Corner Framing</H3>
           <P>
             A defining visual signature. Softens the clinical feel and creates
