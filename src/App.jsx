@@ -639,6 +639,7 @@ function Tb(props) {
 function Cd(props) {
   return (
     <div
+      className="bx"
       style={{
         border: "1px solid " + C.gla,
         borderRadius: 10,
@@ -673,7 +674,7 @@ function Cd(props) {
             {props.sub}
           </div>
         )}
-        <div style={{ fontSize: 13, color: C.cav, lineHeight: 1.6 }}>
+        <div className="tx" style={{ fontSize: 13, color: C.cav, lineHeight: 1.6 }}>
           {props.children}
         </div>
       </div>
@@ -1346,6 +1347,7 @@ function Q(props) {
 function Row(props) {
   return (
     <div
+      className="row"
       style={{
         display: "flex",
         gap: props.gap || 8,
@@ -2173,7 +2175,7 @@ export default function App() {
           </div>
         </div>
       )}
-      <style>{`@media(min-width:800px){.sd{display:block!important}.hb{display:none!important}.mc{margin-left:290px!important}}@media(max-width:799px){.sd{display:none!important}}`}</style>
+      <style>{`@media(min-width:800px){.sd{display:block!important}.hb{display:none!important}.mc{margin-left:290px!important}}.mc p,.mc li,.mc blockquote,.mc .tx{max-width:75ch}.mc .bx{width:fit-content;max-width:100%;box-sizing:border-box}.mc .row>.bx{flex:0 0 100%;max-width:fit-content}@media(max-width:799px){.sd{display:none!important}}`}</style>
       <div className="sd" style={{ display: "none" }}>
         {nav(false)}
       </div>
@@ -2223,7 +2225,7 @@ export default function App() {
         className="mc"
         style={{
           flex: 1,
-          maxWidth: 800,
+          minWidth: 0,
           padding: "0 20px 60px",
           boxSizing: "border-box",
         }}
@@ -2452,7 +2454,7 @@ export default function App() {
           </P>
 
           <H3>Taglines and Signatures</H3>
-          <div
+          <div className="bx"
             style={{
               background: C.pru,
               borderRadius: 12,
@@ -2495,7 +2497,7 @@ export default function App() {
                 paddingLeft: 24,
               }}
             >
-              <div style={{ fontSize: 13, color: C.cad, lineHeight: 1.7 }}>
+              <div className="tx" style={{ fontSize: 13, color: C.cad, lineHeight: 1.7 }}>
                 Three words that do everything a tagline should.{" "}
                 <span style={{ color: C.fro, fontWeight: 500 }}>"Hope"</span>{" "}
                 names the emotional state every Client, family member, and
@@ -3595,7 +3597,7 @@ export default function App() {
           </P>
 
           {/* STEM */}
-          <div
+          <div className="bx"
             style={{
               border: "1px solid " + C.gla,
               borderRadius: 12,
@@ -3628,7 +3630,7 @@ export default function App() {
                   Brand mark font · Logo and wordmark only
                 </div>
               </div>
-              <div style={{ fontSize: 13, color: C.cav, lineHeight: 1.6 }}>
+              <div className="tx" style={{ fontSize: 13, color: C.cav, lineHeight: 1.6 }}>
                 Used exclusively in the Guardian Recovery logo and wordmark.{" "}
                 <strong>Never</strong> use STEM for headlines, body copy, or
                 general typesetting. It is a proprietary brand element, not a
@@ -3638,7 +3640,7 @@ export default function App() {
           </div>
 
           {/* DM Serif Text */}
-          <div
+          <div className="bx"
             style={{
               border: "1px solid " + C.gla,
               borderRadius: 12,
@@ -3701,7 +3703,7 @@ export default function App() {
                 <br />
                 0123456789 !@#$%&amp;*()?.,— <em>(Italic)</em>
               </div>
-              <div style={{ fontSize: 13, color: C.cav, lineHeight: 1.6 }}>
+              <div className="tx" style={{ fontSize: 13, color: C.cav, lineHeight: 1.6 }}>
                 Weights: Regular, Italic. Tighten tracking (–10 to –20) at
                 display sizes. Always sentence case — never all-caps in DM Serif
                 Text.
@@ -3710,7 +3712,7 @@ export default function App() {
           </div>
 
           {/* IBM Plex Sans */}
-          <div
+          <div className="bx"
             style={{
               border: "1px solid " + C.gla,
               borderRadius: 12,
@@ -3776,7 +3778,7 @@ export default function App() {
                   );
                 })}
               </div>
-              <div style={{ fontSize: 13, color: C.cav, lineHeight: 1.6 }}>
+              <div className="tx" style={{ fontSize: 13, color: C.cav, lineHeight: 1.6 }}>
                 Use weight variation for hierarchy — never introduce additional
                 typefaces. All-caps settings use expanded tracking (+50 to
                 +100).
@@ -4998,6 +5000,7 @@ export default function App() {
           <H3>Need Custom Creative Work?</H3>
           <a
             href="https://creative.guardianrecovery.com/"
+            className="bx"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -5032,6 +5035,7 @@ export default function App() {
                   Creative Request Portal
                 </div>
                 <div
+                  className="tx"
                   style={{ fontSize: 13, color: C.cav, lineHeight: 1.55 }}
                 >
                   Submit a request for custom design, copywriting,
