@@ -205,6 +205,12 @@ Subsequent references may use the facility name alone once Guardian Recovery con
 | GR - Plymouth House | Plymouth, NH | Detox, Res, PHP, Virtual |
 | Bishop Health - Bangor | Bangor, ME | MH IOP, Virtual |
 
+#### Wisconsin
+
+| Facility | City | Services |
+|---|---|---|
+| GR - Wisconsin | Kenosha, WI | IOP, Virtual Detox (coming soon), Residential (coming soon) |
+
 #### Colorado, Texas, Virtual
 
 | Facility | Location | Services |
