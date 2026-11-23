@@ -475,9 +475,58 @@ function Bx(props) {
   );
 }
 
+// WCAG relative luminance and contrast, used to pick readable swatch text.
+function hexRgb(hex) {
+  var n = parseInt(hex.slice(1), 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+}
+function lum(rgb) {
+  var c = rgb.map(function (v) {
+    v /= 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+}
+function contrast(a, b) {
+  var la = lum(a),
+    lb = lum(b);
+  return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+}
+function mix(fg, bg, t) {
+  return fg.map(function (v, i) {
+    return Math.round(v * t + bg[i] * (1 - t));
+  });
+}
+// Text colors for a swatch: Midnight or white (whichever reads better), with
+// a softer tone for secondary lines that still keeps WCAG AA (4.5:1).
+function swInk(hex) {
+  var bg = hexRgb(hex);
+  var dark = hexRgb(C.mid),
+    white = [255, 255, 255];
+  var ink = contrast(dark, bg) >= contrast(white, bg) ? dark : white;
+  // Mid-tones (e.g. Sage 600) where neither reaches AA: fall back to black.
+  if (contrast(ink, bg) < 4.5 && contrast([0, 0, 0], bg) > contrast(ink, bg))
+    ink = [0, 0, 0];
+  var soft = ink;
+  for (var t = 0.7; t <= 1; t += 0.05) {
+    var m = mix(ink, bg, t);
+    if (contrast(m, bg) >= 4.5) {
+      soft = m;
+      break;
+    }
+  }
+  var rgb = function (a) {
+    return "rgb(" + a.join(",") + ")";
+  };
+  return { main: rgb(ink), soft: rgb(soft) };
+}
+
 function Sw(props) {
+  var ink = swInk(props.hex);
   var b =
-    props.hex === C.fro || props.hex === C.smo ? "1px solid " + C.gla : "none";
+    props.hex === C.fro || props.hex === C.smo || props.hex === C.she
+      ? "1px solid " + C.gla
+      : "none";
   return (
     <div
       style={{
@@ -493,7 +542,7 @@ function Sw(props) {
         style={{
           fontSize: 11,
           fontWeight: 500,
-          color: props.light ? "#fff" : C.mid,
+          color: ink.main,
         }}
       >
         {props.name}
@@ -502,7 +551,7 @@ function Sw(props) {
         <div
           style={{
             fontSize: 10,
-            color: props.light ? C.cad : C.bat,
+            color: ink.soft,
             marginTop: 1,
           }}
         >
@@ -513,7 +562,7 @@ function Sw(props) {
         style={{
           fontSize: 9,
           fontFamily: "monospace",
-          color: props.light ? C.cad : C.bat,
+          color: ink.soft,
           marginTop: 3,
         }}
       >
@@ -2175,7 +2224,7 @@ export default function App() {
           </div>
         </div>
       )}
-      <style>{`@media(min-width:800px){.sd{display:block!important}.hb{display:none!important}.mc{margin-left:290px!important}}.mc p,.mc li,.mc blockquote,.mc .tx{max-width:75ch}.mc .bx{width:fit-content;max-width:100%;box-sizing:border-box}.mc .row>.bx{flex:0 0 100%;max-width:fit-content}@media(max-width:799px){.sd{display:none!important}}`}</style>
+      <style>{`@media(min-width:800px){.sd{display:block!important}.hb{display:none!important}.mc{margin-left:290px!important}}.mc p,.mc li,.mc blockquote,.mc .tx{max-width:75ch}.mc .bx{width:fit-content;max-width:100%;box-sizing:border-box}.mc .row>.bx{flex:0 0 100%;max-width:fit-content}@media(max-width:599px){.mc .pg{grid-template-columns:repeat(2,1fr)!important}}@media(max-width:799px){.sd{display:none!important}}`}</style>
       <div className="sd" style={{ display: "none" }}>
         {nav(false)}
       </div>
@@ -3404,7 +3453,7 @@ export default function App() {
         <Sec id="color" pn="II" t="Color and Brand Palette">
           <H3>Primary</H3>
           <Row>
-            <Sw hex={C.mid} name="Midnight" sub="Primary dark" light={true} />
+            <Sw hex={C.mid} name="Midnight" sub="Primary dark" />
             <Sw hex={C.gam} name="Gambodge" sub="Brand accent" />
           </Row>
           <H3>Service Line Accents</H3>
@@ -3425,6 +3474,7 @@ export default function App() {
               {
                 name: "Cerulean",
                 hex: C.cer,
+                ink: C.cer,
                 svc: "Adult SUD",
                 sig: "Freedom to live.",
                 evoke:
@@ -3433,6 +3483,7 @@ export default function App() {
               {
                 name: "Pacific",
                 hex: C.pac,
+                ink: C.p9,
                 svc: "Adult Mental Health",
                 sig: "Freedom to feel.",
                 evoke:
@@ -3441,6 +3492,7 @@ export default function App() {
               {
                 name: "Sage",
                 hex: C.sag,
+                ink: C.s7,
                 svc: "Adolescent",
                 sig: "Freedom to grow.",
                 evoke:
@@ -3463,7 +3515,7 @@ export default function App() {
                       style={{
                         fontSize: 14,
                         fontWeight: 700,
-                        color: s.hex,
+                        color: s.ink,
                         marginBottom: 1,
                       }}
                     >
@@ -3507,10 +3559,10 @@ export default function App() {
             {[
               ["50", C.c50],
               ["200", C.c2],
-              ["400", C.c4, 1],
-              ["600", C.cer, 1],
-              ["700", C.c7, 1],
-              ["900", C.c9, 1],
+              ["400", C.c4],
+              ["600", C.cer],
+              ["700", C.c7],
+              ["900", C.c9],
             ].map(function (s) {
               return (
                 <Sw
@@ -3518,7 +3570,6 @@ export default function App() {
                   hex={s[1]}
                   name={s[0]}
                   sub={s[0] === "600" ? "Primary" : ""}
-                  light={!!s[2]}
                 />
               );
             })}
@@ -3528,10 +3579,10 @@ export default function App() {
             {[
               ["50", C.p50],
               ["200", C.p2],
-              ["400", C.p4, 1],
-              ["600", C.pac, 1],
-              ["700", C.p7, 1],
-              ["900", C.p9, 1],
+              ["400", C.p4],
+              ["600", C.pac],
+              ["700", C.p7],
+              ["900", C.p9],
             ].map(function (s) {
               return (
                 <Sw
@@ -3539,7 +3590,6 @@ export default function App() {
                   hex={s[1]}
                   name={s[0]}
                   sub={s[0] === "600" ? "Primary" : ""}
-                  light={!!s[2]}
                 />
               );
             })}
@@ -3549,10 +3599,10 @@ export default function App() {
             {[
               ["50", C.s50],
               ["200", C.s2],
-              ["400", C.s4, 1],
-              ["600", C.sag, 1],
-              ["700", C.s7, 1],
-              ["900", C.s9, 1],
+              ["400", C.s4],
+              ["600", C.sag],
+              ["700", C.s7],
+              ["900", C.s9],
             ].map(function (s) {
               return (
                 <Sw
@@ -3560,7 +3610,6 @@ export default function App() {
                   hex={s[1]}
                   name={s[0]}
                   sub={s[0] === "600" ? "Primary" : ""}
-                  light={!!s[2]}
                 />
               );
             })}
@@ -3571,7 +3620,7 @@ export default function App() {
               hex={C.pru}
               name="Prussian"
               sub="Interface accent"
-              light={true}
+             
             />
             <Sw hex={C.fro} name="Frost" sub="Primary light bg" />
             <Sw hex={C.she} name="Shell" sub="Soft neutral bg" />
@@ -3581,10 +3630,10 @@ export default function App() {
           </Row>
           <H3>Text Colors</H3>
           <Row>
-            <Sw hex={C.eer} name="Eerie" sub="Primary text" light={true} />
-            <Sw hex={C.cav} name="Cave" sub="Secondary text" light={true} />
-            <Sw hex={C.bat} name="Battleship" sub="Tertiary" light={true} />
-            <Sw hex={C.cad} name="Cadet" sub="Text accent" light={true} />
+            <Sw hex={C.eer} name="Eerie" sub="Primary text" />
+            <Sw hex={C.cav} name="Cave" sub="Secondary text" />
+            <Sw hex={C.bat} name="Battleship" sub="Tertiary" />
+            <Sw hex={C.cad} name="Cadet" sub="Text accent" />
           </Row>
           <Bt>Color Reference Sheet</Bt>
         </Sec>
@@ -3946,18 +3995,21 @@ export default function App() {
                 note: "Primary standalone mark",
                 img: img("icons/sunrise.svg"),
                 slug: "sunrise",
+                bg: C.smo,
               },
               {
                 label: "Sunrise (Gambodge)",
                 note: "On Midnight / dark backgrounds",
                 img: img("icons/sunrise-gambodge.svg"),
                 slug: "sunrise-gambodge",
+                bg: C.mid,
               },
               {
                 label: "Sunrise (Frost)",
                 note: "Knockout / inverted",
                 img: img("icons/sunrise-frost.svg"),
                 slug: "sunrise-frost",
+                bg: C.mid,
               },
             ].map(function (i) {
               return (
@@ -3977,7 +4029,7 @@ export default function App() {
                       width: 56,
                       height: 56,
                       borderRadius: "50%",
-                      background: C.smo,
+                      background: i.bg,
                       margin: "0 auto 8px",
                       display: "flex",
                       alignItems: "center",
@@ -4140,13 +4192,11 @@ export default function App() {
           </Cd>
 
           <H4>Photography in Practice</H4>
-          <div
+          <div className="pg"
             style={{
               display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fill, minmax(min(180px, 45%), 1fr))",
+              gridTemplateColumns: "repeat(3, 1fr)",
               gap: 12,
-              maxWidth: 720,
               marginBottom: 16,
             }}
           >
