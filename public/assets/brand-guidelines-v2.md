@@ -470,10 +470,7 @@ The core brand marks used independently when Guardian Recovery context is establ
 
 ### Service Line Icons
 
-- **SUD Icon** — Adult SUD, Cerulean
-- **Mental Health Icon** — Adult Mental Health, Pacific
-- **Adolescent Icon** — Adolescent, Sage
-- **Virtual Icon** — Virtual, Prussian
+**Coming soon.** Dedicated icons for each service line — Adult SUD, Adult Mental Health, Adolescent and Virtual — are in development and will be added here when they're ready.
 
 *Condition and program sub-icons will be introduced in V3.*
 
