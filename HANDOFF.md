@@ -7,7 +7,7 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 
 ## Current State (keep this section current — overwrite, don't append)
 
-**Last updated:** 2026-11-22
+**Last updated:** 2026-11-23
 
 - **App:** Single-file React/Vite SPA brand guide — logic lives in `src/App.jsx` (~5,000 lines).
 - **Supporting modules:** `src/links.js` (download URLs, `LETTERHEAD` map, `toDirectDownload()`), `src/images.js`, `src/index.css`.
@@ -34,7 +34,7 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 - _Add items here as they come up._
 
 ### Open Questions / Decisions Pending
-- **18th location / state count:** 17 facilities are open (`FACS`). The 18th is in Kenosha, WI, coming online soon, so copy says 18 (user's call, 2026-11-22). Kenosha is not yet in `FACS` or the architecture tables. When it opens: add it (logo, letterhead, region), and decide whether "six states" becomes seven — Wisconsin isn't in any state list yet.
+- **18th location / state count:** 17 facilities are open (`FACS`). The 18th is in Kenosha, WI, coming online soon, so copy says 18 (user's call, 2026-11-22). Kenosha is in the Brand Architecture tables as "GR - Wisconsin" under a new Wisconsin heading (2026-11-23) but not yet in `FACS` or `REGIONS`. When it opens: add it there (logo, letterhead, region), and decide whether "six states" becomes seven — Wisconsin isn't in any state list yet.
 
 ---
 
@@ -51,6 +51,15 @@ Template — copy this for each new session:
 **Verification:** lint / build / browser check results
 **Left unfinished / next steps:** anything the next session must pick up
 -->
+
+### 2026-11-23 — Wisconsin added to Brand Architecture
+**Goal:** Add Wisconsin and the Kenosha facility to the facility list (user request).
+**Changes** (each in `src/App.jsx` and `public/assets/brand-guidelines-v2.md`):
+- Brand Architecture: new "Wisconsin" heading and table after New England, one row: "GR - Wisconsin", "Kenosha, WI", "IOP, Virtual Detox (coming soon), Residential (coming soon)".
+- `HANDOFF.md` — this entry; open question updated.
+**Decisions:** Table only. `FACS`, `REGIONS`, location counts and "six states" copy left unchanged (copy already counts Kenosha as the 18th location; the state-count question is still open).
+**Verification:** `npm run build` passes.
+**Left unfinished / next steps:** PR opened for Marc to review before go-live. The live site is not auto-deployed from GitHub; it needs a build and upload after merge.
 
 ### 2026-11-20 → 2026-11-22 — Copy edits (Brand Story)
 **Goal:** Copy updates on branch `copy-edits-2026-11-20`.
