@@ -25,10 +25,11 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 - **`npm run lint` doesn't exist.** `package.json` has no `lint` script and ESLint isn't in its devDependencies, despite `eslint.config.js` and `CLAUDE.md`. `npm run build` is the only working check for now.
 - **Stale copies in `public/`.** `public/app.jsx` is an old (~4,300-line) copy of `App.jsx` from the initial commit, and `public/assets/index-*.js` is an old build bundle. Neither is the live source — edit `src/App.jsx`. Ask before deleting them.
 - **Install dependencies first.** `node_modules` isn't present in a fresh checkout — run `npm install` before `npm run dev` / `build`. `npm install` rewrites `package-lock.json`; restore it (`git checkout -- package-lock.json`) unless a dependency change is intended.
+- **Layout width rules live in the global `<style>` tag** in `src/App.jsx` (search `.mc p`). `.tx` caps text at 75ch; `.bx` makes a bordered box shrink to fit its content; `.row` (set by `Row()`) makes `.bx` children stack one per line. New boxes or text blocks need these classes to follow the same rules.
 - **Copy lives in two places.** Brand copy in `src/App.jsx` is duplicated in the downloadable `public/assets/brand-guidelines-v2.md` (served via `GUIDE_MD` in `src/links.js`). Update both when changing copy.
 
 ### In Progress
-- **Copy edits** on branch `copy-edits-2026-11-20` (not yet committed/pushed as of 2026-11-22). See session log.
+- **UI updates** on branch `ui-updates-2026-11-23` — pushed, PR open as of 2026-11-23. See session log.
 
 ### Next Up / Backlog
 - _Add items here as they come up._
@@ -51,6 +52,20 @@ Template — copy this for each new session:
 **Verification:** lint / build / browser check results
 **Left unfinished / next steps:** anything the next session must pick up
 -->
+
+### 2026-11-23 — Wide layout: full-width main, capped text, fit-to-content boxes
+**Goal:** UI updates on branch `ui-updates-2026-11-23`.
+**Changes** (all `src/App.jsx`):
+- `<main>`: removed `maxWidth: 800` (added `minWidth: 0`) so the content column fills the space right of the sidebar.
+- Global style tag: `.mc p, .mc li, .mc blockquote, .mc .tx { max-width: 75ch }` keeps line length readable.
+- `tx` class on text inside bordered boxes: `Cd` body, tagline explanation, three typography cards, Creative Request Portal.
+- `bx` class (`width: fit-content; max-width: 100%`) on `Cd`, the blue tagline box, the typography cards and the Creative Request box. `row` class on `Row()` with `.row > .bx { flex: 0 0 100%; max-width: fit-content }` so row cards stack instead of going 2-up.
+- Photography and Imagery: added "Photography in Practice" — a 6-tile placeholder grid (flat palette color + image icon + shot label) after Core Principles. Full column width, 3 across (`.pg` class; 2 across under 600px). Now filled with six photos from guardianrecovery.com in `src/assets/photos/practice/` (webp; placeholder still renders if a file is missing), each with a caption, plus a small note that these are the images currently in use. Labels changed: "Diverse portrait" → "Portrait", "Family moment" → "Peer conversation" (no family photo on the site). Skipped headshots, cutout program heroes, Instagram, and an AI-generated Immersion image. Not in `brand-guidelines-v2.md` (visual only).
+- Color chips (`Sw`): text color now computed per swatch (`swInk`) — Midnight or white, black fallback for mid-tones; secondary lines softened but kept ≥4.5:1. All 30 chips pass AA (min 4.52). Removed the `light` prop. Service line cards in Color use darker title inks (Pacific 900, Sage 700).
+- Iconography: `src/assets/icons/` was missing, so all 7 icons were broken. Added sunrise icons (rays + arc from `nav-logo.svg`; Prussian / Gambodge / Frost; Gambodge and Frost shown on Midnight) and service line icons (same sunrise in Cerulean, Pacific, Sage, Prussian — no separate artwork exists; replace files with real art if designed).
+**Decisions:** Tables, grids and headings stay full width. User chose to leave the low-contrast Mental Health / Adolescent titles on the Iconography service line cards. Pull quotes (`Q`) run ~680px because of larger serif type; left as is.
+**Verification:** `npm run build` passes. Browser at 1600px: no text wider than ~660px, boxes 623–881px with no large empty space, no horizontal scroll. At 375px nothing overflows.
+**Left unfinished / next steps:** Review and merge the PR. Real service line icon artwork, if designed, replaces the sunrise stand-ins in `src/assets/icons/`.
 
 ### 2026-11-23 — Wisconsin added to Brand Architecture
 **Goal:** Add Wisconsin and the Kenosha facility to the facility list (user request).
@@ -76,7 +91,7 @@ Template — copy this for each new session:
 - `HANDOFF.md` — this entry; Current State updated (Node install, copy-in-two-places gotcha, open questions).
 **Decisions:** User chose "18 locations including virtual" (not 23) as the total for boilerplate/fact-sheet copy. Stale `public/app.jsx` and `public/assets/index-*.js` left untouched.
 **Verification:** `npm run build` passes; each edit confirmed in the browser via `npm run dev`.
-**Left unfinished / next steps:** Commit, push and open a PR for the branch. Resolve the two open questions above.
+**Left unfinished / next steps:** Merged as PR #3. Resolve the open question above (Kenosha, WI).
 
 ### 2026-11-20 — Gotchas added
 **Goal:** Capture non-obvious pitfalls found while surveying the repo.
