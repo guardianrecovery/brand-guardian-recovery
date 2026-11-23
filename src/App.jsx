@@ -2861,6 +2861,17 @@ export default function App() {
               ],
             ]}
           />
+          <H4>Wisconsin</H4>
+          <Tb
+            h={["Facility", "City", "Services"]}
+            r={[
+              [
+                "GR - Wisconsin",
+                "Kenosha, WI",
+                "IOP, Virtual Detox (coming soon), Residential (coming soon)",
+              ],
+            ]}
+          />
           <H4>Colorado, Texas, Virtual</H4>
           <Tb
             h={["Facility", "Location", "Services"]}
