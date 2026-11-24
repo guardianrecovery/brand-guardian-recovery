@@ -29,7 +29,7 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 - **Copy lives in two places.** Brand copy in `src/App.jsx` is duplicated in the downloadable `public/assets/brand-guidelines-v2.md` (served via `GUIDE_MD` in `src/links.js`). Update both when changing copy.
 
 ### In Progress
-- **UI edits** on branch `ui-edits-2026-11-24` — committed locally, not pushed. See session log.
+- **UI edits** on branch `ui-edits-2026-11-24` — pushed, PR open as of 2026-11-24. See session log.
 
 ### Next Up / Backlog
 - **Service line icon artwork.** Tiles are hidden behind `SHOW_SERVICE_LINE_ICONS = false` in `src/App.jsx`. When real icons exist: replace the files in `src/assets/icons/` (`icon-sud`, `icon-mh`, `icon-adol`, `icon-virtual`), set the flag to `true`, restore the icon list in `brand-guidelines-v2.md`, and consider darkening the Mental Health / Adolescent tile titles (low contrast).
@@ -62,7 +62,7 @@ Template — copy this for each new session:
 - `public/assets/brand-guidelines-v2.md` — Logo Misuse list added.
 **Decisions:** Callout boxes are repeated inline styles, not a shared component (only three so far).
 **Verification:** `npm run build` passes. Browser: desktop and 375px checked; no horizontal scroll at 375px.
-**Left unfinished / next steps:** Push and open PR.
+**Left unfinished / next steps:** Review and merge the PR.
 
 ### 2026-11-23 — README rewritten for non-technical readers
 **Goal:** Make `README.md` readable for staff, not just developers.
