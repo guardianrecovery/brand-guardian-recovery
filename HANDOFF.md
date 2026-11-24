@@ -7,7 +7,7 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 
 ## Current State (keep this section current — overwrite, don't append)
 
-**Last updated:** 2026-11-23
+**Last updated:** 2026-11-24
 
 - **App:** Single-file React/Vite SPA brand guide — logic lives in `src/App.jsx` (~5,000 lines).
 - **Supporting modules:** `src/links.js` (download URLs, `LETTERHEAD` map, `toDirectDownload()`), `src/images.js`, `src/index.css`.
@@ -29,7 +29,7 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 - **Copy lives in two places.** Brand copy in `src/App.jsx` is duplicated in the downloadable `public/assets/brand-guidelines-v2.md` (served via `GUIDE_MD` in `src/links.js`). Update both when changing copy.
 
 ### In Progress
-- **Iconography updates** on branch `iconography-updates-2026-11-23` — pushed, PR open as of 2026-11-23. See session log.
+- **UI edits** on branch `ui-edits-2026-11-24` — committed locally, not pushed. See session log.
 
 ### Next Up / Backlog
 - **Service line icon artwork.** Tiles are hidden behind `SHOW_SERVICE_LINE_ICONS = false` in `src/App.jsx`. When real icons exist: replace the files in `src/assets/icons/` (`icon-sud`, `icon-mh`, `icon-adol`, `icon-virtual`), set the flag to `true`, restore the icon list in `brand-guidelines-v2.md`, and consider darkening the Mental Health / Adolescent tile titles (low contrast).
@@ -52,6 +52,17 @@ Template — copy this for each new session:
 **Verification:** lint / build / browser check results
 **Left unfinished / next steps:** anything the next session must pick up
 -->
+
+### 2026-11-24 — Callout boxes, Logo Misuse, phone fix
+**Goal:** UI edits on branch `ui-edits-2026-11-24`.
+**Changes:**
+- `src/App.jsx` — Light Gambodge callout boxes (`C.gam + "1F"` fill, `C.gam + "66"` border, radius 10, `bx tx`) around three lines: Voice "Never: Addict…" (italic, Midnight), Voice "SEO exception…" and Logos "Never reproduce the logo…" (Cavern; was light gray, too faint on yellow).
+- `src/App.jsx` — New "Logo Misuse" sub-section after the logo warning box: `LogoMisuse` grid (`.pg`, 3 across / 2 on phone) with 1 correct + 5 don't tiles (retyped in Georgia, skewed, rotated, drop shadow, off-palette recolor). Uses `gr-horizontal.svg?raw` inline via `grHorizontalSvg()`, which strips the white rect, crops the margin, and can swap colors. `DONT_RED` (#B3261E) is used only for the ✕ labels and is not a brand color.
+- `src/App.jsx` — Phone spill fix: Typography type-scale rows (`.ts`) now wrap under 600px (label + spec on top, sample below). Page was 447px wide at 375px.
+- `public/assets/brand-guidelines-v2.md` — Logo Misuse list added.
+**Decisions:** Callout boxes are repeated inline styles, not a shared component (only three so far).
+**Verification:** `npm run build` passes. Browser: desktop and 375px checked; no horizontal scroll at 375px.
+**Left unfinished / next steps:** Push and open PR.
 
 ### 2026-11-23 — README rewritten for non-technical readers
 **Goal:** Make `README.md` readable for staff, not just developers.

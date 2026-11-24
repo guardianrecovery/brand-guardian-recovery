@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, createContext, useContext } from "react";
 import { img } from "./images";
+import grHorizontalRaw from "./assets/logos/gr-horizontal.svg?raw";
 import {
   GUIDE_PDF, GUIDE_MD,
   MASTER_LOGO_PACKAGE, LOGO_USAGE_GUIDE, ALL_PROGRAM_LOGOS, ALL_FACILITY_LOGOS,
@@ -267,6 +268,116 @@ var _openPreview = function () {};
 // For logo previews, always shows the SVG from src/assets
 function logoPreview(slug) {
   return img("logos/" + slug + ".svg");
+}
+
+// Primary Horizontal logo as inline SVG for the Logo Misuse examples.
+// The white background rect is removed so effects like drop shadows
+// follow the artwork, not a box.
+function grHorizontalSvg(opts) {
+  var o = opts || {};
+  // Default viewBox crops the file's built-in margin (artwork is 65,65 516x70).
+  var s = grHorizontalRaw
+    .replace(/<rect[^>]*\/>/, "")
+    .replace(/width="645" height="200"/, 'width="100%" height="100%"')
+    .replace(/viewBox="[^"]*"/, 'viewBox="' + (o.viewBox || "61 61 524 78") + '"');
+  if (o.ink) s = s.split("#004860").join(o.ink);
+  if (o.accent) s = s.split("#FFAD00").join(o.accent);
+  return { __html: s };
+}
+
+// "Don't" marker color. Not a brand color; used only for misuse labels.
+var DONT_RED = "#B3261E";
+
+var LOGO_MISUSE = [
+  { key: "ok", ok: true, label: "Correct", note: "Supplied file, unchanged" },
+  { key: "type", label: "Don't retype it", note: "Never set the name in another typeface" },
+  { key: "skew", label: "Don't skew or stretch", note: "Keep original proportions", style: { transform: "skewX(-20deg)" } },
+  { key: "rotate", label: "Don't rotate", note: "Keep the logo level", style: { transform: "rotate(-14deg)" } },
+  { key: "fx", label: "Don't add effects", note: "No shadows, glows, or outlines", style: { filter: "drop-shadow(4px 5px 3px rgba(0,0,0,0.45))" } },
+  { key: "color", label: "Don't recolor", note: "Use only approved palette colors", ink: "#7B2D8E", accent: "#3FB34F" },
+];
+
+function LogoMisuse() {
+  return (
+    <div
+      className="pg"
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: 12,
+        marginBottom: 16,
+      }}
+    >
+      {LOGO_MISUSE.map(function (m) {
+        return (
+          <figure
+            key={m.key}
+            style={{
+              margin: 0,
+              border: "1px solid " + C.gla,
+              borderRadius: 10,
+              overflow: "hidden",
+              background: "#fff",
+            }}
+          >
+            <div
+              style={{
+                height: 120,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "0 10%",
+                borderBottom: "1px solid " + C.gla,
+              }}
+            >
+              {m.key === "type" ? (
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, width: "100%" }}>
+                  <div
+                    style={{ width: 26, height: 26, flex: "0 0 26px" }}
+                    dangerouslySetInnerHTML={grHorizontalSvg({ viewBox: "63 63 73 73" })}
+                  />
+                  <div
+                    style={{
+                      fontFamily: "Georgia, 'Times New Roman', serif",
+                      fontSize: 13,
+                      lineHeight: 1.1,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    <span style={{ color: C.pru, fontWeight: 700 }}>Guardian</span>{" "}
+                    <span style={{ color: C.gam, fontStyle: "italic" }}>Recovery</span>
+                  </div>
+                </div>
+              ) : (
+                <div
+                  role="img"
+                  aria-label={"Guardian Recovery logo: " + m.label}
+                  style={Object.assign({ width: "100%", aspectRatio: "524 / 78" }, m.style)}
+                  dangerouslySetInnerHTML={grHorizontalSvg({ ink: m.ink, accent: m.accent })}
+                />
+              )}
+            </div>
+            <figcaption style={{ padding: "10px 14px 12px" }}>
+              <div
+                style={{
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: m.ok ? C.sag : DONT_RED,
+                  marginBottom: 2,
+                }}
+              >
+                {m.ok ? "✓ " : "✕ "}
+                {m.label}
+              </div>
+              <div style={{ fontSize: 12, color: C.cav, lineHeight: 1.5 }}>
+                {m.note}
+              </div>
+            </figcaption>
+          </figure>
+        );
+      })}
+    </div>
+  );
 }
 
 // Download URL resolver — uses links.js (Google Drive or external URLs)
@@ -2228,7 +2339,7 @@ export default function App() {
           </div>
         </div>
       )}
-      <style>{`@media(min-width:800px){.sd{display:block!important}.hb{display:none!important}.mc{margin-left:290px!important}}.mc p,.mc li,.mc blockquote,.mc .tx{max-width:75ch}.mc .bx{width:fit-content;max-width:100%;box-sizing:border-box}.mc .row>.bx{flex:0 0 100%;max-width:fit-content}@media(max-width:599px){.mc .pg{grid-template-columns:repeat(2,1fr)!important}}@media(max-width:799px){.sd{display:none!important}}`}</style>
+      <style>{`@media(min-width:800px){.sd{display:block!important}.hb{display:none!important}.mc{margin-left:290px!important}}.mc p,.mc li,.mc blockquote,.mc .tx{max-width:75ch}.mc .bx{width:fit-content;max-width:100%;box-sizing:border-box}.mc .row>.bx{flex:0 0 100%;max-width:fit-content}@media(max-width:599px){.mc .pg{grid-template-columns:repeat(2,1fr)!important}.mc .ts{flex-wrap:wrap;row-gap:6px!important}.mc .ts>div:nth-child(2){order:3;flex:0 0 100%!important;min-width:0}.mc .ts>div:nth-child(3){flex:1 1 0!important;min-width:0!important}}@media(max-width:799px){.sd{display:none!important}}`}</style>
       <div className="sd" style={{ display: "none" }}>
         {nav(false)}
       </div>
@@ -2741,10 +2852,23 @@ export default function App() {
             in all communications, reflecting its hospitality-centered model.
             All other facilities use "Client."
           </P>
-          <P it={true}>
+          <div
+            className="bx tx"
+            style={{
+              background: C.gam + "1F",
+              border: "1px solid " + C.gam + "66",
+              borderRadius: 10,
+              padding: "12px 18px",
+              marginBottom: 12,
+              fontSize: 14,
+              color: C.mid,
+              lineHeight: 1.7,
+              fontStyle: "italic",
+            }}
+          >
             Never: "Addict," "alcoholic" as a noun, "substance abuser,"
             "junkie," or any pejorative.
-          </P>
+          </div>
 
           <H3>Approved Terminology</H3>
           <Tb
@@ -2787,10 +2911,22 @@ export default function App() {
               ],
             ]}
           />
-          <P mu={true}>
+          <div
+            className="bx tx"
+            style={{
+              background: C.gam + "1F",
+              border: "1px solid " + C.gam + "66",
+              borderRadius: 10,
+              padding: "12px 18px",
+              marginBottom: 12,
+              fontSize: 14,
+              color: C.cav,
+              lineHeight: 1.7,
+            }}
+          >
             SEO exception: terms like "drug rehab" or "detox center" acceptable
             in ad copy matching search intent.
-          </P>
+          </div>
 
           <H3>Compliance Language</H3>
           <P>
@@ -3379,10 +3515,29 @@ export default function App() {
               ["Sunrise Icon", "24px", "Proportional to icon height"],
             ]}
           />
-          <P mu={true}>
+          <div
+            className="bx tx"
+            style={{
+              background: C.gam + "1F",
+              border: "1px solid " + C.gam + "66",
+              borderRadius: 10,
+              padding: "12px 18px",
+              marginBottom: 12,
+              fontSize: 14,
+              color: C.cav,
+              lineHeight: 1.7,
+            }}
+          >
             Never reproduce the logo in any typeface. Never skew, rotate, add
             effects, or recolor outside the approved palette.
+          </div>
+
+          <H3>Logo Misuse</H3>
+          <P>
+            Always use the supplied logo files as they are. These examples use
+            the Primary Horizontal logo to show what not to do.
           </P>
+          <LogoMisuse />
 
           <H3>Service Line Logos</H3>
           <LogoGrid
@@ -3913,6 +4068,7 @@ export default function App() {
               return (
                 <div
                   key={row[0]}
+                  className="ts"
                   style={{
                     display: "flex",
                     alignItems: "baseline",

@@ -322,6 +322,16 @@ The logo requires a minimum clear zone on all sides equal to the cap-height of t
 
 *Never reproduce the logo in any typeface. Never skew, rotate, add effects, or recolor outside the approved palette.*
 
+### Logo Misuse
+
+Always use the supplied logo files as they are. Examples of what not to do, shown with the Primary Horizontal logo:
+
+- **Don't retype it:** never set the name in another typeface.
+- **Don't skew or stretch:** keep original proportions.
+- **Don't rotate:** keep the logo level.
+- **Don't add effects:** no shadows, glows, or outlines.
+- **Don't recolor:** use only approved palette colors.
+
 ### Service Line Logos
 
 - Adult SUD (Cerulean accent)
