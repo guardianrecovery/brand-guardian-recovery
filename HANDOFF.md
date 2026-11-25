@@ -10,7 +10,7 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 **Last updated:** 2026-11-25
 
 - **Hosting:** Cloudflare Workers (static assets), Guardian Recovery account (`693ba284ff035a8f489710a0d8025f6c`), worker `brand-guardian-recovery`, custom domain `brand.guardianrecovery.com`. Config in `wrangler.jsonc`; `workers.dev` and preview URLs are off. Deploy by hand with `npm run deploy` (needs `wrangler login`). Moved off the DigitalOcean server (`159.65.217.5`) on 2026-11-25; that server is untouched and can be retired. Rollback: recreate the proxied A record `brand` → `159.65.217.5` and remove the Worker custom domain.
-- **CI/CD:** Workers Builds not connected yet. Connect in the dashboard (Workers & Pages → `brand-guardian-recovery` → Settings → Builds): repo `guardianrecovery/brand-guardian-recovery`, branch `main`, root `/`, build `npm run build`, deploy `npx wrangler deploy`, build variable `NODE_VERSION=22`. Until then, merging to `main` does not deploy.
+- **CI/CD:** Workers Builds connected 2026-11-25 (Workers & Pages → `brand-guardian-recovery` → Settings → Builds): repo `guardianrecovery/brand-guardian-recovery`, branch `main`, root `/`, build `npm run build`, deploy `npx wrangler deploy`, build variable `NODE_VERSION=22`. Merging to `main` deploys to brand.guardianrecovery.com. Previews are on (`npx wrangler preview` for other branches), which uses build minutes; turn off in the Builds settings if unwanted.
 
 - **App:** Single-file React/Vite SPA brand guide — logic lives in `src/App.jsx` (~5,000 lines).
 - **Supporting modules:** `src/links.js` (download URLs, `LETTERHEAD` map, `toDirectDownload()`), `src/images.js`, `src/index.css`.
@@ -66,7 +66,7 @@ Template — copy this for each new session:
 - PR #9 merged. Deployed by hand with `npx wrangler deploy` from the branch.
 **Decisions:** Workers with static assets, not Pages. Stale `public/` files excluded, not deleted (user: exclude if not needed). Cloudflare Access for the Executive Resources PIN goes on a path, not the whole site (user) — see the handoff section below.
 **Verification:** `npm run build`, `wrangler deploy --dry-run`; live check: `/` 200 with the new bundle `index-cj8qUm9P.js`, `/assets/brand-guidelines-v2.md` 200 `text/markdown`, `/app.jsx` falls through to `index.html`, workers.dev URL 404.
-**Left unfinished / next steps:** Connect Workers Builds in the dashboard (the build-token step cannot be done through the API). Retire the DigitalOcean server when ready. Executive Resources gate (below).
+**Left unfinished / next steps:** Retire the DigitalOcean server when ready. Executive Resources gate (below). Workers Builds was connected in the dashboard afterwards (the build-token step cannot be done through the API); first build from `main` succeeded and the site stayed up.
 
 ### 2026-11-24 — Callout boxes, Logo Misuse, phone fix
 **Goal:** UI edits on branch `ui-edits-2026-11-24`.
@@ -185,7 +185,7 @@ Template — copy this for each new session:
 
 **Dead ends:** Putting Access in front of the current single-page app protects nothing, because exec content is in the shared JS bundle and there is no path to match.
 
-**How to run/test:** `npm install`, `npm run dev` for local; `npm run build` to check; deploy with `npm run deploy` (wrangler logged in to the Guardian Recovery account, id in `wrangler.jsonc`) or via Workers Builds once connected. Test Access with `curl -sI https://brand.guardianrecovery.com/exec/`.
+**How to run/test:** `npm install`, `npm run dev` for local; `npm run build` to check; deploy with `npm run deploy` (wrangler logged in to the Guardian Recovery account, id in `wrangler.jsonc`) or let Workers Builds deploy on merge to `main`. Test Access with `curl -sI https://brand.guardianrecovery.com/exec/`.
 
 **Open questions:**
 - Who gets access (email domain, specific people)?
