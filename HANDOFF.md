@@ -191,3 +191,41 @@ Template — copy this for each new session:
 - Who gets access (email domain, specific people)?
 - Does the review PIN (`ReviewBlock`) get the same treatment, or stay as is?
 - Is a separate `/exec/` page acceptable, or should it stay inside the single-page app?
+
+---
+
+## Handoff: Cloudflare Workers migration of brand.guardianrecovery.com
+
+**Goal:** Host the brand guide on the Guardian Recovery Cloudflare account at brand.guardianrecovery.com, off the DigitalOcean server, with CI/CD from GitHub via Workers Builds. Done = site served by the Worker, merges to `main` deploy automatically, old server retired.
+
+**State:** Migrated and live (2026-11-25). Only cleanup is left.
+- Worker `brand-guardian-recovery`, account `693ba284ff035a8f489710a0d8025f6c` (wrangler is logged in to three accounts, so `account_id` is pinned in `wrangler.jsonc`). Zone `guardianrecovery.com` is `962533e2644705254ff4daad42a25c56`.
+- Custom domain `brand.guardianrecovery.com` attached; `workers_dev` and `preview_urls` are off.
+- Workers Builds connected by Marc in the dashboard: branch `main`, root `/`, build `npm run build`, deploy `npx wrangler deploy`, `NODE_VERSION=22`, auto-build on. Build for merge commit `b706fc8` succeeded.
+- Marc's decisions: Workers (not Pages); stale `public/app.jsx` and `public/assets/index-DICR2wke.js` excluded from the deploy, not deleted; Access PIN goes on a path, not the whole site (separate task, see the Executive Resources gate section).
+- Not checked: whether the old DigitalOcean server served anything other than the SPA (extra paths, redirects, other hostnames). I never inspected that server.
+
+**Files touched:** `wrangler.jsonc`, `public/.assetsignore`, `package.json`, `package-lock.json`, `HANDOFF.md`. Read: `src/App.jsx`, `src/links.js`, `vite.config.js`, `index.html`, `public/`.
+
+**Changes:** PRs #9 (deploy config) and #10 (HANDOFF) merged into `main`; `main` is at `b706fc8` and the working tree is clean. DNS: deleted the proxied A record `brand` → `159.65.217.5` (record id `73ef1d9b66f16f01e7f1f0a76826cd3b`). First deploy was by hand with `npx wrangler deploy`.
+
+**Failures:** None blocking. The Workers Builds build token cannot be created through the Cloudflare API from Claude Code (needs an API token id and secret), so Marc connected the repo in the dashboard. Local `npm install` warned that `esbuild` and `workerd` install scripts were skipped (npm 11); `wrangler deploy` and `--dry-run` worked anyway, but `wrangler dev` may not.
+
+**Next steps:**
+1. Marc decides on previews: the dashboard turned them on (`npx wrangler preview` for non-`main` branches), which uses build minutes. Turn off in Settings → Builds if unwanted.
+2. Retire the DigitalOcean server (`159.65.217.5`) once Marc is sure nothing else uses it. Check first for other sites or DNS records pointing at it.
+3. Optional: delete the stale `public/` files (needs Marc's OK) and the `.assetsignore` entries with them.
+4. Optional: update `CLAUDE.md` (it says `npm run lint` exists and "no CSS files"; neither is true, see HANDOFF.md gotchas) and add the deploy notes.
+5. Executive Resources gate: separate section above.
+
+**Decisions:** Workers with static assets because Cloudflare points new static sites there, and the account already runs about 70 Workers. Delete the A record and deploy right after, accepting a gap of seconds, because the custom-domain deploy fails while the record exists. `account_id` committed in `wrangler.jsonc` because it is not a secret and wrangler has several accounts.
+
+**Dead ends:** Creating the Workers Builds build token through the API (needs a pre-made API token). Looking for an existing reusable build token: none visible to this login.
+
+**How to run/test:** `npm install`, `npm run build`, `npx wrangler deploy --dry-run`, `npm run deploy` (needs `wrangler login`). Check the live site: `curl -s https://brand.guardianrecovery.com/ | grep -o 'assets/index-[^"]*js'` and `curl -sI https://brand.guardianrecovery.com/assets/brand-guidelines-v2.md`. Roll back: recreate the proxied A record `brand` → `159.65.217.5` and remove the Worker custom domain.
+
+**Open questions:**
+- Previews on or off?
+- When can the DigitalOcean server be retired, and does anything else depend on it?
+- Delete the stale `public/` files or keep excluding them?
+
