@@ -228,4 +228,5 @@ Template — copy this for each new session:
 - Previews on or off?
 - When can the DigitalOcean server be retired, and does anything else depend on it?
 - Delete the stale `public/` files or keep excluding them?
+- Host asset files in R2 (deferred by Marc, 2026-11-25)? Options: (a) downloads only, replacing the ~600 Google Drive URLs in `src/links.js` with R2 URLs on a public custom domain (Claude's recommendation); (b) all assets, UI images in `src/assets` included (little gain: they are already bundled and served from the edge, and `?raw` SVG imports must stay in the bundle); (c) stay as is. If yes: new bucket (none of the 11 existing ones fits), custom domain such as `assets.brand.guardianrecovery.com` (not `r2.dev`), upload with `wrangler r2 object put` or rclone, optional Cloudflare Access if some downloads must stay private.
 
