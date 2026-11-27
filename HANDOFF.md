@@ -7,7 +7,7 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 
 ## Current State (keep this section current — overwrite, don't append)
 
-**Last updated:** 2026-11-25
+**Last updated:** 2026-11-27
 
 - **Hosting:** Cloudflare Workers (static assets), Guardian Recovery account (`693ba284ff035a8f489710a0d8025f6c`), worker `brand-guardian-recovery`, custom domain `brand.guardianrecovery.com`. Config in `wrangler.jsonc`; `workers.dev` and preview URLs are off. Deploy by hand with `npm run deploy` (needs `wrangler login`). Moved off the DigitalOcean server (`159.65.217.5`) on 2026-11-25; that server is untouched and can be retired. Rollback: recreate the proxied A record `brand` → `159.65.217.5` and remove the Worker custom domain.
 - **CI/CD:** Workers Builds connected 2026-11-25 (Workers & Pages → `brand-guardian-recovery` → Settings → Builds): repo `guardianrecovery/brand-guardian-recovery`, branch `main`, root `/`, build `npm run build`, deploy `npx wrangler deploy`, build variable `NODE_VERSION=22`. Merging to `main` deploys to brand.guardianrecovery.com. Previews are on (`npx wrangler preview` for other branches), which uses build minutes; turn off in the Builds settings if unwanted.
@@ -32,7 +32,8 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 - **Copy lives in two places.** Brand copy in `src/App.jsx` is duplicated in the downloadable `public/assets/brand-guidelines-v2.md` (served via `GUIDE_MD` in `src/links.js`). Update both when changing copy.
 
 ### In Progress
-- Nothing in progress. UI edits PR #8 and Cloudflare deploy PR #9 are merged. See the handoff section "Executive Resources gate" at the bottom for the next task.
+- **UI edits** on branch `ui-edits-2026-11-27` — pushed, PR #13 open as of 2026-11-27. Merging deploys to the live site. See session log.
+- See the handoff section "Executive Resources gate" at the bottom for the next task after that.
 
 ### Next Up / Backlog
 - **Service line icon artwork.** Tiles are hidden behind `SHOW_SERVICE_LINE_ICONS = false` in `src/App.jsx`. When real icons exist: replace the files in `src/assets/icons/` (`icon-sud`, `icon-mh`, `icon-adol`, `icon-virtual`), set the flag to `true`, restore the icon list in `brand-guidelines-v2.md`, and consider darkening the Mental Health / Adolescent tile titles (low contrast).
@@ -56,6 +57,18 @@ Template — copy this for each new session:
 **Left unfinished / next steps:** anything the next session must pick up
 -->
 
+### 2026-11-27 — Logo grid, STEM warning, pattern tiles, web and email examples
+**Goal:** UI edits on branch `ui-edits-2026-11-27`.
+**Changes** (all `src/App.jsx` unless noted):
+- Logo grids (`lg3` class, user's change): primary, inverted and 2-column `LogoGrid` logos use a grid — 1 across on phones, 2 by default, 3 at 1200px+. `Row()` now accepts `className`.
+- Typography: STEM "Never use…" sentence moved onto its own line in a yellow warning box nested in the STEM card. `brand-guidelines-v2.md` splits it into its own paragraph.
+- Graphics > Brand Pattern: Frost tile gets a Sand (`C.san`) border; Frost and Glacier labels now Midnight (13.6:1 and 10.8:1; were gray, under 3:1).
+- Digital > Website: `Cd` takes a new `ex` prop rendered below the text. `WebsiteExample` mini page (logo header, semibold Plex nav, Gambodge CTAs, DM Serif headline, rounded photo, pattern hero, service line accent cards).
+- Digital > Email Marketing: `EmailExample` mini email after the text (centered logo, Midnight DM Serif headline, Eerie Plex body, Gambodge CTA, Cerulean service line divider, footer with website, phone (561) 623-3009, unsubscribe, disclaimer).
+**Decisions:** Examples are visual only and not in `brand-guidelines-v2.md`. Example body text is smaller than the 15–17px spec so the mocks fit.
+**Verification:** `npm run build` passes. Browser: desktop and 375px checked; no horizontal scroll.
+**Left unfinished / next steps:** Review and merge PR #13 (merging deploys it live).
+
 ### 2026-11-25 — Migrate hosting to Cloudflare Workers
 **Goal:** Move brand.guardianrecovery.com from the DigitalOcean server to the Guardian Recovery Cloudflare account, with CI/CD via Workers Builds.
 **Changes:**
@@ -77,7 +90,7 @@ Template — copy this for each new session:
 - `public/assets/brand-guidelines-v2.md` — Logo Misuse list added.
 **Decisions:** Callout boxes are repeated inline styles, not a shared component (only three so far).
 **Verification:** `npm run build` passes. Browser: desktop and 375px checked; no horizontal scroll at 375px.
-**Left unfinished / next steps:** Review and merge the PR.
+**Left unfinished / next steps:** Merged as PR #8 (2026-11-24).
 
 ### 2026-11-23 — README rewritten for non-technical readers
 **Goal:** Make `README.md` readable for staff, not just developers.

@@ -837,6 +837,350 @@ function Cd(props) {
         <div className="tx" style={{ fontSize: 13, color: C.cav, lineHeight: 1.6 }}>
           {props.children}
         </div>
+        {props.ex && <div style={{ marginTop: 14 }}>{props.ex}</div>}
+      </div>
+    </div>
+  );
+}
+
+// Simple mock of a guardianrecovery.com page showing the website standards:
+// logo header, DM Serif titles, Plex body, Gambodge CTA, rounded photo,
+// brand pattern in the hero, service line accent colors.
+function WebsiteExample() {
+  var serif = "'DM Serif Text',serif";
+  var photo = img("photos/practice/candid-connection.webp");
+  return (
+    <div
+      role="img"
+      aria-label="Example guardianrecovery.com page following the website standards"
+      style={{
+        border: "1px solid " + C.gla,
+        borderRadius: 10,
+        overflow: "hidden",
+        background: "#fff",
+        fontFamily: "'IBM Plex Sans',sans-serif",
+      }}
+    >
+      {/* Browser bar */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 5,
+          padding: "6px 10px",
+          background: C.smo,
+          borderBottom: "1px solid " + C.san,
+        }}
+      >
+        {[0, 1, 2].map(function (i) {
+          return (
+            <span
+              key={i}
+              style={{ width: 7, height: 7, borderRadius: "50%", background: C.san }}
+            />
+          );
+        })}
+        <span
+          style={{
+            marginLeft: 8,
+            flex: 1,
+            fontSize: 10,
+            color: C.cav,
+            background: "#fff",
+            borderRadius: 4,
+            padding: "2px 8px",
+          }}
+        >
+          guardianrecovery.com
+        </span>
+      </div>
+
+      {/* Site header */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 10,
+          padding: "8px 14px",
+          borderBottom: "1px solid " + C.gla,
+          flexWrap: "wrap",
+        }}
+      >
+        <div
+          style={{ width: 130, aspectRatio: "524 / 78" }}
+          dangerouslySetInnerHTML={grHorizontalSvg()}
+        />
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          {["Treatment", "Locations", "Admissions"].map(function (n) {
+            return (
+              <span key={n} style={{ fontSize: 10, fontWeight: 600, color: C.mid }}>
+                {n}
+              </span>
+            );
+          })}
+          <span
+            style={{
+              fontSize: 10,
+              fontWeight: 600,
+              color: C.mid,
+              background: C.gam,
+              borderRadius: 6,
+              padding: "4px 9px",
+            }}
+          >
+            Call Now
+          </span>
+        </div>
+      </div>
+
+      {/* Hero with brand pattern */}
+      <div style={{ position: "relative", background: C.fro, overflow: "hidden" }}>
+        <img
+          src={img("graphics/pattern-on-frost.png")}
+          alt=""
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+          onError={function (e) {
+            e.target.style.display = "none";
+          }}
+        />
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            alignItems: "center",
+            gap: 16,
+            padding: "20px 16px",
+            flexWrap: "wrap",
+          }}
+        >
+          <div style={{ flex: "1 1 200px" }}>
+            <div
+              style={{
+                fontFamily: serif,
+                fontSize: 26,
+                lineHeight: 1.1,
+                color: C.mid,
+                marginBottom: 8,
+              }}
+            >
+              Hope Starts Here.
+            </div>
+            <div
+              style={{
+                fontSize: 11,
+                lineHeight: 1.5,
+                color: C.eer,
+                marginBottom: 12,
+                maxWidth: 260,
+              }}
+            >
+              Evidence-based care for substance use and mental health, built
+              around each Client's unique needs.
+            </div>
+            <span
+              style={{
+                display: "inline-block",
+                fontSize: 11,
+                fontWeight: 600,
+                color: C.mid,
+                background: C.gam,
+                borderRadius: 6,
+                padding: "7px 14px",
+              }}
+            >
+              Start Admissions
+            </span>
+          </div>
+          <div
+            style={{
+              flex: "1 1 160px",
+              height: 120,
+              borderRadius: 12,
+              overflow: "hidden",
+              background: C.p2,
+            }}
+          >
+            {photo && (
+              <img
+                src={photo}
+                alt=""
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Service lines with accent colors */}
+      <div style={{ padding: "14px 16px 16px" }}>
+        <div
+          style={{ fontFamily: serif, fontSize: 16, color: C.mid, marginBottom: 10 }}
+        >
+          Our Service Lines
+        </div>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {[
+            ["Addiction", C.cer],
+            ["Mental Health", C.pac],
+            ["Adolescent", C.sag],
+          ].map(function (s) {
+            return (
+              <div
+                key={s[0]}
+                style={{
+                  flex: "1 1 90px",
+                  border: "1px solid " + C.gla,
+                  borderTopColor: s[1],
+                  borderTopWidth: 3,
+                  borderRadius: 6,
+                  padding: "8px 10px",
+                  fontSize: 10,
+                  fontWeight: 600,
+                  color: C.mid,
+                }}
+              >
+                {s[0]}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Simple mock of a Marketing Cloud email showing the email standards:
+// centered logo on white, Midnight headlines, Eerie Plex body, Gambodge CTA,
+// service line accent divider, and the required footer items.
+function EmailExample() {
+  var serif = "'DM Serif Text',serif";
+  var cta = {
+    display: "inline-block",
+    fontSize: 12,
+    fontWeight: 600,
+    color: C.mid,
+    background: C.gam,
+    borderRadius: 6,
+    padding: "8px 16px",
+  };
+  return (
+    <div
+      role="img"
+      aria-label="Example Guardian Recovery marketing email following the email standards"
+      style={{
+        maxWidth: 460,
+        border: "1px solid " + C.gla,
+        borderRadius: 10,
+        overflow: "hidden",
+        background: C.smo,
+        fontFamily: "'IBM Plex Sans',sans-serif",
+        marginBottom: 16,
+      }}
+    >
+      {/* Inbox header */}
+      <div
+        style={{
+          background: "#fff",
+          borderBottom: "1px solid " + C.san,
+          padding: "8px 12px",
+          fontSize: 10,
+          color: C.cav,
+          lineHeight: 1.5,
+        }}
+      >
+        <div>
+          <span style={{ fontWeight: 600, color: C.eer }}>Guardian Recovery</span>
+        </div>
+        <div style={{ color: C.eer }}>You don't have to do this alone</div>
+      </div>
+
+      <div style={{ padding: 12 }}>
+        <div style={{ background: "#fff", borderRadius: 6, overflow: "hidden" }}>
+          {/* Header: primary logo centered on white */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "14px 0",
+              borderBottom: "1px solid " + C.gla,
+            }}
+          >
+            <div
+              style={{ width: 150, aspectRatio: "524 / 78" }}
+              dangerouslySetInnerHTML={grHorizontalSvg()}
+            />
+          </div>
+
+          {/* Lead section */}
+          <div style={{ padding: "18px 20px 16px" }}>
+            <div
+              style={{
+                fontFamily: serif,
+                fontSize: 22,
+                lineHeight: 1.15,
+                color: C.mid,
+                marginBottom: 8,
+              }}
+            >
+              Recovery starts with one conversation.
+            </div>
+            <div
+              style={{ fontSize: 12, lineHeight: 1.6, color: C.eer, marginBottom: 14 }}
+            >
+              Our admissions team is available 24/7 to answer questions, verify
+              insurance, and help you find the right level of care.
+            </div>
+            <span style={cta}>Talk to Admissions</span>
+          </div>
+
+          {/* Service line section with accent divider */}
+          <div style={{ padding: "0 20px 18px" }}>
+            <div style={{ height: 3, background: C.cer, borderRadius: 2, marginBottom: 12 }} />
+            <div
+              style={{
+                fontSize: 13,
+                fontWeight: 600,
+                color: C.mid,
+                marginBottom: 4,
+              }}
+            >
+              What to expect in medical detox
+            </div>
+            <div style={{ fontSize: 12, lineHeight: 1.6, color: C.eer }}>
+              24/7 medical supervision and a clear plan for what comes next.
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div
+            style={{
+              background: C.she,
+              borderTop: "1px solid " + C.gla,
+              padding: "12px 20px",
+              fontSize: 9,
+              lineHeight: 1.6,
+              color: C.cav,
+              textAlign: "center",
+            }}
+          >
+            <div style={{ fontWeight: 600, color: C.mid }}>
+              guardianrecovery.com · (561) 623-3009
+            </div>
+            <div style={{ textDecoration: "underline" }}>Unsubscribe</div>
+            <div>
+              This message is for informational purposes only and is not
+              medical advice. Your information is protected under our privacy
+              policy.
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -1143,7 +1487,10 @@ function LogoGrid(props) {
           })}
         </select>
       </div>
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+      <div
+        className={props.cols === 2 ? "lg3" : undefined}
+        style={{ display: "flex", gap: 10, flexWrap: "wrap" }}
+      >
         {props.items.map(function (it) {
           var label = it[0];
           var sub = it[1] || null;
@@ -1507,7 +1854,7 @@ function Q(props) {
 function Row(props) {
   return (
     <div
-      className="row"
+      className={"row" + (props.className ? " " + props.className : "")}
       style={{
         display: "flex",
         gap: props.gap || 8,
@@ -2339,7 +2686,7 @@ export default function App() {
           </div>
         </div>
       )}
-      <style>{`@media(min-width:800px){.sd{display:block!important}.hb{display:none!important}.mc{margin-left:290px!important}}.mc p,.mc li,.mc blockquote,.mc .tx{max-width:75ch}.mc .bx{width:fit-content;max-width:100%;box-sizing:border-box}.mc .row>.bx{flex:0 0 100%;max-width:fit-content}@media(max-width:599px){.mc .pg{grid-template-columns:repeat(2,1fr)!important}.mc .ts{flex-wrap:wrap;row-gap:6px!important}.mc .ts>div:nth-child(2){order:3;flex:0 0 100%!important;min-width:0}.mc .ts>div:nth-child(3){flex:1 1 0!important;min-width:0!important}}@media(max-width:799px){.sd{display:none!important}}`}</style>
+      <style>{`@media(min-width:800px){.sd{display:block!important}.hb{display:none!important}.mc{margin-left:290px!important}}.mc p,.mc li,.mc blockquote,.mc .tx{max-width:75ch}.mc .bx{width:fit-content;max-width:100%;box-sizing:border-box}.mc .row>.bx{flex:0 0 100%;max-width:fit-content}@media(max-width:599px){.mc .pg{grid-template-columns:repeat(2,1fr)!important}.mc .ts{flex-wrap:wrap;row-gap:6px!important}.mc .ts>div:nth-child(2){order:3;flex:0 0 100%!important;min-width:0}.mc .ts>div:nth-child(3){flex:1 1 0!important;min-width:0!important}}@media(max-width:799px){.sd{display:none!important}}.mc .lg3{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))}.mc .lg3>*{min-width:0!important}@media(min-width:1200px){.mc .lg3{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:599px){.mc .lg3{grid-template-columns:minmax(0,1fr)}}`}</style>
       <div className="sd" style={{ display: "none" }}>
         {nav(false)}
       </div>
@@ -3362,7 +3709,7 @@ export default function App() {
         {/* 5 LOGOS */}
         <Sec id="logo" pn="II" t="Logos and Facility Lockups">
           <H3>Primary Logos (Full Color)</H3>
-          <Row gap={10}>
+          <Row gap={10} className="lg3">
             {[
               { n: "Horizontal", slug: "gr-horizontal" },
               { n: "Horizontal Stacked", slug: "gr-horizontal-stacked" },
@@ -3381,7 +3728,7 @@ export default function App() {
             })}
           </Row>
           <H3>Inverted / Knockout Versions</H3>
-          <Row gap={10}>
+          <Row gap={10} className="lg3">
             {[
               { n: "Horizontal", slug: "gr-horizontal-inv" },
               { n: "Horizontal Stacked", slug: "gr-horizontal-stacked-inv" },
@@ -3601,7 +3948,10 @@ export default function App() {
               );
             })}
           </div>
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <div
+            className="lg3"
+            style={{ display: "flex", gap: 10, flexWrap: "wrap" }}
+          >
             {ff.map(function (f) {
               return (
                 <FacilityLockupCard
@@ -3850,7 +4200,21 @@ export default function App() {
                 </div>
               </div>
               <div className="tx" style={{ fontSize: 13, color: C.cav, lineHeight: 1.6 }}>
-                Used exclusively in the Guardian Recovery logo and wordmark.{" "}
+                Used exclusively in the Guardian Recovery logo and wordmark.
+              </div>
+              <div
+                className="bx tx"
+                style={{
+                  background: C.gam + "1F",
+                  border: "1px solid " + C.gam + "66",
+                  borderRadius: 10,
+                  padding: "10px 16px",
+                  marginTop: 10,
+                  fontSize: 13,
+                  color: C.cav,
+                  lineHeight: 1.6,
+                }}
+              >
                 <strong>Never</strong> use STEM for headlines, body copy, or
                 general typesetting. It is a proprietary brand element, not a
                 general-purpose typeface.
@@ -4703,6 +5067,8 @@ export default function App() {
                     flex: "1 1 160px",
                     height: 90,
                     background: s.bg,
+                    border: s.bg === C.fro ? "1px solid " + C.san : "none",
+                    boxSizing: "border-box",
                     borderRadius: 10,
                     position: "relative",
                     overflow: "hidden",
@@ -4729,7 +5095,7 @@ export default function App() {
                   <div
                     style={{
                       fontSize: 9,
-                      color: s.bg === C.mid ? C.cad : C.bat,
+                      color: s.bg === C.mid ? C.cad : C.mid,
                       position: "relative",
                     }}
                   >
@@ -5027,7 +5393,7 @@ export default function App() {
           </P>
 
           <H3>Website</H3>
-          <Cd t="guardianrecovery.com">
+          <Cd t="guardianrecovery.com" ex={<WebsiteExample />}>
             Primary logo in site header. DM Serif Text for page titles and
             section headers. IBM Plex Sans for body, navigation, buttons, and
             forms. Service line accent colors on service-line-specific pages.
@@ -5081,6 +5447,7 @@ export default function App() {
             section dividers on service-specific sends. Footer: website, phone,
             unsubscribe, privacy disclaimer.
           </P>
+          <EmailExample />
 
           <H3>Digital Advertising</H3>
           <Cd t="Google Ads (LegitScript certified)">
