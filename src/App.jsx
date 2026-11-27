@@ -1059,7 +1059,6 @@ function WebsiteExample() {
 // Simple mock of a Marketing Cloud email showing the email standards:
 // centered logo on white, Midnight headlines, Eerie Plex body, Gambodge CTA,
 // service line accent divider, and the required footer items.
-// Phone number is a fictional 555 placeholder.
 function EmailExample() {
   var serif = "'DM Serif Text',serif";
   var cta = {
@@ -1172,7 +1171,7 @@ function EmailExample() {
             }}
           >
             <div style={{ fontWeight: 600, color: C.mid }}>
-              guardianrecovery.com · (800) 555-0100
+              guardianrecovery.com · (561) 623-3009
             </div>
             <div style={{ textDecoration: "underline" }}>Unsubscribe</div>
             <div>

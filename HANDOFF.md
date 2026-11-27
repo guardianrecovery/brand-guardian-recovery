@@ -36,7 +36,6 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 - See the handoff section "Executive Resources gate" at the bottom for the next task after that.
 
 ### Next Up / Backlog
-- **Real phone number in the email example.** `EmailExample` in `src/App.jsx` uses a fictional (800) 555-0100. Swap in the real admissions number when known.
 - **Service line icon artwork.** Tiles are hidden behind `SHOW_SERVICE_LINE_ICONS = false` in `src/App.jsx`. When real icons exist: replace the files in `src/assets/icons/` (`icon-sud`, `icon-mh`, `icon-adol`, `icon-virtual`), set the flag to `true`, restore the icon list in `brand-guidelines-v2.md`, and consider darkening the Mental Health / Adolescent tile titles (low contrast).
 
 ### Open Questions / Decisions Pending
@@ -65,10 +64,10 @@ Template — copy this for each new session:
 - Typography: STEM "Never use…" sentence moved onto its own line in a yellow warning box nested in the STEM card. `brand-guidelines-v2.md` splits it into its own paragraph.
 - Graphics > Brand Pattern: Frost tile gets a Sand (`C.san`) border; Frost and Glacier labels now Midnight (13.6:1 and 10.8:1; were gray, under 3:1).
 - Digital > Website: `Cd` takes a new `ex` prop rendered below the text. `WebsiteExample` mini page (logo header, semibold Plex nav, Gambodge CTAs, DM Serif headline, rounded photo, pattern hero, service line accent cards).
-- Digital > Email Marketing: `EmailExample` mini email after the text (centered logo, Midnight DM Serif headline, Eerie Plex body, Gambodge CTA, Cerulean service line divider, footer with website, phone, unsubscribe, disclaimer).
+- Digital > Email Marketing: `EmailExample` mini email after the text (centered logo, Midnight DM Serif headline, Eerie Plex body, Gambodge CTA, Cerulean service line divider, footer with website, phone (561) 623-3009, unsubscribe, disclaimer).
 **Decisions:** Examples are visual only and not in `brand-guidelines-v2.md`. Example body text is smaller than the 15–17px spec so the mocks fit.
 **Verification:** `npm run build` passes. Browser: desktop and 375px checked; no horizontal scroll.
-**Left unfinished / next steps:** Review and merge PR #13 (merging deploys it live). Real phone number for the email example.
+**Left unfinished / next steps:** Review and merge PR #13 (merging deploys it live).
 
 ### 2026-11-25 — Migrate hosting to Cloudflare Workers
 **Goal:** Move brand.guardianrecovery.com from the DigitalOcean server to the Guardian Recovery Cloudflare account, with CI/CD via Workers Builds.
