@@ -430,7 +430,9 @@ Three typefaces form the complete brand voice. Each has a distinct role — they
 
 ### STEM — Brand Mark Font
 
-Used exclusively in the Guardian Recovery logo and wordmark. **Never** use STEM for headlines, body copy, or general typesetting. It is a proprietary brand element, not a general-purpose typeface.
+Used exclusively in the Guardian Recovery logo and wordmark.
+
+**Never** use STEM for headlines, body copy, or general typesetting. It is a proprietary brand element, not a general-purpose typeface.
 
 ### DM Serif Text — Headline Font
 

@@ -7,7 +7,7 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 
 ## Current State (keep this section current — overwrite, don't append)
 
-**Last updated:** 2026-11-24
+**Last updated:** 2026-11-27
 
 - **App:** Single-file React/Vite SPA brand guide — logic lives in `src/App.jsx` (~5,000 lines).
 - **Supporting modules:** `src/links.js` (download URLs, `LETTERHEAD` map, `toDirectDownload()`), `src/images.js`, `src/index.css`.
@@ -29,9 +29,10 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 - **Copy lives in two places.** Brand copy in `src/App.jsx` is duplicated in the downloadable `public/assets/brand-guidelines-v2.md` (served via `GUIDE_MD` in `src/links.js`). Update both when changing copy.
 
 ### In Progress
-- **UI edits** on branch `ui-edits-2026-11-24` — pushed, PR open as of 2026-11-24. See session log.
+- **UI edits** on branch `ui-edits-2026-11-27` — pushed, PR open as of 2026-11-27. See session log.
 
 ### Next Up / Backlog
+- **Real phone number in the email example.** `EmailExample` in `src/App.jsx` uses a fictional (800) 555-0100. Swap in the real admissions number when known.
 - **Service line icon artwork.** Tiles are hidden behind `SHOW_SERVICE_LINE_ICONS = false` in `src/App.jsx`. When real icons exist: replace the files in `src/assets/icons/` (`icon-sud`, `icon-mh`, `icon-adol`, `icon-virtual`), set the flag to `true`, restore the icon list in `brand-guidelines-v2.md`, and consider darkening the Mental Health / Adolescent tile titles (low contrast).
 
 ### Open Questions / Decisions Pending
@@ -53,6 +54,18 @@ Template — copy this for each new session:
 **Left unfinished / next steps:** anything the next session must pick up
 -->
 
+### 2026-11-27 — Logo grid, STEM warning, pattern tiles, web and email examples
+**Goal:** UI edits on branch `ui-edits-2026-11-27`.
+**Changes** (all `src/App.jsx` unless noted):
+- Logo grids (`lg3` class, user's change): primary, inverted and 2-column `LogoGrid` logos use a grid — 1 across on phones, 2 by default, 3 at 1200px+. `Row()` now accepts `className`.
+- Typography: STEM "Never use…" sentence moved onto its own line in a yellow warning box nested in the STEM card. `brand-guidelines-v2.md` splits it into its own paragraph.
+- Graphics > Brand Pattern: Frost tile gets a Sand (`C.san`) border; Frost and Glacier labels now Midnight (13.6:1 and 10.8:1; were gray, under 3:1).
+- Digital > Website: `Cd` takes a new `ex` prop rendered below the text. `WebsiteExample` mini page (logo header, semibold Plex nav, Gambodge CTAs, DM Serif headline, rounded photo, pattern hero, service line accent cards).
+- Digital > Email Marketing: `EmailExample` mini email after the text (centered logo, Midnight DM Serif headline, Eerie Plex body, Gambodge CTA, Cerulean service line divider, footer with website, phone, unsubscribe, disclaimer).
+**Decisions:** Examples are visual only and not in `brand-guidelines-v2.md`. Example body text is smaller than the 15–17px spec so the mocks fit.
+**Verification:** `npm run build` passes. Browser: desktop and 375px checked; no horizontal scroll.
+**Left unfinished / next steps:** Review and merge the PR. Real phone number for the email example.
+
 ### 2026-11-24 — Callout boxes, Logo Misuse, phone fix
 **Goal:** UI edits on branch `ui-edits-2026-11-24`.
 **Changes:**
@@ -62,7 +75,7 @@ Template — copy this for each new session:
 - `public/assets/brand-guidelines-v2.md` — Logo Misuse list added.
 **Decisions:** Callout boxes are repeated inline styles, not a shared component (only three so far).
 **Verification:** `npm run build` passes. Browser: desktop and 375px checked; no horizontal scroll at 375px.
-**Left unfinished / next steps:** Review and merge the PR.
+**Left unfinished / next steps:** Merged as PR #8 (2026-11-24).
 
 ### 2026-11-23 — README rewritten for non-technical readers
 **Goal:** Make `README.md` readable for staff, not just developers.
