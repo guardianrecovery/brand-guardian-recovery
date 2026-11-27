@@ -9,6 +9,9 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 
 **Last updated:** 2026-11-27
 
+- **Hosting:** Cloudflare Workers (static assets), Guardian Recovery account (`693ba284ff035a8f489710a0d8025f6c`), worker `brand-guardian-recovery`, custom domain `brand.guardianrecovery.com`. Config in `wrangler.jsonc`; `workers.dev` and preview URLs are off. Deploy by hand with `npm run deploy` (needs `wrangler login`). Moved off the DigitalOcean server (`159.65.217.5`) on 2026-11-25; that server is untouched and can be retired. Rollback: recreate the proxied A record `brand` → `159.65.217.5` and remove the Worker custom domain.
+- **CI/CD:** Workers Builds connected 2026-11-25 (Workers & Pages → `brand-guardian-recovery` → Settings → Builds): repo `guardianrecovery/brand-guardian-recovery`, branch `main`, root `/`, build `npm run build`, deploy `npx wrangler deploy`, build variable `NODE_VERSION=22`. Merging to `main` deploys to brand.guardianrecovery.com. Previews are on (`npx wrangler preview` for other branches), which uses build minutes; turn off in the Builds settings if unwanted.
+
 - **App:** Single-file React/Vite SPA brand guide — logic lives in `src/App.jsx` (~5,000 lines).
 - **Supporting modules:** `src/links.js` (download URLs, `LETTERHEAD` map, `toDirectDownload()`), `src/images.js`, `src/index.css`.
 - **Assets:** Facility logos in `src/assets/logos/` (`fac-<slug>[-inv][-vert].svg`), graphics in `src/assets/graphics/`. Placeholder logos can be regenerated with `scripts/generate-logo-placeholders.mjs`.
@@ -23,13 +26,14 @@ Session-to-session handoff log. **Read this at the start of every session** (aft
 - **"Promote to live" is per-browser only.** `ReviewBlock` (`src/App.jsx`) stores live/review state in `localStorage` (`gr-review-live:<label>`). Promoting a block only affects the browser that clicked it — nothing is published for other viewers. Making content truly live requires a code change (e.g. removing the `ReviewBlock` wrapper). Current review-gated blocks: "Service line taglines", "Other Stationery".
 - **Review PIN is visible in source.** `REVIEW_PIN` in `src/App.jsx` is hardcoded and client-side, separate from the `ExecGate` PIN. Neither is a security control.
 - **`npm run lint` doesn't exist.** `package.json` has no `lint` script and ESLint isn't in its devDependencies, despite `eslint.config.js` and `CLAUDE.md`. `npm run build` is the only working check for now.
-- **Stale copies in `public/`.** `public/app.jsx` is an old (~4,300-line) copy of `App.jsx` from the initial commit, and `public/assets/index-*.js` is an old build bundle. Neither is the live source — edit `src/App.jsx`. Ask before deleting them.
+- **Stale copies in `public/`.** `public/app.jsx` is an old (~4,300-line) copy of `App.jsx` from the initial commit, and `public/assets/index-DICR2wke.js` is an old build bundle. Neither is the live source — edit `src/App.jsx`. They are still in the repo and in `dist/`, but `public/.assetsignore` keeps them out of the Cloudflare deploy (they fall through to the SPA `index.html`). Ask before deleting them.
 - **Install dependencies first.** `node_modules` isn't present in a fresh checkout — run `npm install` before `npm run dev` / `build`. `npm install` rewrites `package-lock.json`; restore it (`git checkout -- package-lock.json`) unless a dependency change is intended.
 - **Layout width rules live in the global `<style>` tag** in `src/App.jsx` (search `.mc p`). `.tx` caps text at 75ch; `.bx` makes a bordered box shrink to fit its content; `.row` (set by `Row()`) makes `.bx` children stack one per line. New boxes or text blocks need these classes to follow the same rules.
 - **Copy lives in two places.** Brand copy in `src/App.jsx` is duplicated in the downloadable `public/assets/brand-guidelines-v2.md` (served via `GUIDE_MD` in `src/links.js`). Update both when changing copy.
 
 ### In Progress
-- **UI edits** on branch `ui-edits-2026-11-27` — pushed, PR open as of 2026-11-27. See session log.
+- **UI edits** on branch `ui-edits-2026-11-27` — pushed, PR #13 open as of 2026-11-27. Merging deploys to the live site. See session log.
+- See the handoff section "Executive Resources gate" at the bottom for the next task after that.
 
 ### Next Up / Backlog
 - **Real phone number in the email example.** `EmailExample` in `src/App.jsx` uses a fictional (800) 555-0100. Swap in the real admissions number when known.
@@ -64,7 +68,19 @@ Template — copy this for each new session:
 - Digital > Email Marketing: `EmailExample` mini email after the text (centered logo, Midnight DM Serif headline, Eerie Plex body, Gambodge CTA, Cerulean service line divider, footer with website, phone, unsubscribe, disclaimer).
 **Decisions:** Examples are visual only and not in `brand-guidelines-v2.md`. Example body text is smaller than the 15–17px spec so the mocks fit.
 **Verification:** `npm run build` passes. Browser: desktop and 375px checked; no horizontal scroll.
-**Left unfinished / next steps:** Review and merge the PR. Real phone number for the email example.
+**Left unfinished / next steps:** Review and merge PR #13 (merging deploys it live). Real phone number for the email example.
+
+### 2026-11-25 — Migrate hosting to Cloudflare Workers
+**Goal:** Move brand.guardianrecovery.com from the DigitalOcean server to the Guardian Recovery Cloudflare account, with CI/CD via Workers Builds.
+**Changes:**
+- `wrangler.jsonc` (new) — static assets from `./dist`, SPA fallback, account pinned (wrangler is logged in to three accounts), custom domain route, `workers_dev` and `preview_urls` off.
+- `public/.assetsignore` (new) — `/app.jsx` and `/assets/index-DICR2wke.js` excluded from the deploy.
+- `package.json` / `package-lock.json` — `wrangler` devDependency, `deploy` script.
+- DNS — deleted the proxied A record `brand.guardianrecovery.com` → `159.65.217.5` (zone `962533e2644705254ff4daad42a25c56`, record `73ef1d9b66f16f01e7f1f0a76826cd3b`); Worker custom domain created by `wrangler deploy`.
+- PR #9 merged. Deployed by hand with `npx wrangler deploy` from the branch.
+**Decisions:** Workers with static assets, not Pages. Stale `public/` files excluded, not deleted (user: exclude if not needed). Cloudflare Access for the Executive Resources PIN goes on a path, not the whole site (user) — see the handoff section below.
+**Verification:** `npm run build`, `wrangler deploy --dry-run`; live check: `/` 200 with the new bundle `index-cj8qUm9P.js`, `/assets/brand-guidelines-v2.md` 200 `text/markdown`, `/app.jsx` falls through to `index.html`, workers.dev URL 404.
+**Left unfinished / next steps:** Retire the DigitalOcean server when ready. Executive Resources gate (below). Workers Builds was connected in the dashboard afterwards (the build-token step cannot be done through the API); first build from `main` succeeded and the site stayed up.
 
 ### 2026-11-24 — Callout boxes, Logo Misuse, phone fix
 **Goal:** UI edits on branch `ui-edits-2026-11-24`.
@@ -151,3 +167,80 @@ Template — copy this for each new session:
 **Decisions:** "Current State" is overwritten each session to stay short; "Session Log" is append-only, newest first.
 **Verification:** N/A (docs only).
 **Left unfinished / next steps:** None.
+
+
+---
+
+## Handoff: Executive Resources gate (Cloudflare Access)
+
+**Goal:** Replace the client-side PIN on "Executive Resources" (and the review PIN) with a real access control. Done = anyone without access gets a Cloudflare Access login, not the content, and the gated content is not in the public JS bundle.
+
+**State:** Scoped only, not started.
+- `ExecGate` in `src/App.jsx` (~line 1773) compares input to a hardcoded PIN in the browser. Rendered in `<Sec id="exec" pn="III" t="Executive Resources">` (~line 5016). The unlocked content ships in the bundle to every visitor.
+- `REVIEW_PIN` (~line 1530) and `ReviewBlock` (~line 1533) work the same way. It gates "Service line taglines" (~2683) and "Other Stationery" (~5325), and "promote to live" is per-browser `localStorage`. Not covered by this task unless Marc says so.
+- The unlocked `ExecGate` content today is placeholder tiles only (Internal: Board Deck, Investor Deck, Meeting Templates, Reports; External: Executive Summary, Thought Leadership, Speaker Kit, Media Kit) plus a V3 note. No real confidential material is exposed yet.
+- Marc's decision: put the PIN/gate in Cloudflare, in front of a path, not the whole site.
+- Cloudflare Access protects URL paths. The app has none today (navigation is `scrollIntoView`), so a path-scoped Access app protects nothing until the gated content has its own path.
+
+**Files touched:** none yet. Read: `src/App.jsx` (ExecGate, REVIEW_PIN, `<Sec id="exec">`).
+
+**Changes:** none.
+
+**Failures:** none.
+
+**Next steps:**
+1. Decide the shape with Marc: (a) a separate static page such as `/exec/` (own `exec/index.html` as a second Vite entry, or a second Worker route), or (b) client routing with the exec view code-split and served from `/exec/*`. Option (a) is simpler and keeps the main bundle free of exec content.
+2. Move the gated content out of `App.jsx` into that page; the `exec` section in the main guide becomes a link to `/exec/` (keep the sidebar `SECS` entry working).
+3. Remove `ExecGate` and its PIN from `src/App.jsx`; update `README.md` (it mentions the PIN caveat) and `public/assets/brand-guidelines-v2.md` if they mention it.
+4. Create a Cloudflare Access application (Zero Trust, Guardian Recovery account) for `brand.guardianrecovery.com/exec*`, with an allow policy (Guardian Recovery email domain, or a named group). Marc must confirm who is allowed and the identity provider (one-time PIN by email works with no setup).
+5. Verify: logged-out request to `/exec/` returns the Access login (302), the main page stays public, and `grep` of `dist/assets/*.js` finds no exec content.
+
+**Decisions:** Access goes on a path, not the whole site (Marc, 2026-11-25). Treat the existing PINs as not secure; do not copy their values into docs or commits.
+
+**Dead ends:** Putting Access in front of the current single-page app protects nothing, because exec content is in the shared JS bundle and there is no path to match.
+
+**How to run/test:** `npm install`, `npm run dev` for local; `npm run build` to check; deploy with `npm run deploy` (wrangler logged in to the Guardian Recovery account, id in `wrangler.jsonc`) or let Workers Builds deploy on merge to `main`. Test Access with `curl -sI https://brand.guardianrecovery.com/exec/`.
+
+**Open questions:**
+- Who gets access (email domain, specific people)?
+- Does the review PIN (`ReviewBlock`) get the same treatment, or stay as is?
+- Is a separate `/exec/` page acceptable, or should it stay inside the single-page app?
+
+---
+
+## Handoff: Cloudflare Workers migration of brand.guardianrecovery.com
+
+**Goal:** Host the brand guide on the Guardian Recovery Cloudflare account at brand.guardianrecovery.com, off the DigitalOcean server, with CI/CD from GitHub via Workers Builds. Done = site served by the Worker, merges to `main` deploy automatically, old server retired.
+
+**State:** Migrated and live (2026-11-25). Only cleanup is left.
+- Worker `brand-guardian-recovery`, account `693ba284ff035a8f489710a0d8025f6c` (wrangler is logged in to three accounts, so `account_id` is pinned in `wrangler.jsonc`). Zone `guardianrecovery.com` is `962533e2644705254ff4daad42a25c56`.
+- Custom domain `brand.guardianrecovery.com` attached; `workers_dev` and `preview_urls` are off.
+- Workers Builds connected by Marc in the dashboard: branch `main`, root `/`, build `npm run build`, deploy `npx wrangler deploy`, `NODE_VERSION=22`, auto-build on. Build for merge commit `b706fc8` succeeded.
+- Marc's decisions: Workers (not Pages); stale `public/app.jsx` and `public/assets/index-DICR2wke.js` excluded from the deploy, not deleted; Access PIN goes on a path, not the whole site (separate task, see the Executive Resources gate section).
+- Not checked: whether the old DigitalOcean server served anything other than the SPA (extra paths, redirects, other hostnames). I never inspected that server.
+
+**Files touched:** `wrangler.jsonc`, `public/.assetsignore`, `package.json`, `package-lock.json`, `HANDOFF.md`. Read: `src/App.jsx`, `src/links.js`, `vite.config.js`, `index.html`, `public/`.
+
+**Changes:** PRs #9 (deploy config) and #10 (HANDOFF) merged into `main`; `main` is at `b706fc8` and the working tree is clean. DNS: deleted the proxied A record `brand` → `159.65.217.5` (record id `73ef1d9b66f16f01e7f1f0a76826cd3b`). First deploy was by hand with `npx wrangler deploy`.
+
+**Failures:** None blocking. The Workers Builds build token cannot be created through the Cloudflare API from Claude Code (needs an API token id and secret), so Marc connected the repo in the dashboard. Local `npm install` warned that `esbuild` and `workerd` install scripts were skipped (npm 11); `wrangler deploy` and `--dry-run` worked anyway, but `wrangler dev` may not.
+
+**Next steps:**
+1. Marc decides on previews: the dashboard turned them on (`npx wrangler preview` for non-`main` branches), which uses build minutes. Turn off in Settings → Builds if unwanted.
+2. Retire the DigitalOcean server (`159.65.217.5`) once Marc is sure nothing else uses it. Check first for other sites or DNS records pointing at it.
+3. Optional: delete the stale `public/` files (needs Marc's OK) and the `.assetsignore` entries with them.
+4. Optional: update `CLAUDE.md` (it says `npm run lint` exists and "no CSS files"; neither is true, see HANDOFF.md gotchas) and add the deploy notes.
+5. Executive Resources gate: separate section above.
+
+**Decisions:** Workers with static assets because Cloudflare points new static sites there, and the account already runs about 70 Workers. Delete the A record and deploy right after, accepting a gap of seconds, because the custom-domain deploy fails while the record exists. `account_id` committed in `wrangler.jsonc` because it is not a secret and wrangler has several accounts.
+
+**Dead ends:** Creating the Workers Builds build token through the API (needs a pre-made API token). Looking for an existing reusable build token: none visible to this login.
+
+**How to run/test:** `npm install`, `npm run build`, `npx wrangler deploy --dry-run`, `npm run deploy` (needs `wrangler login`). Check the live site: `curl -s https://brand.guardianrecovery.com/ | grep -o 'assets/index-[^"]*js'` and `curl -sI https://brand.guardianrecovery.com/assets/brand-guidelines-v2.md`. Roll back: recreate the proxied A record `brand` → `159.65.217.5` and remove the Worker custom domain.
+
+**Open questions:**
+- Previews on or off?
+- When can the DigitalOcean server be retired, and does anything else depend on it?
+- Delete the stale `public/` files or keep excluding them?
+- Host asset files in R2 (deferred by Marc, 2026-11-25)? Options: (a) downloads only, replacing the ~600 Google Drive URLs in `src/links.js` with R2 URLs on a public custom domain (Claude's recommendation); (b) all assets, UI images in `src/assets` included (little gain: they are already bundled and served from the edge, and `?raw` SVG imports must stay in the bundle); (c) stay as is. If yes: new bucket (none of the 11 existing ones fits), custom domain such as `assets.brand.guardianrecovery.com` (not `r2.dev`), upload with `wrangler r2 object put` or rclone, optional Cloudflare Access if some downloads must stay private.
+

@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "brand-guardian-recovery",
+  "account_id": "693ba284ff035a8f489710a0d8025f6c",
+  "compatibility_date": "2026-11-25",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  },
+  "routes": [
+    { "pattern": "brand.guardianrecovery.com", "custom_domain": true }
+  ],
+  "workers_dev": false,
+  "preview_urls": false
+}
